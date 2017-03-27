@@ -1,0 +1,114 @@
+// DATABASE AND TABLE DECLARATION
+
+    // DATABASE NOTTSPARK
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME =
+            "NottsPark";
+
+    // TABLE BRAND
+    private static final String TABLE_BRAND =
+            "Brand";
+    private static final String KEY_BRAND_ID =
+            "brand_id";
+    private static final String KEY_BRAND_NAME =
+            "brand_name";
+
+    // TABLE BUILDING
+    private static final String TABLE_BUILDING =
+            "Building";
+    private static final String KEY_BUILDING_ID =
+            "building_id";
+    private static final String KEY_BUILDING_NAME =
+            "building_name";
+    private static final String KEY_BUILDING_COLOR =
+            "building_color";
+
+    // TABLE CAR
+    private static final String TABLE_CAR =
+            "Car";
+    private static final String KEY_CAR_ID =
+            "car_id";
+    private static final String KEY_CAR_PLATE =
+            "car_plate";
+    private static final String KEY_CAR_MODEL_ID =
+            "car_model_id";
+    private static final String KEY_CAR_COLOR =
+            "car_color";
+
+    // TABLE LEAVER
+    private static final String TABLE_LEAVER =
+            "Leaver";
+    private static final String KEY_L_ID =
+            "leaver_id";
+    private static final String KEY_L_TIME =
+            "leaver_time";
+    private static final String KEY_L_USER_ID =
+            "leaver_user_id";
+    private static final String KEY_L_LOCATION =
+            "leaver_location";
+
+    // TABLE MODEL
+    private static final String TABLE_CARMODEL =
+            "Car_Model";
+    private static final String KEY_CARMODEL_ID =
+            "carmodel_id";
+    private static final String KEY_CARMODEL_NAME =
+            "carmodel_time";
+    private static final String KEY_CARMODEL_BRAND =
+            "carmodel_id";
+
+    // TABLE PARKER
+    private static final String TABLE_PARKER =
+            "Parker";
+    private static final String KEY_P_ID =
+            "parker_id";
+    private static final String KEY_P_TIME =
+            "parker_time";
+    private static final String KEY_P_USER_ID =
+            "parker_user_id";
+
+    // TABLE SPECIFIC LOCATION
+    private static final String TABLE_SPECIFICLOCATION =
+            "Specific_Location";
+    private static final String KEY_SL_ID =
+            "sl_id";
+    private static final String KEY_SL_BUILDING_ID =
+            "sl_building_id";
+    private static final String KEY_SL_ROW =
+            "sl_row";
+    private static final String KEY_SL_DESC =
+            "sl_row";
+
+    //TABLE TRANSACTION
+    private static final String TABLE_TRANSACTION =
+            "Transaction";
+    private static final String KEY_T_ID =
+            "transaction_id";
+    private static final String KEY_T_PARKER_ID =
+            "transaction_parker_id";
+    private static final String KEY_T_LEAVER_ID =
+            "transaction_leaver_id";
+    private static final String KEY_T_EXCHANGESTATUS =
+            "transaction_exchangestatus";
+    private static final String KEY_T_EXCHANGETIME =
+            "transaction_exchangetime";
+
+    // TABLE USER
+    private static final String TABLE_USER =
+            "User";
+    private static final String KEY_USER_ID =
+            "user_id";
+    private static final String KEY_USER_USERNAME =
+            "user_username";
+    private static final String KEY_USER_NAME =
+            "user_name";
+    private static final String KEY_USER_CONTACTNUM =
+            "user_contactNum";
+    private static final String KEY_USER_EMAIL =
+            "user_email";
+    private static final String KEY_USER_ACCOUNTTYPE =
+            "user_accType";
+    private static final String KEY_USER_PASSWORD =
+            "user_password";
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////

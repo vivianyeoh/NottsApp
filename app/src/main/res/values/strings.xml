@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">NottsPark</string>
+
+    <string-array name="acc_type_array">
+        <item>Student</item>
+        <item>Staff</item>
+    </string-array>
+
+    <string-array name="zone_array">
+        <item>ZONE 1</item>
+        <item>ZONE 2</item>
+        <item>ZONE 3</item>
+        <item>ZONE 4</item>
+        <item>ZONE 5</item>
+        <item>ZONE 6</item>
+        <item>ZONE 7</item>
+        <item>ZONE 8</item>
+        <item>ZONE 9</item>
+        <item>ZONE 10</item>
+        <item>ZONE 11</item>
+        <item>ZONE 12</item>
+        <item>ZONE 13</item>
+        <item>ZONE 14</item>
+        <item>ZONE 15</item>
+        <item>ZONE 16</item>
+        <item>ZONE 17</item>
+        <item>ZONE 18</item>
+        <item>ZONE 19</item>
+        <item>ZONE 20</item>
+        <item>ZONE 21</item>
+        <item>ZONE 22</item>
+        <item>ZONE 23</item>
+    </string-array>
+
+    <string-array name="vehicle_brand_array">
+        <item>Alfa Romeo</item>
+        <item>Aston Martin</item>
+        <item>Audi</item>
+        <item>Bentley</item>
+        <item>BMW</item>
+        <item>Bufori</item>
+        <item>Caterham</item>
+        <item>Chana</item>
+        <item>Chery</item>
+        <item>Chevrolet</item>
+        <item>Citroen</item>
+        <item>Ferrari</item>
+        <item>Fiat</item>
+        <item>Ford</item>
+        <item>Haval</item>
+        <item>Honda</item>
+        <item>Hyundai</item>
+        <item>Infiniti</item>
+        <item>Isuzu</item>
+        <item>Jaguar</item>
+        <item>Jeep</item>
+        <item>Kia</item>
+        <item>Lamborghini</item>
+        <item>Land Rover</item>
+        <item>Lexus</item>
+        <item>Lotus</item>
+        <item>Mahindra</item>
+        <item>Maserati</item>
+        <item>Maxus</item>
+        <item>Mazda</item>
+        <item>McLaren</item>
+        <item>Mercedes-Benz</item>
+        <item>MINI</item>
+        <item>Mitsubishi</item>
+        <item>Nissan</item>
+        <item>Perodua</item>
+        <item>Peugeot</item>
+        <item>Porsche</item>
+        <item>Proton</item>
+        <item>Renault</item>
+        <item>Rolls-Royce</item>
+        <item>Skoda</item>
+        <item>SsangYong</item>
+        <item>Subaru</item>
+        <item>Suzuki</item>
+        <item>Tata</item>
+        <item>Toyota</item>
+        <item>Volkswagen</item>
+        <item>Volvo</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="register">Register</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="password_reconfirm">Type the password again</string>
+    <string name="dialog_log_out">Logged out from NottsPark</string>
+    <string name="okay">OK</string>
+
+</resources>

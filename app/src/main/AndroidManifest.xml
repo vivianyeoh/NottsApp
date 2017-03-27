@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="getresult.example.asus.nottspark">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/nottslogo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.example.user.nottspark.View.LoginActivity"
+            android:label="NottsPark"
+            android:theme="@style/AppTheme.ActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.user.nottspark.View.ViewerPage.MainActivity" />
+        <activity
+            android:name="com.example.user.nottspark.View.UserRegistrationActivity"
+            android:label="Registration"
+            android:parentActivityName="com.example.user.nottspark.View.LoginActivity"
+            android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.nottspark.View.LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.example.user.nottspark.View.EditProfileActivity"
+            android:label="Edit Profile"
+            android:parentActivityName="com.example.user.nottspark.View.ViewerPage.MainActivity"
+            android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.user.nottspark.View.LeaverListActivity"
+            android:label="Leaver List"
+            android:parentActivityName="com.example.user.nottspark.View.ViewerPage.MainActivity"
+            android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

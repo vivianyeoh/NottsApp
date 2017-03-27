@@ -1,0 +1,82 @@
+// Create Database with all the Tables
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // CREATE TABLE BRAND
+        String CREATE_BRAND_TABLE = "CREATE TABLE " + TABLE_BRAND + "("
+                + KEY_BRAND_ID + " INTEGER PRIMARY KEY,"
+                + KEY_BRAND_NAME + " TEXT"
+                + ")";
+        db.execSQL(CREATE_BRAND_TABLE);
+
+        // CREATE TABLE BUILDING
+        String CREATE_BUILDING_TABLE = "CREATE TABLE " + TABLE_BUILDING + "("
+                + KEY_BUILDING_ID + " INTEGER PRIMARY KEY," + KEY_BUILDING_NAME + " TEXT,"
+                + KEY_BUILDING_COLOR + " TEXT"
+                + ")";
+        db.execSQL(CREATE_BUILDING_TABLE);
+
+        // CREATE TABLE CAR
+        String CREATE_CAR_TABLE = "CREATE TABLE " + TABLE_CAR + "("
+                + KEY_CAR_ID + " INTEGER PRIMARY KEY," + KEY_CAR_PLATE + " TEXT,"
+                + KEY_CAR_MODEL_ID + " TEXT,"
+                + KEY_CAR_COLOR + " TEXT"
+                + " FOREIGN KEY ("+KEY_CAR_MODEL_ID+") REFERENCES "+TABLE_CARMODEL+"("+KEY_CARMODEL_ID+")"
+                + ")";
+        db.execSQL(CREATE_CAR_TABLE);
+
+        // CREATE TABLE LEAVER
+        String CREATE_LEAVER_TABLE = "CREATE TABLE " + TABLE_LEAVER + "("
+                + KEY_L_ID + " INTEGER PRIMARY KEY," + KEY_L_TIME + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
+                + KEY_L_USER_ID + " TEXT,"
+                + KEY_L_LOCATION + " TEXT"
+                + " FOREIGN KEY ("+KEY_L_USER_ID+") REFERENCES "+TABLE_USER+"("+KEY_USER_ID+")"
+                + ")";
+        db.execSQL(CREATE_LEAVER_TABLE);
+
+        // CREATE TABLE MODEL
+        String CREATE_MODEL_TABLE = "CREATE TABLE " + TABLE_CARMODEL + "("
+                + KEY_CARMODEL_ID + " INTEGER PRIMARY KEY," + KEY_CARMODEL_NAME + " TEXT,"
+                + KEY_CARMODEL_BRAND + " TEXT"
+                + ")";
+        db.execSQL(CREATE_MODEL_TABLE);
+
+        // CREATE TABLE PARKER
+        String CREATE_PARKER_TABLE = "CREATE TABLE " + TABLE_PARKER + "("
+                + KEY_P_ID + " INTEGER PRIMARY KEY," + KEY_P_TIME + " TEXT,"
+                + KEY_P_USER_ID + " TEXT"
+                + " FOREIGN KEY ("+KEY_P_USER_ID+") REFERENCES "+TABLE_USER+"("+KEY_USER_ID+")"
+                + ")";
+        db.execSQL(CREATE_PARKER_TABLE);
+
+        // CREATE TABLE SPECIFIC LOCATION
+        String CREATE_SL_TABLE = "CREATE TABLE " + TABLE_SPECIFICLOCATION + "("
+                + KEY_SL_ID + " INTEGER PRIMARY KEY," + KEY_SL_BUILDING_ID + " TEXT,"
+                + KEY_SL_ROW + " TEXT,"
+                + KEY_SL_DESC + " TEXT"
+                + " FOREIGN KEY ("+KEY_SL_BUILDING_ID+") REFERENCES "+TABLE_BUILDING+"("+KEY_BUILDING_ID+")"
+                + ")";
+        db.execSQL(CREATE_SL_TABLE);
+
+        // CREATE TABLE TRANSACTION
+        String CREATE_T_TABLE = "CREATE TABLE " + TABLE_TRANSACTION + "("
+                + KEY_T_ID + " INTEGER PRIMARY KEY," + KEY_T_PARKER_ID + " TEXT,"
+                + KEY_T_LEAVER_ID + " TEXT,"
+                + KEY_T_EXCHANGESTATUS + " TEXT,"
+                + KEY_T_EXCHANGETIME + " TEXT"
+                + " FOREIGN KEY ("+KEY_T_PARKER_ID+") REFERENCES "+TABLE_PARKER+"("+KEY_P_ID+")"
+                + " FOREIGN KEY ("+KEY_T_LEAVER_ID+") REFERENCES "+TABLE_LEAVER+"("+KEY_L_ID+")"
+                + ")";
+        db.execSQL(CREATE_T_TABLE);
+
+        // CREATE TABLE USER
+        String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
+                + KEY_USER_ID + " INTEGER PRIMARY KEY," + KEY_USER_USERNAME + " TEXT,"
+                + KEY_USER_NAME + " TEXT,"
+                + KEY_USER_CONTACTNUM + " TEXT,"
+                + KEY_USER_EMAIL + " TEXT,"
+                + KEY_USER_ACCOUNTTYPE + " TEXT,"
+                + KEY_USER_PASSWORD + " TEXT"
+                + ")";
+        db.execSQL(CREATE_USER_TABLE);
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////

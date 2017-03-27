@@ -1,0 +1,134 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.20"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="141dp"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/sym_def_app_icon"
+                app:civ_border_color="@android:color/transparent"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/profileUserName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:textSize="30dp"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Name"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif"
+            android:hint="Contact Number"
+            android:inputType="text|number"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="normal|bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileCarMake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Car Make"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileCarModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Car Model"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileCarPlate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="sans-serif"
+            android:hint="Car Plate"
+            android:inputType="text|number"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/editProfile"
+            style="@style/Material.Drawable.Ripple.Touch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/deeporange"
+            android:elevation="2dp"
+            android:text="Edit Profile"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            app:rd_enable="true" />
+
+    </LinearLayout>
+</ScrollView>

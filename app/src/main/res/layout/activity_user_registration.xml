@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.nottspark.View.UserRegistrationActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Please fill in the following details"
+            android:textColor="@color/purple500"
+            android:textStyle="normal|bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/purple500" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_username" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/passwordReconfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_reconfirm" />
+        <Spinner
+            android:id="@+id/accTypeReg"
+            style="@style/Material.Widget.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/acc_type_array"
+            android:fontFamily="sans-serif"
+            android:spinnerMode="dropdown"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Personal Info"
+            android:textColor="@color/purple500"
+            android:textStyle="normal|bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/purple500" />
+
+        <EditText
+            android:id="@+id/accName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
+        <EditText
+            android:id="@+id/contactNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number" />
+
+        <EditText
+            android:id="@+id/regEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Car Details"
+            android:textColor="@color/purple500"
+            android:textStyle="normal|bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/purple500" />
+
+        <Spinner
+            android:id="@+id/carMakeReg"
+            style="@style/Material.Widget.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/vehicle_brand_array"
+            android:fontFamily="sans-serif"
+            android:spinnerMode="dropdown"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/carModelReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Model, example: Saga, Camry" />
+
+        <EditText
+            android:id="@+id/carPlateReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Plate" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/btnAddUser"
+            style="@style/Material.Drawable.Ripple.Touch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/deeporange"
+            android:elevation="2dp"
+            android:text="submit"
+            android:textColor="@android:color/white"
+            app:rd_enable="true" />
+    </LinearLayout>
+</ScrollView>
