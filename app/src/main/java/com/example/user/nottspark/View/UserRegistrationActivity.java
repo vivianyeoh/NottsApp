@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.Car;
 import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.PasswordValidation;
 
 import java.util.Objects;
 
@@ -61,7 +60,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 String new_car_make = mCarMake.getSelectedItem().toString();
                 String new_car_model = mCarModel.getText().toString();
                 String new_car_plate = mCarPlate.getText().toString();
-                if(PasswordValidation.ValidatePassword(new_pw)) {
+                if (PasswordValidation.ValidatePassword(new_pw)) {
                     if (Objects.equals(new_pw, new_pw_verify)) {
                         db.addUser(new User(1, new_username, new_name, new_contact, new_email, new Car(1, new_car_make, new_car_model, new_car_plate), new_accType, new_pw));
                     }

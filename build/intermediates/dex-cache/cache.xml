@@ -3,39 +3,39 @@
 
     <item
         is-multidex="true"
-        jar="/Users/aiman/.android/build-cache/0690cf23927b732b55b585108d2f9b3fe6cbd267/output/jars/classes.jar"
+        jar="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ffd1bf0933d120d5ba387814dfd30894c88467b0/classes.dex" />
+        sha1="a241f81e67fdfbc8f5e9d8fb8e7ee1416437e386">
+        <dex dex="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_7bbe3475bddfd3f1b02cf27df818cda4f44ca444\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="C:\Users\user\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="2467341421d4f685a5007edc86f9c2bbf63a34f4">
-        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3e51b829ee0ef2466eb66608d451564f989b8fb0/classes.dex" />
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\picasso-2.5.2_a69735fb31405abb6c5b972e1b2bb4f918f620e8\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/aiman/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jar="C:\Users\user\.android\build-cache\e7b54468eb1166488da18cab85722f09f979228d\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_d5066fb842df3cd22ca465270f8b3a48844f3d82/classes.dex" />
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c64f86815c021cb0824f973b0965a684ad7c0000\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a503df69379d538e0ab412b46c344c9e2ea44143/classes.dex" />
+        <dex dex="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_631d45a791cf5e40bbdc87410c4610566d3cb651\classes.dex" />
     </item>
 
 </items>

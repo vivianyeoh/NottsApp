@@ -1,6 +1,5 @@
 package com.example.user.nottspark.View;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -9,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.PasswordValidation;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import getresult.example.asus.nottspark.R;
@@ -63,7 +61,7 @@ public class EditProfileActivity extends AppCompatActivity {
         mCarModel.setText(user.getCar().getCarModel());
         mCarPlate.setText(user.getCar().getCarPlate());
 
-        if(PasswordValidation.ValidatePassword("ADD YOUR PASSWORD HERE")){
+        if (PasswordValidation.ValidatePassword("ADD YOUR PASSWORD HERE")) {
             // WHAT TO DO AFTER PASSWORD IS VALIDATED?
         }
     }

@@ -135,7 +135,7 @@ public class NottsParkDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(KEY_CAR_ID, car.getCarID()); << don't put ID, it is auto-incremented
+        values.put(KEY_CAR_ID, car.getCarID());
         values.put(KEY_CAR_MAKE, car.getCarMake());
         values.put(KEY_CAR_MODEL, car.getCarModel());
         values.put(KEY_CAR_PLATE, car.getCarPlate());
@@ -151,7 +151,7 @@ public class NottsParkDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(KEY_L_ID, leaver.getLeaverID()); << don't put ID, it is auto-incremented
+        values.put(KEY_L_ID, leaver.getLeaverID());
         values.put(KEY_L_USER_ID, leaver.getUserID().getUserID());
         values.put(KEY_L_LOCATION, leaver.getLocation());
         values.put(KEY_L_DESC, leaver.getLeaverDesc());
@@ -171,7 +171,7 @@ public class NottsParkDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(KEY_TRANSID, transaction.getTransID()); << don't put ID, it is auto-incremented
+        values.put(KEY_TRANSID, transaction.getTransID());
         values.put(KEY_PARKERID, transaction.getParkerID().getUserID());
         values.put(KEY_LEAVERID, transaction.getLeaverID().getLeaverID());
         values.put(KEY_EXCHANGESTATUS, transaction.getExchangeStatus());
@@ -188,12 +188,12 @@ public class NottsParkDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(KEY_USER_ID, user.getUserID()); << don't put ID, it is auto-incremented
+        values.put(KEY_USER_ID, user.getUserID());
         values.put(KEY_USER_USERNAME, user.getUserUsername());
         values.put(KEY_USER_NAME, user.getUserName());
         values.put(KEY_USER_CONTACTNUM, user.getUserContactNum());
         values.put(KEY_USER_EMAIL, user.getUserEmail());
-        values.put(KEY_CAR, user.getCar().getCarID());  // you might get an error here coz you can only 'values.put' a String
+        values.put(KEY_CAR, user.getCar().getCarID());
         values.put(KEY_REGISTERDATE, user.getRegisterDate());
         values.put(KEY_USER_ACCOUNTTYPE, user.getUserAccountType());
         values.put(KEY_USER_PASSWORD, user.getUserPassword());
