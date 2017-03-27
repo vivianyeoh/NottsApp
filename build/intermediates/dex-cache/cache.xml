@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/aiman/.android/build-cache/0690cf23927b732b55b585108d2f9b3fe6cbd267/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ffd1bf0933d120d5ba387814dfd30894c88467b0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2467341421d4f685a5007edc86f9c2bbf63a34f4">
+        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_3e51b829ee0ef2466eb66608d451564f989b8fb0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/aiman/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_d5066fb842df3cd22ca465270f8b3a48844f3d82/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/aiman/Android_Studio/NottsApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a503df69379d538e0ab412b46c344c9e2ea44143/classes.dex" />
+    </item>
+
+</items>
