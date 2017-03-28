@@ -17,7 +17,7 @@ import com.example.user.nottspark.View.Dialogs.LogOutDialog;
 import getresult.example.asus.nottspark.R;
 
 public class MainActivity extends AppCompatActivity {
-    public static Car car1 = new Car(6001, "Proton", "Saga", "CAD 2035");//testing please delete
+    public static Car car1 = new Car(3, "Proton", "Saga", "CAD 2035");//testing please delete
     public static User userinfo = new User(20002, "admin2012", "Admin", "0124547896", "admin@ne.com", car1, "05/01/2017 3:00pm", "Student", "root");//testing please delete
 
     public static User getUserinfo() {

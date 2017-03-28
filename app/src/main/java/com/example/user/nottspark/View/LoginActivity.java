@@ -3,11 +3,13 @@ package com.example.user.nottspark.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.example.user.nottspark.Database.DatabaseActivity;
+import com.example.user.nottspark.Controller.CarController;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import getresult.example.asus.nottspark.R;
 
@@ -42,11 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void attemptLogin() {
-        /*
+        CarController cc = new CarController(getApplicationContext());
+        Log.wtf("cc.getCount()", "cc.getCount(): " + cc.getCount());
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        */
-        Intent intent = new Intent(this, DatabaseActivity.class);
         startActivity(intent);
     }
 //

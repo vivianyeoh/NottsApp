@@ -49,7 +49,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />
         </activity>
-        <activity android:name="com.example.user.nottspark.Database.DatabaseActivity"></activity>
+        <activity android:name="com.example.user.nottspark.Database.MaintainCarDBTable"></activity>
     </application>
 
 </manifest>
