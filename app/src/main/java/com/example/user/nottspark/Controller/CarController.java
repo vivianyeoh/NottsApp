@@ -28,11 +28,11 @@ public class CarController {
     }
 
     public Car getCarByID(int id) {
-        return npd.getCarById(id);
+        return npd.getDownload1car(id);
     }
 
     public List<Car> getAllCar() {
-        return npd.getAllCar();
+        return npd.getCarList();
     }
 
     public int getCount() {
@@ -49,6 +49,7 @@ public class CarController {
     }
 
     public boolean deleteCar(int id) {
+//        Car temp=getCarByID(id);
 //        if (temp!= null) {
         npd.deleteCar(id);
         return true;
