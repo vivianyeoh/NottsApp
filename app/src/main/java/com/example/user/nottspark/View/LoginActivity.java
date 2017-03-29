@@ -3,7 +3,6 @@ package com.example.user.nottspark.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -45,10 +44,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void attemptLogin() {
         CarController cc = new CarController(getApplicationContext());
-        Log.wtf("cc.getCount()", "cc.getCount(): " + cc.getCount());
+        cc.deleteCar(1000);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-//
 }
 
