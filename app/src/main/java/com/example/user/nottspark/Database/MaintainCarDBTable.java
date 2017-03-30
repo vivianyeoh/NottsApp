@@ -14,6 +14,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.nottspark.Model.Car;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,21 +29,14 @@ public class MaintainCarDBTable {
     private static final String TAG = "MaintainCarDBTable";
     private final Context context;
     Boolean checkOtherError;
-    private List<Car> carList;
+    private ArrayList<Car> carList=new ArrayList();
     private Car download1car;
 
 
     public MaintainCarDBTable(Context context) {
         this.context = context;
-        getAllCar();
+    //    getAllCar();
         getCarById(1);
-        try {
-            Log.wtf(TAG, "getAllCar(1) is " + carList.size());
-            Log.wtf(TAG, "getAllCar(1) is " + download1car.getCarID());
-        } catch (Exception e) {
-            Log.wtf(TAG, "getAllCar(1) err " + e.getLocalizedMessage());
-
-        }
     }
 
     public void addCar(final Car car) {
@@ -101,7 +96,8 @@ public class MaintainCarDBTable {
             Boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
             if (isConnected) {
                 download1Car(id);
-            } else {
+            }
+            else {
                 checkOtherError = true;
                 Log.wtf(TAG, "Network is NOT available");
             }
@@ -132,24 +128,25 @@ public class MaintainCarDBTable {
     }
 
     public void download1Car(final int id) {
-        download1car = null;
         String url = "http://notts.esy.es/select_1_car.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            JSONArray result = jsonObject.getJSONArray("result");
-                            JSONObject courseResponse = result.getJSONObject(0);
-                            int carId = Integer.parseInt(courseResponse.getString("KEY_CAR_ID"));
-                            Log.wtf(TAG, "courseResponse.getString(\"KEY_CAR_ID\"): " + courseResponse.getString("KEY_CAR_ID"));
-                            String carMake = courseResponse.getString("KEY_CAR_MAKE");
-                            String carModel = courseResponse.getString("KEY_CAR_MODEL");
-                            String carPlate = courseResponse.getString("KEY_CAR_PLATE");
-                            download1car = new Car(carId, carMake, carModel, carPlate);
+                            Gson gson = new Gson();
+                            download1car = new Car();
                             Log.wtf(TAG, "Download completed: " + response);
-                            Log.wtf(TAG, "Download completed test: " + download1car.getCarModel());
+                            if(response.length()>0 && response!=null)
+                            {
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONArray result = jsonObject.getJSONArray("result");
+                                JSONObject courseResponse = result.getJSONObject(0);
+                                download1car = gson.fromJson(courseResponse.toString(), Car.class);
+                                Log.wtf(TAG, "Download completed test2: " + download1car.getCarModel());
+                            }
+                            else
+                            Log.wtf(TAG, "Error in download1Car Responce is Null :"+ response);
 
                         } catch (Exception e) {
                             Log.wtf(TAG, "Error in download1Car catch:" + e.getMessage() + " response: " + response);
@@ -176,10 +173,9 @@ public class MaintainCarDBTable {
                 return params;
             }
         };
-        Log.wtf(TAG, "Download completed test3: " + download1car.getCarModel());
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-        Log.wtf(TAG, "Download completed test2: " + download1car.getCarModel());
+
     }
 
     public void downloadAllCar() {
@@ -189,24 +185,27 @@ public class MaintainCarDBTable {
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
-                        try {
-                            carList.clear();
-                            for (int i = 0; i < response.length(); i++) {
-                                JSONObject courseResponse = (JSONObject) response.get(i);
-                                int carId = Integer.parseInt(courseResponse.getString("KEY_CAR_ID"));
-                                String carMake = courseResponse.getString("KEY_CAR_MAKE");
-                                String carModel = courseResponse.getString("KEY_CAR_MODEL");
-                                String carPlate = courseResponse.getString("KEY_CAR_PLATE");
-                                Car car = new Car(carId, carMake, carModel, carPlate);
-                                carList.add(car);
-                                Log.wtf(TAG, "1 Car added to carList:" + carList.get(carList.size() - 1).getCarID());
+                        Log.wtf(TAG, "Responce ==> :" + response);
+                        if(response.length()>0 && response!=null) {
+                            try {
+                                Gson gson = new Gson();
+                                carList.clear();
+                                for (int i = 0; i < response.length(); i++) {
+                                    download1car = new Car();
+                                    JSONObject courseResponse = (JSONObject) response.get(i);
+                                    download1car = gson.fromJson(courseResponse.toString(), Car.class);
+                                    carList.add(download1car);
+                                    Log.wtf(TAG, "Car Data :" + download1car.toString());
 
+                                }
+
+                            } catch (Exception e) {
+                                checkOtherError = true;
+                                Log.wtf(TAG, "Error in downloadAllCar catch:" + e.getMessage());
                             }
-
-                        } catch (Exception e) {
-                            checkOtherError = true;
-                            Log.wtf(TAG, "Error in downloadAllCar catch:" + e.getMessage());
                         }
+                        else
+                            Log.wtf(TAG, "Error in download1Car Responce is Null :"+ response);
                     }
                 },
                 new Response.ErrorListener() {

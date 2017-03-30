@@ -5,50 +5,55 @@ package com.example.user.nottspark.Model;
  */
 
 public class Car {
-    private int carID;
-    private String carMake;
-    private String carModel;
-    private String carPlate;
+    private int KEY_CAR_ID;
+    private String KEY_CAR_MAKE;
+    private String KEY_CAR_MODEL;
+    private String KEY_CAR_PLATE;
 
     public Car(int carID, String carMake, String carModel, String carPlate) {
-        this.carID = carID;
-        this.carMake = carMake;
-        this.carModel = carModel;
-        this.carPlate = carPlate;
+        this.KEY_CAR_ID = carID;
+        this.KEY_CAR_MAKE = carMake;
+        this.KEY_CAR_MODEL = carModel;
+        this.KEY_CAR_PLATE = carPlate;
     }
 
     public Car() {
     }
 
     public int getCarID() {
-        return carID;
+        return KEY_CAR_ID;
     }
 
     public void setCarID(int carID) {
-        this.carID = carID;
+        this.KEY_CAR_ID = carID;
     }
 
     public String getCarMake() {
-        return carMake;
+        return KEY_CAR_MAKE;
     }
 
     public void setCarMake(String carMake) {
-        this.carMake = carMake;
+        this.KEY_CAR_MAKE = carMake;
     }
 
     public String getCarModel() {
-        return carModel;
+        return KEY_CAR_MODEL;
     }
 
     public void setCarModel(String carModel) {
-        this.carModel = carModel;
+        this.KEY_CAR_MODEL = carModel;
     }
 
     public String getCarPlate() {
-        return carPlate;
+        return KEY_CAR_PLATE;
     }
 
     public void setCarPlate(String carPlate) {
-        this.carPlate = carPlate;
+        this.KEY_CAR_PLATE = carPlate;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassPojo [KEY_CAR_ID = " + KEY_CAR_ID + ", KEY_CAR_PLATE = " + KEY_CAR_PLATE + ", KEY_CAR_MODEL = " + KEY_CAR_MODEL + ", KEY_CAR_MAKE = " + KEY_CAR_MAKE + "]";
     }
 }
