@@ -7,119 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c511672f-572a-4922-af46-707a7d3685e5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-21-01-33-959.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-34-40-470.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-38-25-651.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-38-35-564.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-39-23-973.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-39-57-504.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-44-13-872.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-46-41-329.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-48-03-553.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-48-58-158.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-53-31-740.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-23-54-55-166.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-02-16-546.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-07-57-262.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-09-12-001.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-09-53-327.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-11-15-035.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-12-14-985.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-13-33-741.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-16-17-928.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-16-55-084.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-17-02-536.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-20-34-656.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-00-21-13-553.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-10-29-21-063.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-10-29-30-156.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-10-38-33-490.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-03-31-10-38-48-693.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/generated/mockable-android-25.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_android_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/cardview_v7_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/circleimageview_2_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/constraint_layout_1_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/constraint_layout_solver_1_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/design_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_integration_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javawriter_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javax_annotation_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jsr305_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/library_1_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/material_1_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/rules_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/runner_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_compat_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_ui_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_utils_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_fragment_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_media_compat_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/transition_25_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/volley_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainTransactionDBTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/connection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/delete_car.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/delete_leaver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/delete_transaction.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/delete_user.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/get_leaver_count.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/get_transaction_count.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/get_user_count.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/select_1_leaver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/select_1_transaction.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/select_1_user.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/update_leaver_info.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/update_transaction_info.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/update_user_info.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NottsApp-master.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2017-03-30-14-58-12-101.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/deletecar.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/CarController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/CarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/TransactionController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/TransactionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainCarDBTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainCarDBTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Car.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/get_car_count.php" afterPath="$PROJECT_DIR$/php files/get_car_count.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_car.php" afterPath="$PROJECT_DIR$/php files/insert_car.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_leaver.php" afterPath="$PROJECT_DIR$/php files/insert_leaver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_transactions.php" afterPath="$PROJECT_DIR$/php files/insert_transactions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_user.php" afterPath="$PROJECT_DIR$/php files/insert_user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_1_car.php" afterPath="$PROJECT_DIR$/php files/select_1_car.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_all_cars.php" afterPath="$PROJECT_DIR$/php files/select_all_cars.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_all_leavers.php" afterPath="$PROJECT_DIR$/php files/select_all_leavers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_all_transactions.php" afterPath="$PROJECT_DIR$/php files/select_all_transactions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_all_users.php" afterPath="$PROJECT_DIR$/php files/select_all_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/update_car_info.php" afterPath="$PROJECT_DIR$/php files/update_car_info.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -146,7 +34,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="D:\notes\Nottingham\G52GRP Software Engineering Group Project\NottsApp" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -2748,6 +2636,14 @@
       <option name="presentableId" value="Default" />
       <updated>1490858107255</updated>
     </task>
+    <task id="LOCAL-00001" summary="database done, controller done, php done">
+      <created>1490931492605</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1490931492605</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2793,6 +2689,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="database done, controller done, php done" />
+    <option name="LAST_COMMIT_MESSAGE" value="database done, controller done, php done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
