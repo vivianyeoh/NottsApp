@@ -52,4 +52,6 @@ if (isset($_POST['KEY_USER_ID']) && isset($_POST['$KEY_USER_USERNAME']) && isset
 	// echoing JSON response
 	echo json_encode($response);
 }
+
+mysqli_close($conn);
 ?>

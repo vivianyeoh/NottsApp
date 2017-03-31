@@ -36,4 +36,5 @@ if ($result = mysqli_query($conn, "SELECT * FROM TABLE_TRANSACTION")) {
     /* free result set */
     mysqli_free_result($result);
 }
+mysqli_close($conn);
 ?>

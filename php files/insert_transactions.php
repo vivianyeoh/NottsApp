@@ -48,4 +48,6 @@ if (isset($_POST['KEY_TRANSID']) && isset($_POST['KEY_PARKERID']) && isset($_POS
 	// echoing JSON response
 	echo json_encode($response);
 }
+
+mysqli_close($conn);
 ?>

@@ -1,0 +1,30 @@
+<?php
+include 'connection.php';
+
+// connecting to db
+$conn = new mysqli($hostname_localhost, $username_localhost, $password_localhost, $database_localhost);
+
+/* check connection */
+if ($conn->connect_errno) {
+	exit();
+}
+
+
+$KEY_TRANSID= $_POST['KEY_TRANSID'];
+
+// sql to delete a record
+$sql = "DELETE FROM TABLE_TRANSACTION WHERE KEY_TRANSID ='$KEY_TRANSID'";
+
+if ($conn->query($sql) === TRUE) {
+		$response["deletestatus"] = 1;
+		$response["message"] = "Transaction successfully deleted in db."; 
+		// echoing JSON response
+		echo json_encode($response); 	
+} else {
+		$response["deletestatus"] = 0;
+		$response["message"] = "Delete Transaction error in db"; 
+		// echoing JSON response
+		echo json_encode($response); 	
+}
+mysqli_close($conn);
+?>

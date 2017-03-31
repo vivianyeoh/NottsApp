@@ -50,4 +50,6 @@ if (isset($_POST['KEY_L_ID']) && isset($_POST['KEY_L_USER_ID']) && isset($_POST[
 	// echoing JSON response
 	echo json_encode($response);
 }
+
+mysqli_close($conn);
 ?>

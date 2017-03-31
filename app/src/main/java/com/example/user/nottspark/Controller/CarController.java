@@ -19,12 +19,12 @@ public class CarController {
         npd = new MaintainCarDBTable(app_context);
     }
 
-    public boolean addCar(Car car) {
-        if (getCarByID(car.getCarID()) == null) {
-            npd.addCar(car);
-            if (getCarByID(car.getCarID()) != null) return true;
-        }
-        return false;
+    public void addCar(Car car) {
+        npd.addCar(car);
+    }
+
+    public void updateCar(Car car) {
+        npd.updateCar(car);
     }
 
     public Car getCarByID(int id) {
@@ -39,21 +39,7 @@ public class CarController {
         return npd.getCount();
     }
 
-    public boolean updateCar(Car car) {
-        if (car != null) {
-            npd.updateCar(car);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean deleteCar(int id) {
-//        Car temp=getCarByID(id);
-//        if (temp!= null) {
+    public void deleteCar(int id) {
         npd.deleteCar(id);
-        return true;
-//        } else
-//            return false;
     }
 }

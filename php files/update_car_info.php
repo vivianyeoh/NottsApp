@@ -43,4 +43,6 @@ if (isset($_POST['KEY_CAR_ID']) && isset($_POST['KEY_CAR_MAKE']) && isset($_POST
 	// echoing JSON response
 	echo json_encode($response);
 }
+
+mysqli_close($conn);
 ?>
