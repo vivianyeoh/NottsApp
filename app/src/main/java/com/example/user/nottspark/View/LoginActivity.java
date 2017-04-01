@@ -8,7 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.user.nottspark.Controller.CarController;
-import com.example.user.nottspark.Model.Car;
+import com.example.user.nottspark.Controller.LeaverController;
+import com.example.user.nottspark.Controller.TransactionController;
+import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import getresult.example.asus.nottspark.R;
@@ -45,9 +47,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void attemptLogin() {
         CarController cc = new CarController(getApplicationContext());
-        cc.getAllCar();
-        System.out.println("MaintainCarDBTable "+cc.deleteCar(1));
-
+        cc.getCarByID(2);
+        LeaverController lc = new LeaverController(getApplicationContext());
+        lc.getLeaverByID(1);
+        TransactionController tc = new TransactionController(getApplicationContext());
+        tc.getTransactionByID(1);
+        UserController uc = new UserController(getApplicationContext());
+        uc.getUserByID(1);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

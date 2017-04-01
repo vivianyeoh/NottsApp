@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.user.nottspark.Model.Car;
 import com.example.user.nottspark.Model.User;
 import com.google.gson.Gson;
 
@@ -25,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MaintainUserDBTable {
-    private static final String TAG = "MaintainLeaverDBTable";
+    private static final String TAG = "MaintainUserDBTable";
     private final Context context;
     private ArrayList<User> userList = new ArrayList();
     private User download1user;
@@ -59,7 +60,7 @@ public class MaintainUserDBTable {
                     params.put("KEY_USER_NAME", user.getUserName());
                     params.put("KEY_USER_CONTACTNUM", user.getUserContactNum());
                     params.put("KEY_USER_EMAIL", user.getUserEmail());
-                    params.put("KEY_CAR", user.getCar().getCarID()+"");
+                    params.put("KEY_CAR", user.getCar().getCarID() + "");
                     params.put("KEY_REGISTERDATE", user.getRegisterDate());
                     params.put("KEY_USER_ACCOUNTTYPE", user.getUserAccountType());
                     params.put("KEY_USER_PASSWORD", user.getUserPassword());
@@ -124,6 +125,7 @@ public class MaintainUserDBTable {
     }
 
     public void download1User(final int id) {
+        download1user = new User();
         String url = "http://notts.esy.es/select_1_user.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -131,13 +133,25 @@ public class MaintainUserDBTable {
                     public void onResponse(String response) {
                         try {
                             Gson gson = new Gson();
-                            download1user = new User();
                             if (response.length() > 0 && response != null) {
                                 JSONObject jsonObject = new JSONObject(response);
+
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
-                                download1user = gson.fromJson(courseResponse.toString(), User.class);
-                                Log.wtf(TAG, "download1User completed");
+                                MaintainCarDBTable mc = new MaintainCarDBTable(context);
+                                Car car = new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR")));
+                                download1user = new User(
+                                        Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
+                                        courseResponse.getString("KEY_USER_USERNAME"),
+                                        courseResponse.getString("KEY_USER_NAME"),
+                                        courseResponse.getString("KEY_USER_CONTACTNUM"),
+                                        courseResponse.getString("KEY_USER_EMAIL"),
+                                        car,
+                                        courseResponse.getString("KEY_REGISTERDATE"),
+                                        courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
+                                        courseResponse.getString("KEY_USER_PASSWORD")
+                                );
+                                Log.wtf(TAG, "download1User completed" + download1user.toString());
                             } else
                                 Log.wtf(TAG, "Error in download1User:" + response);
 
@@ -173,6 +187,7 @@ public class MaintainUserDBTable {
 
     public void downloadAllUser() {
         userList = new ArrayList<>();
+        userList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://notts.esy.es/select_all_users.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
@@ -181,20 +196,29 @@ public class MaintainUserDBTable {
                         if (response.length() > 0 && response != null) {
                             try {
                                 Gson gson = new Gson();
-                                userList.clear();
                                 for (int i = 0; i < response.length(); i++) {
-                                    User user;
                                     JSONObject courseResponse = (JSONObject) response.get(i);
-                                    user = gson.fromJson(courseResponse.toString(), User.class);
+                                    MaintainCarDBTable mc = new MaintainCarDBTable(context);
+                                    User user = new User(
+                                            Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
+                                            courseResponse.getString("KEY_USER_USERNAME"),
+                                            courseResponse.getString("KEY_USER_NAME"),
+                                            courseResponse.getString("KEY_USER_CONTACTNUM"),
+                                            courseResponse.getString("KEY_USER_EMAIL"),
+                                            new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR"))),
+                                            courseResponse.getString("KEY_REGISTERDATE"),
+                                            courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
+                                            courseResponse.getString("KEY_USER_PASSWORD")
+                                    );
                                     userList.add(user);
                                     Log.wtf(TAG, "User Data :" + user.toString());
+                                    break;
                                 }
-
                             } catch (Exception e) {
                                 Log.wtf(TAG, "Error in downloadAllUser catch:" + e.getMessage());
                             }
                         } else
-                            Log.wtf(TAG, "Error in download1User Responce is Null :" + response);
+                            Log.wtf(TAG, "Error in download1User Response is Null :" + response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -231,7 +255,7 @@ public class MaintainUserDBTable {
                     params.put("KEY_USER_NAME", user.getUserName());
                     params.put("KEY_USER_CONTACTNUM", user.getUserContactNum());
                     params.put("KEY_USER_EMAIL", user.getUserEmail());
-                    params.put("KEY_CAR", user.getCar().getCarID()+"");
+                    params.put("KEY_CAR", user.getCar().getCarID() + "");
                     params.put("KEY_REGISTERDATE", user.getRegisterDate());
                     params.put("KEY_USER_ACCOUNTTYPE", user.getUserAccountType());
                     params.put("KEY_USER_PASSWORD", user.getUserPassword());

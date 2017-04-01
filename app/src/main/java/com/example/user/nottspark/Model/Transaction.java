@@ -73,4 +73,15 @@ public class Transaction {
     public void setExchangeTime(String exchangeTime) {
         this.exchangeTime = exchangeTime;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transID=" + transID +
+                ", parkerID=" + parkerID +
+                ", leaverID=" + leaverID +
+                ", exchangeStatus='" + exchangeStatus + '\'' +
+                ", exchangeTime='" + exchangeTime + '\'' +
+                '}';
+    }
 }

@@ -121,19 +121,27 @@ public class MaintainTransactionDBTable {
 
     public void download1Transaction(final int id) {
         String url = "http://notts.esy.es/select_1_transaction.php";
+        download1transaction = new Transaction();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             Gson gson = new Gson();
-                            download1transaction = new Transaction();
+                            MaintainUserDBTable mu = new MaintainUserDBTable(context);
+                            MaintainLeaverDBTable ml = new MaintainLeaverDBTable(context);
                             if (response.length() > 0 && response != null) {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
-                                download1transaction = gson.fromJson(courseResponse.toString(), Transaction.class);
-                                Log.wtf(TAG, "download1Transaction completed");
+                                download1transaction = new Transaction(
+                                        Integer.parseInt(courseResponse.getString("KEY_TRANSID")),
+                                        mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_PARKERID"))),
+                                        ml.getDownload1leaver(Integer.parseInt(courseResponse.getString("KEY_LEAVERID"))),
+                                        courseResponse.getString("KEY_EXCHANGESTATUS"),
+                                        courseResponse.getString("KEY_EXCHANGETIME")
+                                );
+                                Log.wtf(TAG, "download1Transaction completed:" + download1transaction.toString());
                             } else
                                 Log.wtf(TAG, "Error in download1Transaction:" + response);
 
@@ -169,6 +177,7 @@ public class MaintainTransactionDBTable {
 
     public void downloadAllTransaction() {
         transactionList = new ArrayList<>();
+        transactionList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://notts.esy.es/select_all_transactions.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
@@ -177,11 +186,17 @@ public class MaintainTransactionDBTable {
                         if (response.length() > 0 && response != null) {
                             try {
                                 Gson gson = new Gson();
-                                transactionList.clear();
+                                MaintainUserDBTable mu = new MaintainUserDBTable(context);
+                                MaintainLeaverDBTable ml = new MaintainLeaverDBTable(context);
                                 for (int i = 0; i < response.length(); i++) {
-                                    Transaction transaction;
                                     JSONObject courseResponse = (JSONObject) response.get(i);
-                                    transaction = gson.fromJson(courseResponse.toString(), Transaction.class);
+                                    Transaction transaction = new Transaction(
+                                            Integer.parseInt(courseResponse.getString("KEY_TRANSID")),
+                                            mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_PARKERID"))),
+                                            ml.getDownload1leaver(Integer.parseInt(courseResponse.getString("KEY_LEAVERID"))),
+                                            courseResponse.getString("KEY_EXCHANGESTATUS"),
+                                            courseResponse.getString("KEY_EXCHANGETIME")
+                                    );
                                     transactionList.add(transaction);
                                     Log.wtf(TAG, "Transaction Data :" + transaction.toString());
                                 }
@@ -190,7 +205,7 @@ public class MaintainTransactionDBTable {
                                 Log.wtf(TAG, "Error in downloadAllTransaction catch:" + e.getMessage());
                             }
                         } else
-                            Log.wtf(TAG, "Error in download1Transaction Responce is Null :" + response);
+                            Log.wtf(TAG, "Error in download1Transaction Response is Null :" + response);
                     }
                 },
                 new Response.ErrorListener() {

@@ -120,19 +120,19 @@ public class MaintainCarDBTable {
 
     public void download1Car(final int id) {
         String url = "http://notts.esy.es/select_1_car.php";
+        download1car = new Car();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             Gson gson = new Gson();
-                            download1car = new Car();
                             if (response.length() > 0 && response != null) {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
                                 download1car = gson.fromJson(courseResponse.toString(), Car.class);
-                                Log.wtf(TAG, "download1Car completed");
+                                Log.wtf(TAG, "download1Car completed" + download1car.toString());
                             } else
                                 Log.wtf(TAG, "Error in download1Car:" + response);
 
@@ -168,6 +168,7 @@ public class MaintainCarDBTable {
 
     public void downloadAllCar() {
         carList = new ArrayList<>();
+        carList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://notts.esy.es/select_all_cars.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
@@ -176,7 +177,6 @@ public class MaintainCarDBTable {
                         if (response.length() > 0 && response != null) {
                             try {
                                 Gson gson = new Gson();
-                                carList.clear();
                                 for (int i = 0; i < response.length(); i++) {
                                     Car car;
                                     JSONObject courseResponse = (JSONObject) response.get(i);

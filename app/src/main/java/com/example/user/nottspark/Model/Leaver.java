@@ -12,7 +12,7 @@ public class Leaver {
     private User userID;
     private String location;
     private String leaverDesc;
-    private boolean nowOrAfter10Min,pairingStatus;//1 for yes
+    private boolean nowOrAfter10Min, pairingStatus;//1 for yes
     private String leavingDate;
     private String leavingTime;
 
@@ -20,8 +20,7 @@ public class Leaver {
     }
 
 
-    public Leaver(int leaverID, User userID, String location, String leaverDesc,
-                  boolean pairingStatus, boolean nowOrAfter10Min) {
+    public Leaver(int leaverID, User userID, String location, String leaverDesc, boolean pairingStatus, boolean nowOrAfter10Min) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
@@ -105,5 +104,19 @@ public class Leaver {
 
     public void setLeavingTime(String leavingTime) {
         this.leavingTime = leavingTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Leaver{" +
+                "leaverID=" + leaverID +
+                ", userID=" + userID +
+                ", location='" + location + '\'' +
+                ", leaverDesc='" + leaverDesc + '\'' +
+                ", nowOrAfter10Min=" + nowOrAfter10Min +
+                ", pairingStatus=" + pairingStatus +
+                ", leavingDate='" + leavingDate + '\'' +
+                ", leavingTime='" + leavingTime + '\'' +
+                '}';
     }
 }

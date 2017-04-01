@@ -112,4 +112,19 @@ public class User{
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", userUsername='" + userUsername + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userContactNum='" + userContactNum + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", car=" + car +
+                ", registerDate='" + registerDate + '\'' +
+                ", userAccountType='" + userAccountType + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                '}';
+    }
 }

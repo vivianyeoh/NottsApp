@@ -54,6 +54,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car [KEY_CAR_ID = " + KEY_CAR_ID + ", KEY_CAR_PLATE = " + KEY_CAR_PLATE + ", KEY_CAR_MODEL = " + KEY_CAR_MODEL + ", KEY_CAR_MAKE = " + KEY_CAR_MAKE + "]";
+        return "Car{" +
+                "KEY_CAR_ID=" + KEY_CAR_ID +
+                ", KEY_CAR_MAKE='" + KEY_CAR_MAKE + '\'' +
+                ", KEY_CAR_MODEL='" + KEY_CAR_MODEL + '\'' +
+                ", KEY_CAR_PLATE='" + KEY_CAR_PLATE + '\'' +
+                '}';
     }
 }

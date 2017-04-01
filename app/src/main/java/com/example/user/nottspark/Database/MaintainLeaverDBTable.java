@@ -14,6 +14,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.nottspark.Model.Leaver;
+import com.example.user.nottspark.Model.User;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -55,11 +56,11 @@ public class MaintainLeaverDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_L_ID", leaver.getLeaverID() + "");
-                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID()+"");
+                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
-                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus()? 1 : 0)+"");
-                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0)+"");
+                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
+                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0) + "");
                     params.put("KEY_L_DATE", leaver.getLeavingTime());
                     params.put("KEY_L_TIME", leaver.getLeavingTime());
                     return params;
@@ -124,19 +125,41 @@ public class MaintainLeaverDBTable {
 
     public void download1Leaver(final int id) {
         String url = "http://notts.esy.es/select_1_leaver.php";
+        download1leaver = new Leaver();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             Gson gson = new Gson();
-                            download1leaver = new Leaver();
+                            MaintainUserDBTable mu = new MaintainUserDBTable(context);
                             if (response.length() > 0 && response != null) {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
-                                download1leaver = gson.fromJson(courseResponse.toString(), Leaver.class);
-                                Log.wtf(TAG, "download1Leaver completed");
+                                User user = mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")));
+                                download1leaver = new Leaver(
+                                        Integer.parseInt(courseResponse.getString("KEY_L_ID")),
+                                        new User(
+                                                Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
+                                                courseResponse.getString("KEY_USER_USERNAME"),
+                                                courseResponse.getString("KEY_USER_NAME"),
+                                                courseResponse.getString("KEY_USER_CONTACTNUM"),
+                                                courseResponse.getString("KEY_USER_EMAIL"),
+                                                new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR"))),
+                                                courseResponse.getString("KEY_REGISTERDATE"),
+                                                courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
+                                                courseResponse.getString("KEY_USER_PASSWORD")
+
+                                        ),
+                                        courseResponse.getString("KEY_L_LOCATION"),
+                                        courseResponse.getString("KEY_L_DESC"),
+                                        !courseResponse.getString("KEY_L_PARINGSTATUS").equals("0"),
+                                        !courseResponse.getString("KEY_L_NOWOFAFTER10").equals("0"),
+                                        courseResponse.getString("KEY_L_DATE"),
+                                        courseResponse.getString("KEY_L_TIME")
+                                );
+                                Log.wtf(TAG, "download1Leaver completed: " + download1leaver.toString());
                             } else
                                 Log.wtf(TAG, "Error in download1Leaver:" + response);
 
@@ -172,6 +195,7 @@ public class MaintainLeaverDBTable {
 
     public void downloadAllLeaver() {
         leaverList = new ArrayList<>();
+        leaverList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://notts.esy.es/select_all_leavers.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
@@ -179,12 +203,19 @@ public class MaintainLeaverDBTable {
                     public void onResponse(JSONArray response) {
                         if (response.length() > 0 && response != null) {
                             try {
-                                Gson gson = new Gson();
-                                leaverList.clear();
+                                MaintainUserDBTable mu = new MaintainUserDBTable(context);
                                 for (int i = 0; i < response.length(); i++) {
-                                    Leaver leaver;
                                     JSONObject courseResponse = (JSONObject) response.get(i);
-                                    leaver = gson.fromJson(courseResponse.toString(), Leaver.class);
+                                    Leaver leaver = new Leaver(
+                                            Integer.parseInt(courseResponse.getString("KEY_L_ID")),
+                                            mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_L_USER_ID"))),
+                                            courseResponse.getString("KEY_L_LOCATION"),
+                                            courseResponse.getString("KEY_L_DESC"),
+                                            !courseResponse.getString("KEY_L_PARINGSTATUS").equals("0"),
+                                            !courseResponse.getString("KEY_L_NOWOFAFTER10").equals("0"),
+                                            courseResponse.getString("KEY_L_DATE"),
+                                            courseResponse.getString("KEY_L_TIME")
+                                    );
                                     leaverList.add(leaver);
                                     Log.wtf(TAG, "Leaver Data :" + leaver.toString());
                                 }
@@ -193,7 +224,7 @@ public class MaintainLeaverDBTable {
                                 Log.wtf(TAG, "Error in downloadAllLeaver catch:" + e.getMessage());
                             }
                         } else
-                            Log.wtf(TAG, "Error in download1Leaver Responce is Null :" + response);
+                            Log.wtf(TAG, "Error in download1Leaver Response is Null :" + response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -226,11 +257,11 @@ public class MaintainLeaverDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_L_ID", leaver.getLeaverID() + "");
-                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID()+"");
+                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
-                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus()? 1 : 0)+"");
-                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0)+"");
+                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
+                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0) + "");
                     params.put("KEY_L_DATE", leaver.getLeavingTime());
                     params.put("KEY_L_TIME", leaver.getLeavingTime());
                     return params;

@@ -37,11 +37,11 @@ public class LeaverListActivity extends AppCompatActivity {
 
     private void initDataset() {
         mDataset = new Leaver[DATASET_COUNT];
-        mDataset[0] = new Leaver(10001, user, "sl", "coming", true, true);
-        mDataset[1] = new Leaver(10001, user, "", "coming", true, true);
-        mDataset[2] = new Leaver(10001, user, "", "coming", true, true);
-        mDataset[3] = new Leaver(10001, user, "", "coming", true, true);
-        mDataset[4] = new Leaver(10001, user, "", "coming", true, true);
-        mDataset[5] = new Leaver(10001, user, "", "coming", true, true);
+//        mDataset[0] = new Leaver(10001, user, "sl", "coming", true, true);
+//        mDataset[1] = new Leaver(10001, user, "", "coming", true, true);
+//        mDataset[2] = new Leaver(10001, user, "", "coming", true, true);
+//        mDataset[3] = new Leaver(10001, user, "", "coming", true, true);
+//        mDataset[4] = new Leaver(10001, user, "", "coming", true, true);
+//        mDataset[5] = new Leaver(10001, user, "", "coming", true, true);
     }
 }
