@@ -38,7 +38,7 @@ public class LeaverListAdapter extends RecyclerView.Adapter<LeaverListAdapter.Vi
         Log.d(TAG, "Element " + position + " set.");
 
         viewHolder.gettvPlaceName().setText("Leaver: " + mDataSet[position].getLocation());
-        viewHolder.gettvLeaverName().setText("Location: "+mDataSet[position].getUserID().getUserName());
+        viewHolder.gettvLeaverName().setText("Location: " + mDataSet[position].getUserID());
     }
 
     @Override

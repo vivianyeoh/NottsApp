@@ -37,7 +37,7 @@ public class MaintainTransactionDBTable {
 
     public void addTransaction(final Transaction transaction) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/insert_transaction.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/insert_transaction.php";
         //Send data
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -55,8 +55,8 @@ public class MaintainTransactionDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_TRANSID", transaction.getTransID() + "");
-                    params.put("KEY_PARKERID", transaction.getParkerID().getUserID()+"");
-                    params.put("KEY_LEAVERID", transaction.getLeaverID().getLeaverID()+"");
+                    params.put("KEY_PARKERID", transaction.getParkerID() + "");
+                    params.put("KEY_LEAVERID", transaction.getLeaverID() + "");
                     params.put("KEY_EXCHANGESTATUS", transaction.getExchangeStatus());
                     params.put("KEY_EXCHANGETIME", transaction.getExchangeTime());
                     return params;
@@ -120,7 +120,7 @@ public class MaintainTransactionDBTable {
     }
 
     public void download1Transaction(final int id) {
-        String url = "http://notts.esy.es/select_1_transaction.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_1_transaction.php";
         download1transaction = new Transaction();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -136,8 +136,8 @@ public class MaintainTransactionDBTable {
                                 JSONObject courseResponse = result.getJSONObject(0);
                                 download1transaction = new Transaction(
                                         Integer.parseInt(courseResponse.getString("KEY_TRANSID")),
-                                        mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_PARKERID"))),
-                                        ml.getDownload1leaver(Integer.parseInt(courseResponse.getString("KEY_LEAVERID"))),
+                                        Integer.parseInt(courseResponse.getString("KEY_PARKERID")),
+                                        Integer.parseInt(courseResponse.getString("KEY_LEAVERID")),
                                         courseResponse.getString("KEY_EXCHANGESTATUS"),
                                         courseResponse.getString("KEY_EXCHANGETIME")
                                 );
@@ -179,7 +179,7 @@ public class MaintainTransactionDBTable {
         transactionList = new ArrayList<>();
         transactionList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/select_all_transactions.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_all_transactions.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
@@ -192,8 +192,8 @@ public class MaintainTransactionDBTable {
                                     JSONObject courseResponse = (JSONObject) response.get(i);
                                     Transaction transaction = new Transaction(
                                             Integer.parseInt(courseResponse.getString("KEY_TRANSID")),
-                                            mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_PARKERID"))),
-                                            ml.getDownload1leaver(Integer.parseInt(courseResponse.getString("KEY_LEAVERID"))),
+                                            Integer.parseInt(courseResponse.getString("KEY_PARKERID")),
+                                            Integer.parseInt(courseResponse.getString("KEY_LEAVERID")),
                                             courseResponse.getString("KEY_EXCHANGESTATUS"),
                                             courseResponse.getString("KEY_EXCHANGETIME")
                                     );
@@ -220,7 +220,7 @@ public class MaintainTransactionDBTable {
 
     public void updateTransaction(final Transaction transaction) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/update_transaction_info.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/update_transaction_info.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -238,8 +238,8 @@ public class MaintainTransactionDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_TRANSID", transaction.getTransID() + "");
-                    params.put("KEY_PARKERID", transaction.getParkerID().getUserID()+"");
-                    params.put("KEY_LEAVERID", transaction.getLeaverID().getLeaverID()+"");
+                    params.put("KEY_PARKERID", transaction.getParkerID() + "");
+                    params.put("KEY_LEAVERID", transaction.getLeaverID() + "");
                     params.put("KEY_EXCHANGESTATUS", transaction.getExchangeStatus());
                     params.put("KEY_EXCHANGETIME", transaction.getExchangeTime());
                     return params;
@@ -261,7 +261,7 @@ public class MaintainTransactionDBTable {
 
     public void deleteTransaction(final int id) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/delete_transaction.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/delete_transaction.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -298,7 +298,7 @@ public class MaintainTransactionDBTable {
 
     public int getCount() {
         final int[] totalTransaction = new int[1];
-        String url = "http://notts.esy.es/get_transaction_count.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/get_transaction_count.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override

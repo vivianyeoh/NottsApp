@@ -10,15 +10,15 @@ import java.util.Date;
 
 public class Transaction {
     private int transID;
-    private User parkerID;
-    private Leaver leaverID;
+    private int parkerID;
+    private int leaverID;
     private String exchangeStatus;
     private String exchangeTime;
 
     public Transaction() {
     }
 
-    public Transaction(int transID, User parkerID, Leaver leaverID, String exchangeStatus) {
+    public Transaction(int transID, int parkerID, int leaverID, String exchangeStatus) {
         this.transID = transID;
         this.parkerID = parkerID;
         this.leaverID = leaverID;
@@ -26,7 +26,7 @@ public class Transaction {
         this.exchangeTime = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
     }
 
-    public Transaction(int transID, User parkerID, Leaver leaverID, String exchangeStatus, String exchangeTime) {
+    public Transaction(int transID, int parkerID, int leaverID, String exchangeStatus, String exchangeTime) {
         this.transID = transID;
         this.parkerID = parkerID;
         this.leaverID = leaverID;
@@ -42,19 +42,19 @@ public class Transaction {
         this.transID = transID;
     }
 
-    public User getParkerID() {
+    public int getParkerID() {
         return parkerID;
     }
 
-    public void setParkerID(User parkerID) {
+    public void setParkerID(int parkerID) {
         this.parkerID = parkerID;
     }
 
-    public Leaver getLeaverID() {
+    public int getLeaverID() {
         return leaverID;
     }
 
-    public void setLeaverID(Leaver leaverID) {
+    public void setLeaverID(int leaverID) {
         this.leaverID = leaverID;
     }
 

@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class Leaver {
     private int leaverID;
-    private User userID;
+    private int userID;
     private String location;
     private String leaverDesc;
     private boolean nowOrAfter10Min, pairingStatus;//1 for yes
@@ -20,7 +20,7 @@ public class Leaver {
     }
 
 
-    public Leaver(int leaverID, User userID, String location, String leaverDesc, boolean pairingStatus, boolean nowOrAfter10Min) {
+    public Leaver(int leaverID, int userID, String location, String leaverDesc, boolean pairingStatus, boolean nowOrAfter10Min) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
@@ -31,7 +31,7 @@ public class Leaver {
         this.leavingTime = new SimpleDateFormat("h:mm:ss a").format(new Date());
     }
 
-    public Leaver(int leaverID, User userID, String location, String leaverDesc, boolean nowOrAfter10Min, boolean pairingStatus, String leavingDate, String leavingTime) {
+    public Leaver(int leaverID, int userID, String location, String leaverDesc, boolean nowOrAfter10Min, boolean pairingStatus, String leavingDate, String leavingTime) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
@@ -50,11 +50,11 @@ public class Leaver {
         this.leaverID = leaverID;
     }
 
-    public User getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(User userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

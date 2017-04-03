@@ -13,7 +13,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.user.nottspark.Model.Car;
 import com.example.user.nottspark.Model.User;
 import com.google.gson.Gson;
 
@@ -38,7 +37,7 @@ public class MaintainUserDBTable {
 
     public void addUser(final User user) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/insert_user.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/insert_user.php";
         //Send data
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -60,7 +59,9 @@ public class MaintainUserDBTable {
                     params.put("KEY_USER_NAME", user.getUserName());
                     params.put("KEY_USER_CONTACTNUM", user.getUserContactNum());
                     params.put("KEY_USER_EMAIL", user.getUserEmail());
-                    params.put("KEY_CAR", user.getCar().getCarID() + "");
+                    params.put("KEY_CAR_MAKE", user.getCarMake());
+                    params.put("KEY_CAR_MODEL", user.getCarModel());
+                    params.put("KEY_CAR_PLATE", user.getCarPlate());
                     params.put("KEY_REGISTERDATE", user.getRegisterDate());
                     params.put("KEY_USER_ACCOUNTTYPE", user.getUserAccountType());
                     params.put("KEY_USER_PASSWORD", user.getUserPassword());
@@ -126,7 +127,7 @@ public class MaintainUserDBTable {
 
     public void download1User(final int id) {
         download1user = new User();
-        String url = "http://notts.esy.es/select_1_user.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_1_user.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -138,15 +139,15 @@ public class MaintainUserDBTable {
 
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
-                                MaintainCarDBTable mc = new MaintainCarDBTable(context);
-                                Car car = new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR")));
                                 download1user = new User(
                                         Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
                                         courseResponse.getString("KEY_USER_USERNAME"),
                                         courseResponse.getString("KEY_USER_NAME"),
                                         courseResponse.getString("KEY_USER_CONTACTNUM"),
                                         courseResponse.getString("KEY_USER_EMAIL"),
-                                        car,
+                                        courseResponse.getString("KEY_CAR_MAKE"),
+                                        courseResponse.getString("KEY_CAR_MODEL"),
+                                        courseResponse.getString("KEY_CAR_PLATE"),
                                         courseResponse.getString("KEY_REGISTERDATE"),
                                         courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
                                         courseResponse.getString("KEY_USER_PASSWORD")
@@ -189,7 +190,7 @@ public class MaintainUserDBTable {
         userList = new ArrayList<>();
         userList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/select_all_users.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_all_users.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
@@ -198,14 +199,15 @@ public class MaintainUserDBTable {
                                 Gson gson = new Gson();
                                 for (int i = 0; i < response.length(); i++) {
                                     JSONObject courseResponse = (JSONObject) response.get(i);
-                                    MaintainCarDBTable mc = new MaintainCarDBTable(context);
                                     User user = new User(
                                             Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
                                             courseResponse.getString("KEY_USER_USERNAME"),
                                             courseResponse.getString("KEY_USER_NAME"),
                                             courseResponse.getString("KEY_USER_CONTACTNUM"),
                                             courseResponse.getString("KEY_USER_EMAIL"),
-                                            new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR"))),
+                                            courseResponse.getString("KEY_CAR_MAKE"),
+                                            courseResponse.getString("KEY_CAR_MODEL"),
+                                            courseResponse.getString("KEY_CAR_PLATE"),
                                             courseResponse.getString("KEY_REGISTERDATE"),
                                             courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
                                             courseResponse.getString("KEY_USER_PASSWORD")
@@ -233,7 +235,7 @@ public class MaintainUserDBTable {
 
     public void updateUser(final User user) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/update_user_info.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/update_user_info.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -255,7 +257,9 @@ public class MaintainUserDBTable {
                     params.put("KEY_USER_NAME", user.getUserName());
                     params.put("KEY_USER_CONTACTNUM", user.getUserContactNum());
                     params.put("KEY_USER_EMAIL", user.getUserEmail());
-                    params.put("KEY_CAR", user.getCar().getCarID() + "");
+                    params.put("KEY_CAR_MAKE", user.getCarMake());
+                    params.put("KEY_CAR_MODEL", user.getCarModel());
+                    params.put("KEY_CAR_PLATE", user.getCarPlate());
                     params.put("KEY_REGISTERDATE", user.getRegisterDate());
                     params.put("KEY_USER_ACCOUNTTYPE", user.getUserAccountType());
                     params.put("KEY_USER_PASSWORD", user.getUserPassword());
@@ -278,7 +282,7 @@ public class MaintainUserDBTable {
 
     public void deleteUser(final int id) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/delete_user.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/delete_user.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -315,7 +319,7 @@ public class MaintainUserDBTable {
 
     public int getCount() {
         final int[] totalUser = new int[1];
-        String url = "http://notts.esy.es/get_user_count.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/get_user_count.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override

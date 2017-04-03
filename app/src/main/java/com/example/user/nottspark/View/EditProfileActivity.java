@@ -57,9 +57,9 @@ public class EditProfileActivity extends AppCompatActivity {
         mName.setText(user.getUserName());
         mContact.setText(user.getUserContactNum());
         mEmail.setText(user.getUserEmail());
-        selectSpinnerItemByValue(mCarMake, user.getCar().getCarMake());
-        mCarModel.setText(user.getCar().getCarModel());
-        mCarPlate.setText(user.getCar().getCarPlate());
+        selectSpinnerItemByValue(mCarMake, user.getCarMake());
+        mCarModel.setText(user.getCarModel());
+        mCarPlate.setText(user.getCarPlate());
 
         if (PasswordValidation.ValidatePassword("ADD YOUR PASSWORD HERE")) {
             // WHAT TO DO AFTER PASSWORD IS VALIDATED?

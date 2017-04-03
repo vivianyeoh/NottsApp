@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.example.user.nottspark.Controller.CarController;
 import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Controller.TransactionController;
 import com.example.user.nottspark.Controller.UserController;
+import com.example.user.nottspark.Model.Transaction;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
+
+import java.util.List;
 
 import getresult.example.asus.nottspark.R;
 
@@ -46,14 +48,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void attemptLogin() {
-        CarController cc = new CarController(getApplicationContext());
-        cc.getCarByID(2);
         LeaverController lc = new LeaverController(getApplicationContext());
-        lc.getLeaverByID(1);
+        lc.getAllLeaver();
         TransactionController tc = new TransactionController(getApplicationContext());
-        tc.getTransactionByID(1);
+        List<Transaction> t = tc.getAllTransaction();
         UserController uc = new UserController(getApplicationContext());
-        uc.getUserByID(1);
+        uc.getAllUser();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

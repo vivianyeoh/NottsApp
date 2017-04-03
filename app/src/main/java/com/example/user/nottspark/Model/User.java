@@ -9,7 +9,9 @@ public class User{
     private String userName;
     private String userContactNum;
     private String userEmail;
-    private Car car;
+    private String carMake;
+    private String carModel;
+    private String carPlate;
     private String registerDate;
     private String userAccountType;
     private String userPassword;
@@ -18,24 +20,29 @@ public class User{
 
     }
 
-    public User(int userID, String userUsername, String userName, String userContactNum, String userEmail, Car car, String userAccountType, String userPassword) {
+    public User(int userID, String userUsername, String userName, String userContactNum, String userEmail, String carMake, String carModel, String carPlate, String userAccountType, String userPassword) {
         this.userID = userID;
         this.userUsername = userUsername;
         this.userName = userName;
         this.userContactNum = userContactNum;
         this.userEmail = userEmail;
-        this.car = car;
+        this.carMake = carMake;
+        this.carModel = carModel;
+        this.carPlate = carPlate;
         this.registerDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
         this.userAccountType = userAccountType;
         this.userPassword = userPassword;
     }
-    public User(int userID, String userUsername, String userName, String userContactNum, String userEmail, Car car, String registerDate, String userAccountType, String userPassword) {
+
+    public User(int userID, String userUsername, String userName, String userContactNum, String userEmail, String carMake, String carModel, String carPlate, String registerDate, String userAccountType, String userPassword) {
         this.userID = userID;
         this.userUsername = userUsername;
         this.userName = userName;
         this.userContactNum = userContactNum;
         this.userEmail = userEmail;
-        this.car = car;
+        this.carMake = carMake;
+        this.carModel = carModel;
+        this.carPlate = carPlate;
         this.registerDate = registerDate;
         this.userAccountType = userAccountType;
         this.userPassword = userPassword;
@@ -81,12 +88,28 @@ public class User{
         this.userEmail = userEmail;
     }
 
-    public Car getCar() {
-        return car;
+    public String getCarMake() {
+        return carMake;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarMake(String carMake) {
+        this.carMake = carMake;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getCarPlate() {
+        return carPlate;
+    }
+
+    public void setCarPlate(String carPlate) {
+        this.carPlate = carPlate;
     }
 
     public String getRegisterDate() {
@@ -121,7 +144,9 @@ public class User{
                 ", userName='" + userName + '\'' +
                 ", userContactNum='" + userContactNum + '\'' +
                 ", userEmail='" + userEmail + '\'' +
-                ", car=" + car +
+                ", carMake='" + carMake + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", carPlate='" + carPlate + '\'' +
                 ", registerDate='" + registerDate + '\'' +
                 ", userAccountType='" + userAccountType + '\'' +
                 ", userPassword='" + userPassword + '\'' +

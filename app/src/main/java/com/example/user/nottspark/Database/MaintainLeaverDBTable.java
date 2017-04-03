@@ -38,7 +38,7 @@ public class MaintainLeaverDBTable {
 
     public void addLeaver(final Leaver leaver) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/insert_leaver.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/insert_leaver.php";
         //Send data
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -56,7 +56,7 @@ public class MaintainLeaverDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_L_ID", leaver.getLeaverID() + "");
-                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID() + "");
+                    params.put("KEY_L_USER_ID", leaver.getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
@@ -124,7 +124,7 @@ public class MaintainLeaverDBTable {
     }
 
     public void download1Leaver(final int id) {
-        String url = "http://notts.esy.es/select_1_leaver.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_1_leaver.php";
         download1leaver = new Leaver();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -140,22 +140,11 @@ public class MaintainLeaverDBTable {
                                 User user = mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")));
                                 download1leaver = new Leaver(
                                         Integer.parseInt(courseResponse.getString("KEY_L_ID")),
-                                        new User(
-                                                Integer.parseInt(courseResponse.getString("KEY_USER_ID")),
-                                                courseResponse.getString("KEY_USER_USERNAME"),
-                                                courseResponse.getString("KEY_USER_NAME"),
-                                                courseResponse.getString("KEY_USER_CONTACTNUM"),
-                                                courseResponse.getString("KEY_USER_EMAIL"),
-                                                new MaintainCarDBTable(context).getDownload1car(Integer.parseInt(courseResponse.getString("KEY_CAR"))),
-                                                courseResponse.getString("KEY_REGISTERDATE"),
-                                                courseResponse.getString("KEY_USER_ACCOUNTTYPE"),
-                                                courseResponse.getString("KEY_USER_PASSWORD")
-
-                                        ),
+                                        Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                         courseResponse.getString("KEY_L_LOCATION"),
                                         courseResponse.getString("KEY_L_DESC"),
-                                        !courseResponse.getString("KEY_L_PARINGSTATUS").equals("0"),
-                                        !courseResponse.getString("KEY_L_NOWOFAFTER10").equals("0"),
+                                        courseResponse.getString("KEY_L_PARINGSTATUS").equals("1"),
+                                        courseResponse.getString("KEY_L_NOWOFAFTER10").equals("1"),
                                         courseResponse.getString("KEY_L_DATE"),
                                         courseResponse.getString("KEY_L_TIME")
                                 );
@@ -197,7 +186,7 @@ public class MaintainLeaverDBTable {
         leaverList = new ArrayList<>();
         leaverList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/select_all_leavers.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/select_all_leavers.php";
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
@@ -208,11 +197,11 @@ public class MaintainLeaverDBTable {
                                     JSONObject courseResponse = (JSONObject) response.get(i);
                                     Leaver leaver = new Leaver(
                                             Integer.parseInt(courseResponse.getString("KEY_L_ID")),
-                                            mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_L_USER_ID"))),
+                                            Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                             courseResponse.getString("KEY_L_LOCATION"),
                                             courseResponse.getString("KEY_L_DESC"),
-                                            !courseResponse.getString("KEY_L_PARINGSTATUS").equals("0"),
-                                            !courseResponse.getString("KEY_L_NOWOFAFTER10").equals("0"),
+                                            courseResponse.getString("KEY_L_PARINGSTATUS").equals("1"),
+                                            courseResponse.getString("KEY_L_NOWOFAFTER10").equals("1"),
                                             courseResponse.getString("KEY_L_DATE"),
                                             courseResponse.getString("KEY_L_TIME")
                                     );
@@ -239,7 +228,7 @@ public class MaintainLeaverDBTable {
 
     public void updateLeaver(final Leaver leaver) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/update_leaver_info.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/update_leaver_info.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -257,7 +246,7 @@ public class MaintainLeaverDBTable {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("KEY_L_ID", leaver.getLeaverID() + "");
-                    params.put("KEY_L_USER_ID", leaver.getUserID().getUserID() + "");
+                    params.put("KEY_L_USER_ID", leaver.getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
@@ -283,7 +272,7 @@ public class MaintainLeaverDBTable {
 
     public void deleteLeaver(final int id) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://notts.esy.es/delete_leaver.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/delete_leaver.php";
 
         try {
             StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -320,7 +309,7 @@ public class MaintainLeaverDBTable {
 
     public int getCount() {
         final int[] totalLeaver = new int[1];
-        String url = "http://notts.esy.es/get_leaver_count.php";
+        String url = "http://nottspark.maytwelve.com/nottspark/get_leaver_count.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override

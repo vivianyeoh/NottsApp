@@ -48,9 +48,9 @@ public class UserProfileFragment extends Fragment {
         profileName.setText(user.getUserName());
         profileEmail.setText(user.getUserEmail());
         profileContact.setText(user.getUserContactNum());
-        profileCarMake.setText(user.getCar().getCarMake());
-        profileCarModel.setText(user.getCar().getCarModel());
-        profileCarPlate.setText(user.getCar().getCarPlate());
+        profileCarMake.setText(user.getCarMake());
+        profileCarModel.setText(user.getCarModel());
+        profileCarPlate.setText(user.getCarPlate());
 
         editProfile = (Button) view.findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {
