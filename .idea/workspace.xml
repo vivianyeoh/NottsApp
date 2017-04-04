@@ -10,71 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c511672f-572a-4922-af46-707a7d3685e5" name="Default" comment="udpate php">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-15-32-25-792.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-15-32-33-099.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-16-45-44-852.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-16-52-54-381.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-16-53-44-658.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-16-54-14-660.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-16-54-45-219.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-21-30-555.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-27-08-208.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-32-50-885.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-33-07-396.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-33-28-034.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-35-22-106.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-37-25-857.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-40-03-440.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-41-55-771.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-42-05-068.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-43-48-927.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-44-22-983.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-45-01-841.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-47-08-269.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-47-50-432.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-48-14-457.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-49-26-079.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-49-42-234.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-50-25-133.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-50-45-800.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-51-26-677.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-51-54-177.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-52-45-859.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-52-57-008.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-53-15-284.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-53-27-997.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-54-12-143.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-54-29-661.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-55-02-795.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-55-16-112.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-56-19-287.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-56-37-435.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-57-10-410.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/android-profile/profile-2017-04-04-17-57-59-294.rawproto" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php files/sql2" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/TransactionController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainTransactionDBTable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Transaction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/delete_transaction.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/get_transaction_count.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/insert_transactions.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/select_1_transaction.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/select_all_transactions.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php files/update_transaction_info.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Leaver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Leaver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/LeaverFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/LeaverFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_leaver.php" afterPath="$PROJECT_DIR$/php files/insert_leaver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/insert_user.php" afterPath="$PROJECT_DIR$/php files/insert_user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_1_leaver.php" afterPath="$PROJECT_DIR$/php files/select_1_leaver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/select_all_leavers.php" afterPath="$PROJECT_DIR$/php files/select_all_leavers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/update_leaver_info.php" afterPath="$PROJECT_DIR$/php files/update_leaver_info.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/update_user_info.php" afterPath="$PROJECT_DIR$/php files/update_user_info.php" />
-    </list>
+    <list default="true" id="c511672f-572a-4922-af46-707a7d3685e5" name="Default" comment="udpate php" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/app/build/intermediates/assets/" />
@@ -137,10 +73,10 @@
               <caret line="187" column="45" selection-start-line="187" selection-start-column="45" selection-end-line="187" selection-end-column="45" />
               <folding>
                 <element signature="e#7054#7070#0" expanded="true" />
-                <element signature="e#7930#9584#0" expanded="true" />
-                <element signature="e#9583#9584#0" expanded="true" />
-                <element signature="e#9602#9874#0" expanded="true" />
-                <element signature="e#9873#9874#0" expanded="true" />
+                <element signature="e#7930#9588#0" expanded="true" />
+                <element signature="e#9587#9588#0" expanded="true" />
+                <element signature="e#9606#9878#0" expanded="true" />
+                <element signature="e#9877#9878#0" expanded="true" />
                 <element signature="method#deleteLeaver#0;class#MaintainLeaverDBTable#0" expanded="false" />
                 <element signature="method#getCount#0;class#MaintainLeaverDBTable#0" expanded="false" />
               </folding>
@@ -174,8 +110,8 @@
       <file leaf-file-name="SplashScreen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+            <state relative-caret-position="120">
+              <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -187,18 +123,19 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="24">
-              <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="45" />
+              <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="45" />
               <folding>
-                <element signature="e#1014#1015#0" expanded="true" />
-                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1023#1024#0" expanded="true" />
                 <element signature="method#getDownload1user#0;class#MaintainUserDBTable#0" expanded="false" />
                 <element signature="method#getUserById#0;class#MaintainUserDBTable#0" expanded="false" />
                 <element signature="method#download1User#0;class#MaintainUserDBTable#0" expanded="false" />
-                <element signature="e#7512#7528#0" expanded="true" />
-                <element signature="e#8383#10521#0" expanded="true" />
-                <element signature="e#10520#10521#0" expanded="true" />
-                <element signature="e#10539#10809#0" expanded="true" />
-                <element signature="e#10808#10809#0" expanded="true" />
+                <element signature="e#7483#7499#0" expanded="true" />
+                <element signature="e#8354#10497#0" expanded="true" />
+                <element signature="e#10496#10497#0" expanded="true" />
+                <element signature="e#10515#10785#0" expanded="true" />
+                <element signature="e#10784#10785#0" expanded="true" />
                 <element signature="method#updateUser#0;class#MaintainUserDBTable#0" expanded="false" />
                 <element signature="method#getCount#0;class#MaintainUserDBTable#0" expanded="false" />
               </folding>
@@ -2911,7 +2848,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491283788313</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="udpate php">
+      <created>1491300252782</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1491300252782</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2981,7 +2925,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="database done, controller done, php done" />
     <MESSAGE value="update database" />
-    <option name="LAST_COMMIT_MESSAGE" value="update database" />
+    <MESSAGE value="udpate php" />
+    <option name="LAST_COMMIT_MESSAGE" value="udpate php" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -3152,6 +3097,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3400,10 +3346,10 @@
           <caret line="187" column="45" selection-start-line="187" selection-start-column="45" selection-end-line="187" selection-end-column="45" />
           <folding>
             <element signature="e#7054#7070#0" expanded="true" />
-            <element signature="e#7930#9584#0" expanded="true" />
-            <element signature="e#9583#9584#0" expanded="true" />
-            <element signature="e#9602#9874#0" expanded="true" />
-            <element signature="e#9873#9874#0" expanded="true" />
+            <element signature="e#7930#9588#0" expanded="true" />
+            <element signature="e#9587#9588#0" expanded="true" />
+            <element signature="e#9606#9878#0" expanded="true" />
+            <element signature="e#9877#9878#0" expanded="true" />
             <element signature="method#deleteLeaver#0;class#MaintainLeaverDBTable#0" expanded="false" />
             <element signature="method#getCount#0;class#MaintainLeaverDBTable#0" expanded="false" />
           </folding>
@@ -3413,18 +3359,19 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
-          <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="45" />
+          <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="45" />
           <folding>
-            <element signature="e#1014#1015#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
             <element signature="method#getDownload1user#0;class#MaintainUserDBTable#0" expanded="false" />
             <element signature="method#getUserById#0;class#MaintainUserDBTable#0" expanded="false" />
             <element signature="method#download1User#0;class#MaintainUserDBTable#0" expanded="false" />
-            <element signature="e#7512#7528#0" expanded="true" />
-            <element signature="e#8383#10521#0" expanded="true" />
-            <element signature="e#10520#10521#0" expanded="true" />
-            <element signature="e#10539#10809#0" expanded="true" />
-            <element signature="e#10808#10809#0" expanded="true" />
+            <element signature="e#7483#7499#0" expanded="true" />
+            <element signature="e#8354#10497#0" expanded="true" />
+            <element signature="e#10496#10497#0" expanded="true" />
+            <element signature="e#10515#10785#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
             <element signature="method#updateUser#0;class#MaintainUserDBTable#0" expanded="false" />
             <element signature="method#getCount#0;class#MaintainUserDBTable#0" expanded="false" />
           </folding>
@@ -3433,8 +3380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        <state relative-caret-position="120">
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
