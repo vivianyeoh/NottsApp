@@ -36,10 +36,10 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
-
-        viewHolder.gettvPlaceName().setText(mDataSet[position].getUserID());
-        viewHolder.gettvPlaceTime().setText(mDataSet[position].getLeavingTime());
-        viewHolder.gettvPlaceDate().setText(mDataSet[position].getLeavingDate());
+//
+//        viewHolder.gettvPlaceName().setText(mDataSet[position].getUserID());
+//        viewHolder.gettvPlaceTime().setText(mDataSet[position].getLeavingTime());
+//        viewHolder.gettvPlaceDate().setText(mDataSet[position].getLeavingDate());
     }
 
     @Override

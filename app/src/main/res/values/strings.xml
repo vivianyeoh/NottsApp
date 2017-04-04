@@ -6,30 +6,37 @@
         <item>Staff</item>
     </string-array>
 
-    <string-array name="zone_array">
-        <item>ZONE 1</item>
-        <item>ZONE 2</item>
-        <item>ZONE 3</item>
-        <item>ZONE 4</item>
-        <item>ZONE 5</item>
-        <item>ZONE 6</item>
-        <item>ZONE 7</item>
-        <item>ZONE 8</item>
-        <item>ZONE 9</item>
-        <item>ZONE 10</item>
-        <item>ZONE 11</item>
-        <item>ZONE 12</item>
-        <item>ZONE 13</item>
-        <item>ZONE 14</item>
-        <item>ZONE 15</item>
-        <item>ZONE 16</item>
-        <item>ZONE 17</item>
-        <item>ZONE 18</item>
-        <item>ZONE 19</item>
-        <item>ZONE 20</item>
-        <item>ZONE 21</item>
-        <item>ZONE 22</item>
-        <item>ZONE 23</item>
+    <string-array name="red_zone_array">
+        <item>ZONE B - Near Blue Building</item>
+        <item>ZONE P - Near Civil Mixing Lab</item>
+        <item>ZONE N1 - Next to Engineering Research Building</item>
+        <item>ZONE N2 - Next to Engineering Research Building</item>
+        <item>ZONE J1 - Behind Purple Building</item>
+        <item>ZONE J2 - Around Nexus/Rawa area</item>
+        <item>ZONE C - Outside SA Circle</item>
+        <item>ZONE H - Near Yellow Building/SA Bus Stop</item>
+        <item>ZONE S - Near Sport Complex</item>
+        <item>ZONE T - Between Tioman and Langkawi Hall</item>
+        <item>ZONE L - Near Pangkor Hall</item>
+        <item>ZONE A - Between Pangkor and Kapas Hall</item>
+        <item>ZONE K - Behind Kapas Hall</item>
+        <item>ZONE R1 - Next to Redang Hall</item>
+        <item>ZONE R2 - Behind Redang Hall</item>
+        <item>ZONE M - Near Islamic Centre</item>
+    </string-array>
+
+    <string-array name="yellow_zone_array">
+        <item>ZONE B1 - Between Trent and Blue Building</item>
+        <item>ZONE B2 - Behind Blue Building</item>
+        <item>ZONE B3 - Between Blue Building</item>
+        <item>ZONE C - Near Red Building</item>
+        <item>ZONE D - Near Purple Building</item>
+        <item>ZONE D2- Between Purple Building and Civil Mixing Lab</item>
+        <item>ZONE E1 - Between Purple and Orange Building</item>
+        <item>ZONE E2 - Near Orange and Engineering Research Building</item>
+        <item>ZONE N - Near Engineering Research Building</item>
+        <item>ZONE F3 - Near F3 Building</item>
+        <item>ZONE F4 - Near F4 Building</item>
     </string-array>
 
     <string-array name="vehicle_brand_array">

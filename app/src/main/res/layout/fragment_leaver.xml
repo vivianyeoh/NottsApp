@@ -21,13 +21,13 @@
             android:id="@+id/zone_spinner"
             style="@style/Material.Widget.Spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:dropDownWidth="match_parent"
-            android:entries="@array/zone_array"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/red_zone_array"
             android:fontFamily="sans-serif"
-            android:spinnerMode="dropdown"
+            android:spinnerMode="dialog"
             android:textSize="18sp" />
 
         <ImageView
@@ -42,33 +42,38 @@
             android:layout_marginBottom="15dp"
             android:background="@color/teal500" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Leaving Time"
-            android:textColor="@color/teal500"
-            android:textStyle="normal|bold" />
-
-
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radio_pirates"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="NOW" />
+                android:text="Leaving time: "
+                android:textColor="@color/teal500"
+                android:textStyle="normal|bold" />
 
-            <RadioButton
-                android:id="@+id/radio_ninjas"
+            <EditText
+                android:id="@+id/leaveTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 MIN LATER" />
-        </RadioGroup>
+                android:layout_weight="1"
+                android:textColor="@color/teal500"
+                android:textStyle="normal|bold" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/btnTimepicker"
+                style="@style/Material.Drawable.Ripple.Touch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:elevation="2dp"
+                android:text="Pick time"
+                android:textColor="@color/white"
+                app:rd_enable="true" />
+
+        </LinearLayout>
 
 
         <TextView

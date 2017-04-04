@@ -36,7 +36,7 @@ public class MapDisplay extends Fragment {
         View view = inflater.inflate(R.layout.fragment_map_display, container, false);
         ImageView mImageView = (ImageView) view.findViewById(R.id.imageView);
 
-        Drawable bitmap = ContextCompat.getDrawable(getActivity(), R.drawable.sitelayout);
+        Drawable bitmap = ContextCompat.getDrawable(getActivity(), R.drawable.fullmap_redpermit);
         mImageView.setImageDrawable(bitmap);
         mAttacher = new PhotoViewAttacher(mImageView);
 
