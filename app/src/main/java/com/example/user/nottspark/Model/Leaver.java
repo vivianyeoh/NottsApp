@@ -12,34 +12,29 @@ public class Leaver {
     private int userID;
     private String location;
     private String leaverDesc;
-    private boolean nowOrAfter10Min, pairingStatus;//1 for yes
-    private String leavingDate;
-    private String leavingTime;
+    private int pairingStatus;//1 for yes
+    private String leavingDateTime;
 
     public Leaver() {
     }
 
 
-    public Leaver(int leaverID, int userID, String location, String leaverDesc, boolean pairingStatus, boolean nowOrAfter10Min) {
+    public Leaver(int leaverID, int userID, String location, String leaverDesc, int pairingStatus) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
         this.leaverDesc = leaverDesc;
         this.pairingStatus = pairingStatus;
-        this.nowOrAfter10Min = nowOrAfter10Min;
-        this.leavingDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-        this.leavingTime = new SimpleDateFormat("h:mm:ss a").format(new Date());
+        this.leavingDateTime = new SimpleDateFormat("dd/MM/yyyy h:mm:ss a").format(new Date());
     }
 
-    public Leaver(int leaverID, int userID, String location, String leaverDesc, boolean nowOrAfter10Min, boolean pairingStatus, String leavingDate, String leavingTime) {
+    public Leaver(int leaverID, int userID, String location, String leaverDesc, int pairingStatus, String leavingDateTime) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
         this.leaverDesc = leaverDesc;
-        this.nowOrAfter10Min = nowOrAfter10Min;
         this.pairingStatus = pairingStatus;
-        this.leavingDate = leavingDate;
-        this.leavingTime = leavingTime;
+        this.leavingDateTime = leavingDateTime;
     }
 
     public int getLeaverID() {
@@ -74,36 +69,20 @@ public class Leaver {
         this.leaverDesc = leaverDesc;
     }
 
-    public boolean isNowOrAfter10Min() {
-        return nowOrAfter10Min;
-    }
-
-    public void setNowOrAfter10Min(boolean nowOrAfter10Min) {
-        this.nowOrAfter10Min = nowOrAfter10Min;
-    }
-
-    public boolean isPairingStatus() {
+    public int isPairingStatus() {
         return pairingStatus;
     }
 
-    public void setPairingStatus(boolean pairingStatus) {
+    public void setPairingStatus(int pairingStatus) {
         this.pairingStatus = pairingStatus;
     }
 
-    public String getLeavingDate() {
-        return leavingDate;
-    }
-
-    public void setLeavingDate(String leavingDate) {
-        this.leavingDate = leavingDate;
-    }
-
     public String getLeavingTime() {
-        return leavingTime;
+        return leavingDateTime;
     }
 
-    public void setLeavingTime(String leavingTime) {
-        this.leavingTime = leavingTime;
+    public void setLeavingTime(String leavingDateTime) {
+        this.leavingDateTime = leavingDateTime;
     }
 
     @Override
@@ -113,10 +92,8 @@ public class Leaver {
                 ", userID=" + userID +
                 ", location='" + location + '\'' +
                 ", leaverDesc='" + leaverDesc + '\'' +
-                ", nowOrAfter10Min=" + nowOrAfter10Min +
                 ", pairingStatus=" + pairingStatus +
-                ", leavingDate='" + leavingDate + '\'' +
-                ", leavingTime='" + leavingTime + '\'' +
+                ", leavingDateTime='" + leavingDateTime + '\'' +
                 '}';
     }
 }

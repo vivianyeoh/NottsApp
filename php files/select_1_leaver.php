@@ -14,7 +14,7 @@ if ($conn->connect_errno) {
 $KEY_L_ID= $_POST['KEY_L_ID'];
 
 
-$sql = "SELECT p.* FROM TABLE_LEAVER as p";
+$sql = "SELECT * FROM TABLE_LEAVER WHERE KEY_L_USER_ID = '$KEY_L_ID'";
 $r = mysqli_query($conn,$sql);
 $res = mysqli_fetch_array($r);
 $result = array();
@@ -25,9 +25,7 @@ array_push($result,array(
 "KEY_L_LOCATION"=>$res['KEY_L_LOCATION'],
 "KEY_L_DESC"=>$res['KEY_L_DESC'],
 "KEY_L_PARINGSTATUS"=>$res['KEY_L_PARINGSTATUS'],
-"KEY_L_NOWOFAFTER10"=>$res['KEY_L_NOWOFAFTER10'],
-"KEY_L_DATE"=>$res['KEY_L_DATE'],
-"KEY_L_TIME"=>$res['KEY_L_TIME']
+"KEY_L_DATE"=>$res['KEY_L_DATE']
 )
 );
 

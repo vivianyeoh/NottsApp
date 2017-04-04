@@ -14,7 +14,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.nottspark.Model.User;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,7 +90,7 @@ public class MaintainUserDBTable {
         return download1user;
     }
 
-    public User getUserById(int id) {
+    private User getUserById(int id) {
         try {
             // Check availability of network connection.
             ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -108,7 +107,7 @@ public class MaintainUserDBTable {
         return null;
     }
 
-    public List<User> getAllUser() {
+    private List<User> getAllUser() {
         try {
             // Check availability of network connection.
             ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -125,7 +124,7 @@ public class MaintainUserDBTable {
         return null;
     }
 
-    public void download1User(final int id) {
+    private void download1User(final int id) {
         download1user = new User();
         String url = "http://nottspark.maytwelve.com/nottspark/select_1_user.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -133,7 +132,6 @@ public class MaintainUserDBTable {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Gson gson = new Gson();
                             if (response.length() > 0 && response != null) {
                                 JSONObject jsonObject = new JSONObject(response);
 
@@ -186,7 +184,7 @@ public class MaintainUserDBTable {
 
     }
 
-    public void downloadAllUser() {
+    private void downloadAllUser() {
         userList = new ArrayList<>();
         userList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -194,9 +192,10 @@ public class MaintainUserDBTable {
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
+                        int ttl = getCount();
+
                         if (response.length() > 0 && response != null) {
                             try {
-                                Gson gson = new Gson();
                                 for (int i = 0; i < response.length(); i++) {
                                     JSONObject courseResponse = (JSONObject) response.get(i);
                                     User user = new User(
@@ -214,7 +213,8 @@ public class MaintainUserDBTable {
                                     );
                                     userList.add(user);
                                     Log.wtf(TAG, "User Data :" + user.toString());
-                                    break;
+                                    if (i == ttl - 1)
+                                        break;
                                 }
                             } catch (Exception e) {
                                 Log.wtf(TAG, "Error in downloadAllUser catch:" + e.getMessage());

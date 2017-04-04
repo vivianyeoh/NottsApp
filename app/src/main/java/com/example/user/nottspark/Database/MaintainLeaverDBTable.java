@@ -59,10 +59,8 @@ public class MaintainLeaverDBTable {
                     params.put("KEY_L_USER_ID", leaver.getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
-                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
-                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0) + "");
+                    params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
                     params.put("KEY_L_DATE", leaver.getLeavingTime());
-                    params.put("KEY_L_TIME", leaver.getLeavingTime());
                     return params;
                 }
 
@@ -89,7 +87,7 @@ public class MaintainLeaverDBTable {
         return download1leaver;
     }
 
-    public Leaver getLeaverById(int id) {
+    private Leaver getLeaverById(int id) {
         try {
             // Check availability of network connection.
             ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -106,7 +104,7 @@ public class MaintainLeaverDBTable {
         return null;
     }
 
-    public List<Leaver> getAllLeaver() {
+    private List<Leaver> getAllLeaver() {
         try {
             // Check availability of network connection.
             ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -123,7 +121,7 @@ public class MaintainLeaverDBTable {
         return null;
     }
 
-    public void download1Leaver(final int id) {
+    private void download1Leaver(final int id) {
         String url = "http://nottspark.maytwelve.com/nottspark/select_1_leaver.php";
         download1leaver = new Leaver();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -143,10 +141,7 @@ public class MaintainLeaverDBTable {
                                         Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                         courseResponse.getString("KEY_L_LOCATION"),
                                         courseResponse.getString("KEY_L_DESC"),
-                                        courseResponse.getString("KEY_L_PARINGSTATUS").equals("1"),
-                                        courseResponse.getString("KEY_L_NOWOFAFTER10").equals("1"),
-                                        courseResponse.getString("KEY_L_DATE"),
-                                        courseResponse.getString("KEY_L_TIME")
+                                        Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS"))
                                 );
                                 Log.wtf(TAG, "download1Leaver completed: " + download1leaver.toString());
                             } else
@@ -182,7 +177,7 @@ public class MaintainLeaverDBTable {
 
     }
 
-    public void downloadAllLeaver() {
+    private void downloadAllLeaver() {
         leaverList = new ArrayList<>();
         leaverList.clear();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -190,9 +185,9 @@ public class MaintainLeaverDBTable {
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     public void onResponse(JSONArray response) {
+                        int ttl = getCount();
                         if (response.length() > 0 && response != null) {
                             try {
-                                MaintainUserDBTable mu = new MaintainUserDBTable(context);
                                 for (int i = 0; i < response.length(); i++) {
                                     JSONObject courseResponse = (JSONObject) response.get(i);
                                     Leaver leaver = new Leaver(
@@ -200,13 +195,12 @@ public class MaintainLeaverDBTable {
                                             Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                             courseResponse.getString("KEY_L_LOCATION"),
                                             courseResponse.getString("KEY_L_DESC"),
-                                            courseResponse.getString("KEY_L_PARINGSTATUS").equals("1"),
-                                            courseResponse.getString("KEY_L_NOWOFAFTER10").equals("1"),
-                                            courseResponse.getString("KEY_L_DATE"),
-                                            courseResponse.getString("KEY_L_TIME")
+                                            Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS"))
                                     );
                                     leaverList.add(leaver);
                                     Log.wtf(TAG, "Leaver Data :" + leaver.toString());
+                                    if (i == getCount() - 1)
+                                        break;
                                 }
 
                             } catch (Exception e) {
@@ -249,10 +243,8 @@ public class MaintainLeaverDBTable {
                     params.put("KEY_L_USER_ID", leaver.getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
-                    params.put("KEY_L_PARINGSTATUS", (leaver.isPairingStatus() ? 1 : 0) + "");
-                    params.put("KEY_L_NOWOFAFTER10", (leaver.isNowOrAfter10Min() ? 1 : 0) + "");
+                    params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
                     params.put("KEY_L_DATE", leaver.getLeavingTime());
-                    params.put("KEY_L_TIME", leaver.getLeavingTime());
                     return params;
                 }
 
