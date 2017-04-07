@@ -38,6 +38,7 @@ public class LeaverFragment extends Fragment {
     private ImageView zone_image;
 
     public LeaverFragment() {
+        user = MainActivity.getUserinfo();
     }
 
     @Override

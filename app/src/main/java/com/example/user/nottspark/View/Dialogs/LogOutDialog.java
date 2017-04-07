@@ -23,7 +23,6 @@ public class LogOutDialog extends DialogFragment {
                         startActivity(intent);
                     }
                 });
-        // Create the AlertDialog object and return it
         return builder.create();
     }
 }

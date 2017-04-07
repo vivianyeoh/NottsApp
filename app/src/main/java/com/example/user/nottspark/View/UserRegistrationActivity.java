@@ -1,6 +1,7 @@
 package com.example.user.nottspark.View;
 
 
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,9 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.user.nottspark.Controller.UserController;
-
-import java.util.Objects;
+import com.example.user.nottspark.View.Dialogs.SuccessRegister;
 
 import getresult.example.asus.nottspark.R;
 
@@ -19,15 +18,12 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
     private EditText mUsernameField, mPasswordField, mPasswordVerifyField, mName, mContact, mEmail, mCarModel, mCarPlate;
     private Spinner mAccType, mCarMake;
-    private UserController db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-//        db = new UserController(getApplicationContext());
 
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
@@ -58,12 +54,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 String new_car_make = mCarMake.getSelectedItem().toString();
                 String new_car_model = mCarModel.getText().toString();
                 String new_car_plate = mCarPlate.getText().toString();
-                if (PasswordValidation.ValidatePassword(new_pw)) {
-                    if (Objects.equals(new_pw, new_pw_verify)) {
-//                        db.addUser(new User(1, new_username, new_name, new_contact, new_email, new Car(1, new_car_make, new_car_model, new_car_plate), new_accType, new_pw));
-                    }
-                }
+//                if (PasswordValidation.ValidatePassword(new_pw)) {
+//                    if (Objects.equals(new_pw, new_pw_verify)) {
+                successfulRegister();
+//                    }
+//                }
             }
         });
+    }
+
+    public void successfulRegister() {
+        DialogFragment sr = new SuccessRegister();
+        sr.show(getFragmentManager(), "Successful Register");
+
     }
 }

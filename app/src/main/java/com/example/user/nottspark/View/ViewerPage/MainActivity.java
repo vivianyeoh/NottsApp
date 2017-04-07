@@ -1,27 +1,32 @@
 package com.example.user.nottspark.View.ViewerPage;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.LogOutDialog;
+
+import java.util.ArrayList;
 
 import getresult.example.asus.nottspark.R;
 
 public class MainActivity extends AppCompatActivity {
     public static User userinfo = new User(20002, "admin2012", "Admin", "0124547896", "admin@ne.com", "Proton", "Saga", "CAD 2035", "05/01/2017 3:00pm", "Student", "root");//testing please delete
-
+    private ArrayList<Leaver> allLeaverList;
+    private String TAG = "MainActivity";
     public static User getUserinfo() {
         return userinfo;
     }
-
     public static void setUserinfo(User userinfo) {
         userinfo = userinfo;
     }
@@ -61,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Intent i = getIntent();
+        allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
+        User user = i.getParcelableExtra("mainUser");
+        Log.wtf(TAG, "getLeaver" + allLeaverList.get(0).toString());
+        Log.wtf(TAG, "user" + user.toString());
+
     }
 
     @Override

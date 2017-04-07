@@ -10,18 +10,21 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.LeaverListActivity;
 import com.example.user.nottspark.View.ListViewElementAdapter;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.Random;
 
 import getresult.example.asus.nottspark.R;
 
 public class ParkerFragment extends Fragment {
-
+    private User user;
     private ListView listView;
 
     public ParkerFragment() {
+        user = MainActivity.getUserinfo();
     }
 
     @Override

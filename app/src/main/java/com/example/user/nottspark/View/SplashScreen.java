@@ -20,16 +20,8 @@ public class SplashScreen extends Activity {
     MaintainUserDBTable mu;
     ArrayList<Leaver> allLeaverList;
     ArrayList<User> allUserList;
-    /**
-     * The thread to process splash screen events
-     */
     private Thread mdownloadData;
-    private int ttlUser;
-    private int ttlLeaver;
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +35,24 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 ml = new MaintainLeaverDBTable(getApplicationContext());
-                ttlLeaver = ml.getCount();
                 allLeaverList = (ArrayList<Leaver>) ml.getLeaverList();
+
                 mu = new MaintainUserDBTable(getApplicationContext());
-                ttlUser = mu.getCount();
                 allUserList = (ArrayList<User>) mu.getUserList();
                 try {
                     synchronized (this) {
                         wait(2000);
                     }
                 } catch (InterruptedException ex) {
-                }// Run next activity which is your GameActivity
-                Intent intent = new Intent();
-                intent.setClass(sPlashScreen, LoginActivity.class); //Here You Can Replace MainActivity.class with your GameActivity
+                }
 
-                startActivity(intent);
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                i.putParcelableArrayListExtra("allLeaverList", allLeaverList);
+                i.putParcelableArrayListExtra("allUserList", allUserList);
+                i.putExtras(b);
+                i.setClass(sPlashScreen, LoginActivity.class);
+                startActivity(i);
             }
         };
         mdownloadData.start();

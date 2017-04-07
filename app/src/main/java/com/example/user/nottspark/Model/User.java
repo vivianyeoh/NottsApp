@@ -1,9 +1,23 @@
 package com.example.user.nottspark.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class User{
+public class User implements Parcelable {
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     private int userID;
     private String userUsername;
     private String userName;
@@ -46,6 +60,40 @@ public class User{
         this.registerDate = registerDate;
         this.userAccountType = userAccountType;
         this.userPassword = userPassword;
+    }
+
+    protected User(Parcel in) {
+        userID = in.readInt();
+        userUsername = in.readString();
+        userName = in.readString();
+        userContactNum = in.readString();
+        userEmail = in.readString();
+        carMake = in.readString();
+        carModel = in.readString();
+        carPlate = in.readString();
+        registerDate = in.readString();
+        userAccountType = in.readString();
+        userPassword = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(userID);
+        dest.writeString(userUsername);
+        dest.writeString(userName);
+        dest.writeString(userContactNum);
+        dest.writeString(userEmail);
+        dest.writeString(carMake);
+        dest.writeString(carModel);
+        dest.writeString(carPlate);
+        dest.writeString(registerDate);
+        dest.writeString(userAccountType);
+        dest.writeString(userPassword);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public int getUserID() {

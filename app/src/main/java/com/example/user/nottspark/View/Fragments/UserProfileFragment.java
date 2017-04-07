@@ -25,7 +25,7 @@ public class UserProfileFragment extends Fragment {
     private User user;
 
     public UserProfileFragment() {
-
+        user = MainActivity.getUserinfo();
     }
 
     @Override

@@ -17,13 +17,14 @@ import getresult.example.asus.nottspark.R;
 
 public class UserHistoryFragment extends Fragment {
     private static final int DATASET_COUNT = 6;
+
     private RecyclerView mRecyclerView;
     private HistoryListAdapter mAdapter;
     private Leaver[] mDataset;
     private User user;
 
     public UserHistoryFragment() {
-
+        user = MainActivity.getUserinfo();
     }
 
     @Override
