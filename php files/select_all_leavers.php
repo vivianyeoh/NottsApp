@@ -25,6 +25,7 @@ if ($result = mysqli_query($conn, "SELECT * FROM TABLE_LEAVER")) {
         $TABLE_LEAVER["KEY_L_DESC"] = $row["KEY_L_DESC"];
         $TABLE_LEAVER["KEY_L_PARINGSTATUS"] = $row["KEY_L_PARINGSTATUS"];
         $TABLE_LEAVER["KEY_L_DATE"] = $row["KEY_L_DATE"];
+        $TABLE_LEAVER["KEY_L_TIME"] = $row["KEY_L_TIME"];
         
         // push single product into final response array
         array_push($response, $TABLE_LEAVER);

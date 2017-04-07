@@ -21,14 +21,25 @@ import java.util.ArrayList;
 import getresult.example.asus.nottspark.R;
 
 public class MainActivity extends AppCompatActivity {
-    public static User userinfo = new User(20002, "admin2012", "Admin", "0124547896", "admin@ne.com", "Proton", "Saga", "CAD 2035", "05/01/2017 3:00pm", "Student", "root");//testing please delete
-    private ArrayList<Leaver> allLeaverList;
+    //    public static User userinfo = new User(20002, "admin2012", "Admin", "0124547896", "admin@ne.com", "Proton", "Saga", "CAD 2035", "05/01/2017 3:00pm", "Student", "root");//testing please delete
+    private static ArrayList<Leaver> allLeaverList;
+    private static User user;
     private String TAG = "MainActivity";
+
     public static User getUserinfo() {
-        return userinfo;
+        return user;
     }
+
     public static void setUserinfo(User userinfo) {
         userinfo = userinfo;
+    }
+
+    public static ArrayList<Leaver> getAllLeaverList() {
+        return allLeaverList;
+    }
+
+    public static void setAllLeaverList(ArrayList<Leaver> allLeaverList) {
+        allLeaverList = allLeaverList;
     }
 
     @Override
@@ -70,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
-        User user = i.getParcelableExtra("mainUser");
+        user = i.getParcelableExtra("mainUser");
         Log.wtf(TAG, "getLeaver" + allLeaverList.get(0).toString());
         Log.wtf(TAG, "user" + user.toString());
 
@@ -92,4 +103,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

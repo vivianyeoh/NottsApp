@@ -14,7 +14,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.nottspark.Model.Leaver;
-import com.example.user.nottspark.Model.User;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -55,12 +54,13 @@ public class MaintainLeaverDBTable {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
-                    params.put("KEY_L_ID", leaver.getLeaverID() + "");
+                    params.put("KEY_L_ID", "");
                     params.put("KEY_L_USER_ID", leaver.getUserID() + "");
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
-                    params.put("KEY_L_DATE", leaver.getLeavingTime());
+                    params.put("KEY_L_TIME", leaver.getLeavingTime());
+                    params.put("KEY_L_DATE", leaver.getDate());
                     return params;
                 }
 
@@ -135,13 +135,14 @@ public class MaintainLeaverDBTable {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray result = jsonObject.getJSONArray("result");
                                 JSONObject courseResponse = result.getJSONObject(0);
-                                User user = mu.getDownload1user(Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")));
                                 download1leaver = new Leaver(
                                         Integer.parseInt(courseResponse.getString("KEY_L_ID")),
                                         Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                         courseResponse.getString("KEY_L_LOCATION"),
                                         courseResponse.getString("KEY_L_DESC"),
-                                        Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS"))
+                                        Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS")),
+                                        courseResponse.getString("KEY_L_TIME"),
+                                        courseResponse.getString("KEY_L_DATE")
                                 );
                                 Log.wtf(TAG, "download1Leaver completed: " + download1leaver.toString());
                             } else
@@ -195,7 +196,9 @@ public class MaintainLeaverDBTable {
                                             Integer.parseInt(courseResponse.getString("KEY_L_USER_ID")),
                                             courseResponse.getString("KEY_L_LOCATION"),
                                             courseResponse.getString("KEY_L_DESC"),
-                                            Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS"))
+                                            Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS")),
+                                            courseResponse.getString("KEY_L_TIME"),
+                                            courseResponse.getString("KEY_L_DATE")
                                     );
                                     leaverList.add(leaver);
                                     Log.wtf(TAG, "Leaver Data :" + leaver.toString());
@@ -244,7 +247,8 @@ public class MaintainLeaverDBTable {
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
-                    params.put("KEY_L_DATE", leaver.getLeavingTime());
+                    params.put("KEY_L_TIME", leaver.getLeavingTime());
+                    params.put("KEY_L_DATE", leaver.getDate());
                     return params;
                 }
 

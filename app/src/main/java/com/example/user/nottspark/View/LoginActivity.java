@@ -33,18 +33,22 @@ public class LoginActivity extends AppCompatActivity {
         Intent i = getIntent();
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
         allUserList = i.getParcelableArrayListExtra("allUserList");
-        user = allUserList.get(0);
+        if (allUserList.size() > 0) {
+            user = allUserList.get(0);
 
-        Log.wtf(TAG, "getLeaver" + allLeaverList.get(0).toString());
-        Log.wtf(TAG, "allUserList" + allUserList.get(0).toString());
+            Log.wtf(TAG, "getLeaver" + allLeaverList.get(0).toString());
+            Log.wtf(TAG, "allUserList" + allUserList.get(0).toString());
+            Button mUsernameSignInButton = (Button) findViewById(R.id.btnSignIn);
+            mUsernameSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    successLogin();
+                }
+            });
+        } else {
+            Log.wtf(TAG, "No User Data Retrieved");
+        }
 
-        Button mUsernameSignInButton = (Button) findViewById(R.id.btnSignIn);
-        mUsernameSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                successLogin();
-            }
-        });
 
         Button mRegisterButton = (Button) findViewById(R.id.btnRegister);
         mRegisterButton.setOnClickListener(new OnClickListener() {

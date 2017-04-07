@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import com.example.user.nottspark.Controller.LeaverController;
+import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
+import com.example.user.nottspark.View.Dialogs.LeaverAdded;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.text.SimpleDateFormat;
@@ -29,13 +33,15 @@ import java.util.Date;
 import getresult.example.asus.nottspark.R;
 
 public class LeaverFragment extends Fragment {
-
-    private static EditText txtLeaveTime;
-    private User user;
-    private EditText new_desc;
-    private Spinner zone_spinner;
+    private static EditText leaveTime;
+    private static EditText leaverDesc;
+    private static Button timePickerButton;
+    private static Button btnLeave;
     private FragmentActivity myContext;
+    private User user;
+    private Spinner zone_spinner;
     private ImageView zone_image;
+
 
     public LeaverFragment() {
         user = MainActivity.getUserinfo();
@@ -135,13 +141,6 @@ public class LeaverFragment extends Fragment {
 
         });
 
-
-        /*
-
-
-        * */
-
-
         Button leaveButton = (Button) view.findViewById(R.id.btnLeave);
         leaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,18 +148,38 @@ public class LeaverFragment extends Fragment {
             }
         });
 
-        txtLeaveTime = (EditText) view.findViewById(R.id.leaveTime);
-        txtLeaveTime.setText(new SimpleDateFormat("hh:mm aa").format(new Date()));
-        txtLeaveTime.setKeyListener(null);
+        leaveTime = (EditText) view.findViewById(R.id.leaveTime);
+        leaverDesc = (EditText) view.findViewById(R.id.leaverDesc);
+        leaveTime.setText(new SimpleDateFormat("hh:mm aa").format(new Date()));
+        leaveTime.setKeyListener(null);
 
-        Button timePickerButton = (Button) view.findViewById(R.id.btnTimepicker);
+        timePickerButton = (Button) view.findViewById(R.id.btnTimepicker);
         timePickerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showTimePickerDialog();
             }
         });
 
+        btnLeave = (Button) view.findViewById(R.id.btnLeave);
+        btnLeave.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                uploadLeaverData();
+                LeaverAdded dialogFragment = new LeaverAdded();
+                dialogFragment.show(getActivity().getFragmentManager(), "1 Leaver Added");
+            }
+        });
+
         return view;
+    }
+
+    public void uploadLeaverData() {
+        String location = zone_spinner.getSelectedItem().toString();
+        String time = leaveTime.getText().toString();
+        String leaveDesc = leaverDesc.getText().toString();
+        LeaverController lc = new LeaverController(getContext());
+        Leaver l = new Leaver(user.getUserID(), location, leaveDesc, time);
+        lc.addLeaver(l);
+        Log.wtf("LeaverFragment", l.getDate());
     }
 
 
@@ -193,7 +212,7 @@ public class LeaverFragment extends Fragment {
                 ampm = "PM";
             else
                 ampm = "AM";
-            txtLeaveTime.setText(String.format("%02d:%02d %.2s", hourOfDay, minute, ampm));
+            leaveTime.setText(String.format("%02d:%02d %.2s", hourOfDay, minute, ampm));
         }
 
     }
