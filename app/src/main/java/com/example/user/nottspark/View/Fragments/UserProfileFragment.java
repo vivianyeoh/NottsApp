@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.EditProfileActivity;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
 import com.rey.material.widget.EditText;
@@ -22,16 +21,14 @@ public class UserProfileFragment extends Fragment {
     private TextView profileUserName;
     private Spinner vehicleSpinner;
     private Button editProfile;
-    private User user;
 
     public UserProfileFragment() {
-        user = MainActivity.getUserinfo();
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.getUserinfo();
     }
 
     @Override
@@ -45,12 +42,12 @@ public class UserProfileFragment extends Fragment {
         profileCarModel = (EditText) view.findViewById(R.id.profileCarModel);
         profileCarPlate = (EditText) view.findViewById(R.id.profileCarPlate);
 
-        profileName.setText(user.getUserName());
-        profileEmail.setText(user.getUserEmail());
-        profileContact.setText(user.getUserContactNum());
-        profileCarMake.setText(user.getCarMake());
-        profileCarModel.setText(user.getCarModel());
-        profileCarPlate.setText(user.getCarPlate());
+        profileName.setText(MainActivity.user.getUserName());
+        profileEmail.setText(MainActivity.user.getUserEmail());
+        profileContact.setText(MainActivity.user.getUserContactNum());
+        profileCarMake.setText(MainActivity.user.getCarMake());
+        profileCarModel.setText(MainActivity.user.getCarModel());
+        profileCarPlate.setText(MainActivity.user.getCarPlate());
 
         editProfile = (Button) view.findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {

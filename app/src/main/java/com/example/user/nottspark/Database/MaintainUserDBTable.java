@@ -53,7 +53,6 @@ public class MaintainUserDBTable {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
-                    params.put("KEY_USER_ID", user.getUserID() + "");
                     params.put("KEY_USER_USERNAME", user.getUserUsername());
                     params.put("KEY_USER_NAME", user.getUserName());
                     params.put("KEY_USER_CONTACTNUM", user.getUserContactNum());

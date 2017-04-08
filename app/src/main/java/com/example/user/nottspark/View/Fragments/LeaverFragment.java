@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,13 +42,12 @@ public class LeaverFragment extends Fragment {
 
 
     public LeaverFragment() {
-        user = MainActivity.getUserinfo();
+        user = MainActivity.user;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.getUserinfo();
 
     }
 
@@ -141,13 +138,6 @@ public class LeaverFragment extends Fragment {
 
         });
 
-        Button leaveButton = (Button) view.findViewById(R.id.btnLeave);
-        leaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
         leaveTime = (EditText) view.findViewById(R.id.leaveTime);
         leaverDesc = (EditText) view.findViewById(R.id.leaverDesc);
         leaveTime.setText(new SimpleDateFormat("hh:mm aa").format(new Date()));
@@ -179,7 +169,6 @@ public class LeaverFragment extends Fragment {
         LeaverController lc = new LeaverController(getContext());
         Leaver l = new Leaver(user.getUserID(), location, leaveDesc, time);
         lc.addLeaver(l);
-        Log.wtf("LeaverFragment", l.getDate());
     }
 
 
@@ -193,14 +182,14 @@ public class LeaverFragment extends Fragment {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+
             Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
-            return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+            return new TimePickerDialog(getActivity(), this, hour, minute, false);
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
             String ampm = "";
             if (hourOfDay > 12) {
                 hourOfDay -= 12;

@@ -9,14 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
-
 import getresult.example.asus.nottspark.R;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class MapDisplay extends Fragment {
-    private User user;
     private PhotoViewAttacher mAttacher;
 
     public MapDisplay() {
@@ -26,7 +22,6 @@ public class MapDisplay extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.getUserinfo();
     }
 
     @Override

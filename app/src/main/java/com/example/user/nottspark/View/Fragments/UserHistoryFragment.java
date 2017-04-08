@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.HistoryListAdapter;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import getresult.example.asus.nottspark.R;
 
@@ -24,13 +23,11 @@ public class UserHistoryFragment extends Fragment {
     private User user;
 
     public UserHistoryFragment() {
-        user = MainActivity.getUserinfo();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.getUserinfo();
         initDataset();
     }
 

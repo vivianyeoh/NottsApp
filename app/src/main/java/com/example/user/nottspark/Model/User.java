@@ -34,8 +34,7 @@ public class User implements Parcelable {
 
     }
 
-    public User(int userID, String userUsername, String userName, String userContactNum, String userEmail, String carMake, String carModel, String carPlate, String userAccountType, String userPassword) {
-        this.userID = userID;
+    public User(String userUsername, String userName, String userContactNum, String userEmail, String carMake, String carModel, String carPlate, String userAccountType, String userPassword) {
         this.userUsername = userUsername;
         this.userName = userName;
         this.userContactNum = userContactNum;

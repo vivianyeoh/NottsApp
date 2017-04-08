@@ -16,6 +16,8 @@ public class LeaverAdded extends DialogFragment {
         builder.setMessage("1 Leaver added!")
                 .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
+
                     }
                 });
         // Create the AlertDialog object and return it

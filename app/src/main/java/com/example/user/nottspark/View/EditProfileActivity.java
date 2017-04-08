@@ -32,7 +32,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.getUserinfo();
+        user = MainActivity.user;
         setContentView(R.layout.activity_user_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
