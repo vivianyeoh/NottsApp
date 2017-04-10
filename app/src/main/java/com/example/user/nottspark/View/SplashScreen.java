@@ -8,6 +8,7 @@ import com.example.user.nottspark.Database.MaintainLeaverDBTable;
 import com.example.user.nottspark.Database.MaintainUserDBTable;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -52,7 +53,7 @@ public class SplashScreen extends Activity {
                 launchNextActivity.putParcelableArrayListExtra("allLeaverList", allLeaverList);
                 launchNextActivity.putParcelableArrayListExtra("allUserList", allUserList);
                 launchNextActivity.putExtras(b);
-                launchNextActivity.setClass(sPlashScreen, LoginActivity.class);
+                launchNextActivity.setClass(sPlashScreen, MainActivity.class);
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

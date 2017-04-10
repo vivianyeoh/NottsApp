@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -341,6 +342,50 @@ public class MaintainUserDBTable {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
         return totalUser[0];
+    }
+
+    public boolean CheckPasswordUsername(final String username, final String password) {
+        final boolean[] isCorrect = new boolean[1];
+        isCorrect[0] = false;
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String url = "http://nottspark.maytwelve.com/nottspark/check_username_pass.php";
+
+        try {
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    isCorrect[0] = (Integer.parseInt(response) == 1);
+                    if (Integer.parseInt(response) == -1)
+                        Toast.makeText(context, "Username or password is null", Toast.LENGTH_SHORT).show();
+                    Log.wtf(TAG, "Username Password is " + response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.wtf(TAG, "Error in validate Username Password. " + error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("KEY_USER_USERNAME", username);
+                    params.put("KEY_USER_PASSWORD", password);
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("Content-Type", "application/x-www-form-urlencoded");
+                    return params;
+                }
+            };
+            queue.add(postRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isCorrect[0];
     }
 
 }

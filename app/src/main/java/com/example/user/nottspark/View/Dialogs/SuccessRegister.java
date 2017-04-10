@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.user.nottspark.View.LoginActivity;
+import com.example.user.nottspark.View.SplashScreen;
 
 import getresult.example.asus.nottspark.R;
 
@@ -19,7 +19,7 @@ public class SuccessRegister extends DialogFragment {
         builder.setMessage("Register successfully")
                 .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        Intent intent = new Intent(getActivity(), SplashScreen.class);
                         startActivity(intent);
                     }
                 });

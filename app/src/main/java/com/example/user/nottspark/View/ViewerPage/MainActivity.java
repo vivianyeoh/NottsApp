@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,15 +14,18 @@ import android.widget.Toast;
 
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.View.Dialogs.LogOutDialog;
+import com.example.user.nottspark.View.SessionManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import getresult.example.asus.nottspark.R;
 
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Leaver> allLeaverList;
-    public static User user;
+    public static ArrayList<User> allUserList;
+    public static User user = null;
+    SessionManager session;
     private Boolean exit = false;
     private String TAG = "MainActivity";
 
@@ -31,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        Intent i = getIntent();
+        allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
+        allUserList = i.getParcelableArrayListExtra("allUserList");
+
+        session = new SessionManager(getApplicationContext());
+        session.checkLogin();
+        HashMap<String, String> user = session.getUserDetails();
+        String name = user.get(SessionManager.KEY_NAME);
+        String email = user.get(SessionManager.KEY_EMAIL);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,10 +90,6 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-
-        Intent i = getIntent();
-        allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
-        user = i.getParcelableExtra("mainUser");
     }
 
     @Override
@@ -88,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
         if (exit) {
             finish(); // finish activity
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press Back again to Exit.", Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -111,11 +119,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.menu_log_out) {
-            DialogFragment dialog = new LogOutDialog();
-            dialog.show(getSupportFragmentManager(), "Log Out");
+            session.logoutUser();
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 }

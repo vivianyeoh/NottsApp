@@ -6,29 +6,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="leaver" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="hi" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c511672f-572a-4922-af46-707a7d3685e5" name="Default" comment="update sql, parker frag, leaver frag">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/refresh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogin.java" />
+    <list default="true" id="c511672f-572a-4922-af46-707a7d3685e5" name="Default" comment="update recycleview&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/AlertDialogManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SessionManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogIn.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LogOutDialog.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/LeaverFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/LeaverFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/ParkerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/ParkerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_parker.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_parker.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/row_in_parker.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_in_parker.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php files/maytwelv_nottspark.sql" afterPath="$PROJECT_DIR$/php files/maytwelv_nottspark.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -75,31 +72,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="row_in_parker.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/row_in_parker.xml">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="425">
+              <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeaverListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListAdapter.java">
+      <file leaf-file-name="MaintainUserDBTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="142">
+              <caret line="352" column="13" selection-start-line="352" selection-start-column="13" selection-end-line="352" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SessionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-57">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
-                <element signature="e#1798#2171#0" expanded="true" />
-                <element signature="e#2170#2171#0" expanded="true" />
-                <element signature="e#2405#2406#0" expanded="true" />
-                <element signature="e#2436#2437#0" expanded="true" />
-                <element signature="e#2498#2499#0" expanded="true" />
-                <element signature="e#2529#2530#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1373#1389#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#1912#1913#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,20 +125,34 @@
       <file leaf-file-name="ViewerPageAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
+            <state relative-caret-position="601">
               <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java">
+      <file leaf-file-name="LeaverController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="83" column="48" selection-start-line="81" selection-start-column="7" selection-end-line="83" selection-end-column="48" />
+            <state relative-caret-position="493">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <element signature="e#696#697#0" expanded="true" />
+                <element signature="e#736#737#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,70 +161,27 @@
       <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="73" column="54" selection-start-line="72" selection-start-column="7" selection-end-line="73" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_leaver.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_leaver.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListViewElementAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ListViewElementAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParkerFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/ParkerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
+            <state relative-caret-position="844">
+              <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#onCreate#0;class#ParkerFragment#0" expanded="false" />
-                <element signature="e#3409#3942#0" expanded="true" />
-                <element signature="e#3941#3942#0" expanded="true" />
+                <element signature="e#1184#1334#0" expanded="true" />
+                <element signature="e#1333#1334#0" expanded="true" />
+                <element signature="e#1624#1772#0" expanded="true" />
+                <element signature="e#1771#1772#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_leaver_list.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_leaver_list.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="AlertDialogManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/AlertDialogManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeaverListActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="289">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2082,7 +2070,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/TransactionController.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/CarController.java" />
@@ -2101,15 +2088,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Adapter/HistoryListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Adapter/LeaverListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Adapter/ListViewElementAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LogOutDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/UserRegistrationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogIn.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ListViewElementAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_leaver.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Leaver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/TimePickerFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LeaverAdded.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/MapDisplay.java" />
@@ -2118,17 +2102,25 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/EditProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/LeaverFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_in_parkerfrag.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_parker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_in_parker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/ParkerFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LogOutDialog.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SessionManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/AlertDialogManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2323,7 +2315,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Fragments" />
+              <option name="myItemId" value="Dialogs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2829,7 +2821,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491642256920</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update recycleview&#10;">
+      <created>1491791087737</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1491791087737</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2935,7 +2934,8 @@
     <MESSAGE value="update put extras" />
     <MESSAGE value="update leaver fragment" />
     <MESSAGE value="update sql, parker frag, leaver frag" />
-    <option name="LAST_COMMIT_MESSAGE" value="update sql, parker frag, leaver frag" />
+    <MESSAGE value="update recycleview&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="update recycleview&#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2947,14 +2947,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/php files/insert_leaver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php files/insert_transactions.php" />
     <entry file="file://$PROJECT_DIR$/php files/select_1_transaction.php" />
     <entry file="file://$PROJECT_DIR$/php files/select_all_leavers.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -2984,35 +2976,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/Transaction.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="7" selection-end-line="20" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="77" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/UserRegistrationActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="60" column="19" selection-start-line="59" selection-start-column="18" selection-end-line="60" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="73" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -3023,13 +2990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -3037,28 +2997,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1118">
-          <caret line="253" column="50" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/TimePickerFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LogOutDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="22" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LeaverAdded.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/UserProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -3180,37 +3119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4148">
-          <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-          <folding>
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="29" column="76" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Fragments/MapDisplay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -3236,14 +3144,6 @@
             <element signature="method#onItemSelected#0;class#3928:5352" expanded="false" />
             <marker date="1491643003523" expanded="true" signature="6870:7849" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3286,41 +3186,7 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="73" column="54" selection-start-line="72" selection-start-column="7" selection-end-line="73" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="83" column="48" selection-start-line="81" selection-start-column="7" selection-end-line="83" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ListViewElementAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -3328,14 +3194,15 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LeaverListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
-            <element signature="e#1798#2171#0" expanded="true" />
-            <element signature="e#2170#2171#0" expanded="true" />
-            <element signature="e#2405#2406#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2529#2530#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1741#2114#0" expanded="true" />
+            <element signature="e#2113#2114#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+            <element signature="e#2379#2380#0" expanded="true" />
+            <element signature="e#2441#2442#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3355,8 +3222,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onCreate#0;class#ParkerFragment#0" expanded="false" />
-            <element signature="e#3409#3942#0" expanded="true" />
-            <element signature="e#3941#3942#0" expanded="true" />
+            <element signature="e#3409#3943#0" expanded="true" />
+            <element signature="e#3942#3943#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3366,9 +3233,172 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        <state relative-caret-position="153">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="21" column="87" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SplashScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ListViewElementAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/FailedLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/SuccessRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LeaverAdded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainLeaverDBTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/LeaverController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/Database/MaintainUserDBTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="352" column="13" selection-start-line="352" selection-start-column="13" selection-end-line="352" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/ViewerPageAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="844">
+          <caret line="54" column="28" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1184#1334#0" expanded="true" />
+            <element signature="e#1333#1334#0" expanded="true" />
+            <element signature="e#1624#1772#0" expanded="true" />
+            <element signature="e#1771#1772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/AlertDialogManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/SessionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1373#1389#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1912#1913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/Dialogs/LogOutDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/nottspark/View/ViewerPage/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

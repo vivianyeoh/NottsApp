@@ -21,7 +21,7 @@
             app:srcCompat="@drawable/nottslogo" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_username"
@@ -34,7 +34,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -47,7 +47,7 @@
             android:textAlignment="center" />
 
         <com.rey.material.widget.Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnLogin"
             style="@style/Material.Drawable.Ripple.Touch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

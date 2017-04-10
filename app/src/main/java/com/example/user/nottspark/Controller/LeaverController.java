@@ -45,4 +45,6 @@ public class LeaverController {
     public void deleteLeaver(int id) {
         npd.deleteLeaver(id);
     }
+
+
 }
