@@ -349,7 +349,7 @@ public class MaintainLeaverDBTable {
                     public void onResponse(String response) {
                         try {
                             totalLeaver[0] = Integer.parseInt(response);
-                            Log.wtf(TAG, "Success getCount: " + response);
+                            Log.wtf(TAG, "Success getCount: " + totalLeaver[0]);
                         } catch (Exception e) {
                             Log.wtf(TAG, "Error in getCount catch:" + e.getMessage());
                         }

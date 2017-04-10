@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-public class AlertDialogManager {
+public class LoginDialog {
 
 
     public void showAlertDialog(Context context, String title, String message,

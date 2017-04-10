@@ -17,8 +17,6 @@ if ($result = mysqli_query($conn, "SELECT * FROM TABLE_LEAVER")) {
     
     //$response["courses"] = array();
     while ($row = mysqli_fetch_array($result)) {
-        // temp user array
-        $course= array();
         $TABLE_LEAVER["KEY_L_ID"] = $row["KEY_L_ID"];
         $TABLE_LEAVER["KEY_L_USER_ID"] = $row["KEY_L_USER_ID"];
         $TABLE_LEAVER["KEY_L_LOCATION"] = $row["KEY_L_LOCATION"];

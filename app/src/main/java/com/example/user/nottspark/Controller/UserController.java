@@ -43,7 +43,7 @@ public class UserController {
         npd.deleteUser(id);
     }
 
-    public boolean CheckPasswordUsername(final String username, final String password) {
-        return npd.CheckPasswordUsername(username, password);
+    public int checkPasswordUsername(String username, String password) {
+        return npd.checkPasswordUsername(username, password);
     }
 }

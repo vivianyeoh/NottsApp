@@ -8,9 +8,8 @@ import android.content.SharedPreferences.Editor;
 import java.util.HashMap;
 
 public class SessionManager {
-    public static final String KEY_NAME = "name";
-    public static final String KEY_EMAIL = "email";
-    private static final String PREF_NAME = "AndroidHivePref";
+    public static final String KEY_USER_ID = -1 + "";
+    private static final String PREF_NAME = "NottsPark";
     private static final String IS_LOGIN = "IsLoggedIn";
     SharedPreferences pref;
     Editor editor;
@@ -23,10 +22,9 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void createLoginSession(String name, String email) {
+    public void createLoginSession(String id) {
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_NAME, name);
-        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_USER_ID + "", id);
         editor.commit();
     }
 
@@ -41,8 +39,7 @@ public class SessionManager {
 
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<String, String>();
-        user.put(KEY_NAME, pref.getString(KEY_NAME, null));
-        user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+        user.put(KEY_USER_ID, pref.getString(KEY_USER_ID + "", null));
         return user;
     }
 

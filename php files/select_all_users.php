@@ -17,8 +17,6 @@ if ($result = mysqli_query($conn, "SELECT * FROM TABLE_USER")) {
     
     //$response["users"] = array();
     while ($row = mysqli_fetch_array($result)) {
-        // temp user array
-        $TABLE_USER= array();
         $TABLE_USER["KEY_USER_ID"] = $row["KEY_USER_ID"];
         $TABLE_USER["KEY_USER_USERNAME"] = $row["KEY_USER_USERNAME"];
         $TABLE_USER["KEY_USER_NAME"] = $row["KEY_USER_NAME"];

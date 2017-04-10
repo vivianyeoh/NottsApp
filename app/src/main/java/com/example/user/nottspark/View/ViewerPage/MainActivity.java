@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.SessionManager;
@@ -24,15 +25,18 @@ import getresult.example.asus.nottspark.R;
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<Leaver> allLeaverList;
     public static ArrayList<User> allUserList;
-    public static User user = null;
+    public static User currentUser;
     SessionManager session;
+    UserController lc;
     private Boolean exit = false;
     private String TAG = "MainActivity";
+    private Thread mdownloadData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        lc = new UserController(getApplicationContext());
 
         Intent i = getIntent();
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
@@ -40,9 +44,26 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
-        HashMap<String, String> user = session.getUserDetails();
-        String name = user.get(SessionManager.KEY_NAME);
-        String email = user.get(SessionManager.KEY_EMAIL);
+
+        HashMap<String, String> info = session.getUserDetails();
+        if (info.get(SessionManager.KEY_USER_ID) == "-1") {
+        } else if (info.get(SessionManager.KEY_USER_ID) == "0") {
+        } else if (Integer.parseInt(info.get(SessionManager.KEY_USER_ID)) > 0) {
+            final int KEY_USER_ID = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
+            mdownloadData = new Thread() {
+                @Override
+                public void run() {
+                    currentUser = lc.getUserByID(KEY_USER_ID);
+                    try {
+                        synchronized (this) {
+                            wait(2000);
+                        }
+                    } catch (InterruptedException ex) {
+                    }
+                }
+            };
+            mdownloadData.start();
+        }
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

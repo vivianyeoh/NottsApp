@@ -42,12 +42,12 @@ public class UserProfileFragment extends Fragment {
         profileCarModel = (EditText) view.findViewById(R.id.profileCarModel);
         profileCarPlate = (EditText) view.findViewById(R.id.profileCarPlate);
 
-        profileName.setText(MainActivity.user.getUserName());
-        profileEmail.setText(MainActivity.user.getUserEmail());
-        profileContact.setText(MainActivity.user.getUserContactNum());
-        profileCarMake.setText(MainActivity.user.getCarMake());
-        profileCarModel.setText(MainActivity.user.getCarModel());
-        profileCarPlate.setText(MainActivity.user.getCarPlate());
+        profileName.setText(MainActivity.currentUser.getUserName());
+        profileEmail.setText(MainActivity.currentUser.getUserEmail());
+        profileContact.setText(MainActivity.currentUser.getUserContactNum());
+        profileCarMake.setText(MainActivity.currentUser.getCarMake());
+        profileCarModel.setText(MainActivity.currentUser.getCarModel());
+        profileCarPlate.setText(MainActivity.currentUser.getCarPlate());
 
         editProfile = (Button) view.findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {

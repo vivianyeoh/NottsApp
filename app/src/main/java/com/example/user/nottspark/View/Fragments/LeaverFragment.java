@@ -42,7 +42,8 @@ public class LeaverFragment extends Fragment {
 
 
     public LeaverFragment() {
-        user = MainActivity.user;
+        user = MainActivity.currentUser;
+
     }
 
     @Override
