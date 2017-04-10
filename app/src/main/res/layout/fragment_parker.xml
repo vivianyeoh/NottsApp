@@ -28,10 +28,10 @@
 
     </LinearLayout>
 
-    <ListView
+    <ExpandableListView
         android:id="@+id/parkingspacenum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"></ListView>
+        android:layout_marginTop="5dp"></ExpandableListView>
 
 </LinearLayout>

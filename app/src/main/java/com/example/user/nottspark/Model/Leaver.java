@@ -11,7 +11,6 @@ import java.util.Date;
  */
 
 public class Leaver implements Parcelable {
-
     public static final Creator<Leaver> CREATOR = new Creator<Leaver>() {
         @Override
         public Leaver createFromParcel(Parcel in) {

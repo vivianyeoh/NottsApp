@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -46,24 +47,35 @@ public class MainActivity extends AppCompatActivity {
         session.checkLogin();
 
         HashMap<String, String> info = session.getUserDetails();
-        if (info.get(SessionManager.KEY_USER_ID) == "-1") {
-        } else if (info.get(SessionManager.KEY_USER_ID) == "0") {
-        } else if (Integer.parseInt(info.get(SessionManager.KEY_USER_ID)) > 0) {
-            final int KEY_USER_ID = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
-            mdownloadData = new Thread() {
-                @Override
-                public void run() {
-                    currentUser = lc.getUserByID(KEY_USER_ID);
-                    try {
-                        synchronized (this) {
-                            wait(2000);
-                        }
-                    } catch (InterruptedException ex) {
-                    }
-                }
-            };
-            mdownloadData.start();
+        int currentUserId = 0;
+        boolean isInt = false;
+        try {
+            currentUserId = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
+            isInt = true;
+        } catch (NumberFormatException ex) {
+            Log.wtf(TAG, "info.get(SessionManager.KEY_USER_ID): " + info.get(SessionManager.KEY_USER_ID));
         }
+        if (isInt)
+            if (currentUserId == -1) {
+
+            } else if (currentUserId == 0) {
+
+            } else if (currentUserId > 0) {
+                final int KEY_USER_ID = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
+                mdownloadData = new Thread() {
+                    @Override
+                    public void run() {
+                        currentUser = lc.getUserByID(KEY_USER_ID);
+                        try {
+                            synchronized (this) {
+                                wait(2000);
+                            }
+                        } catch (InterruptedException ex) {
+                        }
+                    }
+                };
+                mdownloadData.start();
+            }
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -77,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Profile"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
