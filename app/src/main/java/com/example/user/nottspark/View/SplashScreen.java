@@ -46,13 +46,17 @@ public class SplashScreen extends Activity {
                 } catch (InterruptedException ex) {
                 }
 
-                Intent i = new Intent();
+                Intent launchNextActivity;
+                launchNextActivity = new Intent();
                 Bundle b = new Bundle();
-                i.putParcelableArrayListExtra("allLeaverList", allLeaverList);
-                i.putParcelableArrayListExtra("allUserList", allUserList);
-                i.putExtras(b);
-                i.setClass(sPlashScreen, LoginActivity.class);
-                startActivity(i);
+                launchNextActivity.putParcelableArrayListExtra("allLeaverList", allLeaverList);
+                launchNextActivity.putParcelableArrayListExtra("allUserList", allUserList);
+                launchNextActivity.putExtras(b);
+                launchNextActivity.setClass(sPlashScreen, LoginActivity.class);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(launchNextActivity);
             }
         };
         mdownloadData.start();

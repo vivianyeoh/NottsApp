@@ -1,47 +1,53 @@
 package com.example.user.nottspark.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.user.nottspark.Model.Leaver;
-import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
+
+import java.util.ArrayList;
 
 import getresult.example.asus.nottspark.R;
 
 public class LeaverListActivity extends AppCompatActivity {
-    private static final int DATASET_COUNT = 6;
-    private Leaver[] mDataset;
     private RecyclerView mRecyclerView;
     private LeaverListAdapter mAdapter;
-    private User user;
+    private ArrayList<Leaver> mDataSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.user;
-        initDataset();
-
         setContentView(R.layout.activity_leaver_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent i = getIntent();
+        String newString;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                newString = null;
+                mDataSet = null;
+
+            } else {
+                newString = extras.getString("TitleOfArray");
+                mDataSet = extras.getParcelableArrayList("numOfRedLeaverZone");
+
+            }
+        } else {
+            newString = null;
+            mDataSet = null;
+
+        }
+        setTitle(newString);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.scrollToPosition(((LinearLayoutManager) mRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition());
-        mAdapter = new LeaverListAdapter(mDataset);
+        mAdapter = new LeaverListAdapter(mDataSet, getApplication());
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
-    private void initDataset() {
-        mDataset = new Leaver[DATASET_COUNT];
-        mDataset[0] = new Leaver(10001, "ZONE B", "", "");
-        mDataset[1] = new Leaver(10001, "ZONE B", "", "");
-        mDataset[2] = new Leaver(10001, "ZONE B", "", "");
-        mDataset[3] = new Leaver(10001, "ZONE B", "", "");
-        mDataset[4] = new Leaver(10001, "ZONE B", "", "");
-        mDataset[5] = new Leaver(10001, "ZONE B", "", "");
-    }
 }

@@ -266,6 +266,43 @@ public class MaintainLeaverDBTable {
         }
     }
 
+    public void updateLeaverStatus(final int id) {
+        RequestQueue queue = Volley.newRequestQueue(context);
+        String url = "http://nottspark.maytwelve.com/nottspark/update_leaver_status.php";
+
+        try {
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.wtf(TAG, "Leaver status is updated " + response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.wtf(TAG, "Error in updateLeaverStatus. " + error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("KEY_L_ID", id + "");
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("Content-Type", "application/x-www-form-urlencoded");
+                    return params;
+                }
+            };
+            queue.add(postRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void deleteLeaver(final int id) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://nottspark.maytwelve.com/nottspark/delete_leaver.php";

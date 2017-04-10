@@ -43,12 +43,12 @@ CREATE TABLE `TABLE_LEAVER` (
 --
 
 INSERT INTO `TABLE_LEAVER` (`KEY_L_ID`, `KEY_L_USER_ID`, `KEY_L_LOCATION`, `KEY_L_DESC`, `KEY_L_PARINGSTATUS`, `KEY_L_DATE`, `KEY_L_TIME`) VALUES
-(3, 1, 'ZONE B - Near Blue Building', 'yjmui', 1, '07/04/2017', '05:04 PM'),
-(4, 1, 'ZONE B - Near Blue Building', 'ZONE B - Near Blue Building', 1, '07/04/2017', '05:04 PM'),
-(5, 1, 'ZONE S - Near Sport Complex', 'near tennis court', 0, '08/04/2017', '10:57 am'),
-(6, 1, 'ZONE K - Behind Kapas Hall', 'right behind', 0, '08/04/2017', '10:57 am'),
-(7, 1, 'ZONE R1 - Next to Redang Hall', 'in the middle', 0, '08/04/2017', '03:58 PM'),
-(8, 1, 'ZONE T - Between Tioman and Langkawi Hall', 'almost leaving', 0, '08/04/2017', '09:58 AM');
+(1, 1, 'ZONE B - Near Blue Building', 'yjmui', 1, '07/04/2017', '05:04 PM'),
+(2, 2, 'ZONE B - Near Blue Building', 'ZONE B - Near Blue Building', 1, '07/04/2017', '05:04 PM'),
+(3, 3, 'ZONE S - Near Sport Complex', 'near tennis court', 0, '08/04/2017', '10:57 am'),
+(4, 1, 'ZONE K - Behind Kapas Hall', 'right behind', 1, '08/04/2017', '10:57 am'),
+(5, 2, 'ZONE R1 - Next to Redang Hall', 'in the middle', 0, '08/04/2017', '03:58 PM'),
+(6, 3, 'ZONE T - Between Tioman and Langkawi Hall', 'almost leaving', 0, '08/04/2017', '09:58 AM');
 
 -- --------------------------------------------------------
 

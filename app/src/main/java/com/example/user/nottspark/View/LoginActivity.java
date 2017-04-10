@@ -3,11 +3,13 @@ package com.example.user.nottspark.View;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private ArrayList<Leaver> allLeaverList;
     private ArrayList<User> allUserList;
     private User user;
+    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +68,35 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void successLogin() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putParcelableArrayListExtra("allLeaverList", allLeaverList);
-        intent.putExtra("mainUser", user);
-        startActivity(intent);
+        Intent launchNextActivity;
+        launchNextActivity = new Intent(this, MainActivity.class);
+        launchNextActivity.putParcelableArrayListExtra("allLeaverList", allLeaverList);
+        launchNextActivity.putExtra("mainUser", user);
+        startActivity(launchNextActivity);
     }
 
     public void failedLogin() {
         DialogFragment dialog = new FailedLogin();
-        dialog.show(getFragmentManager(), "Log Out");
+        dialog.show(getFragmentManager(), "Login Failed");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+
     }
 }
 

@@ -3,14 +3,15 @@ package com.example.user.nottspark.View.ViewerPage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
@@ -21,10 +22,11 @@ import java.util.ArrayList;
 import getresult.example.asus.nottspark.R;
 
 public class MainActivity extends AppCompatActivity {
-    //    public static User userinfo = new User(20002, "admin2012", "Admin", "0124547896", "admin@ne.com", "Proton", "Saga", "CAD 2035", "05/01/2017 3:00pm", "Student", "root");//testing please delete
     public static ArrayList<Leaver> allLeaverList;
     public static User user;
+    private Boolean exit = false;
     private String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,14 +62,43 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
+            @Override
+            public void onPageSelected(int position) {
+                adapter.getItem(position).onResume();
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
 
         Intent i = getIntent();
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
         user = i.getParcelableExtra("mainUser");
-        Log.wtf(TAG, "getLeaver" + allLeaverList.get(0).toString());
-        Log.wtf(TAG, "user" + user.toString());
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
     }
 
     @Override
