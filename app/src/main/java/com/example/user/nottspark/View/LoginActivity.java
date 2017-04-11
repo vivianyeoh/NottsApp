@@ -41,15 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-
-                btnLogin.setEnabled(false);
                 userLogin();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        btnLogin.setEnabled(true);
-                    }
-                }, 2000);
             }
         });
 

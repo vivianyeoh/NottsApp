@@ -1,8 +1,8 @@
 package com.example.user.nottspark.View.Fragments;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -55,8 +55,6 @@ public class LeaverFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        Intent bdlIntent = ((Activity) getContext()).getIntent();
-//        Bundle extras = bdlIntent.getExtras();
         final User leaUser = getArguments().getParcelable("currentSecUser");
         View view = inflater.inflate(R.layout.fragment_leaver, container, false);
         String[] redZoneArray = new String[]{
@@ -175,7 +173,8 @@ public class LeaverFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context ctx) {
+    public void onAttach(Activity ctx) {
+        myContext = (FragmentActivity) ctx;
         super.onAttach(ctx);
     }
 

@@ -38,9 +38,6 @@ public class UserProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_profile_fragment, container, false);
-
-//        Intent bdlIntent = ((Activity) getContext()).getIntent();
-//        Bundle extras = bdlIntent.getExtras();
         user = getArguments().getParcelable("currentSecUser");
 
         if (user != null) {
