@@ -3,6 +3,7 @@ package com.example.user.nottspark.View.Fragments;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -22,9 +23,9 @@ import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.LeaverAdded;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -35,15 +36,23 @@ public class LeaverFragment extends Fragment {
     private static EditText leaverDesc;
     private static Button timePickerButton;
     private static Button btnLeave;
+    private static ArrayList<Leaver> leaverArrayList;
+    private static User user;
     private FragmentActivity myContext;
-    private User user;
     private Spinner zone_spinner;
     private ImageView zone_image;
 
 
     public LeaverFragment() {
-        user = MainActivity.currentUser;
 
+    }
+
+
+    @Override
+    public void onAttach(Context ctx) {
+        super.onAttach(ctx);
+        leaverArrayList = getArguments().getParcelableArrayList("allleaverArrayList");
+        user = getArguments().getParcelable("currentSecUser");
     }
 
     @Override

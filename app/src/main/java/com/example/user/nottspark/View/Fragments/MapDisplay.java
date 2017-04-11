@@ -9,12 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.user.nottspark.Model.Leaver;
+import com.example.user.nottspark.Model.User;
+
+import java.util.ArrayList;
+
 import getresult.example.asus.nottspark.R;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class MapDisplay extends Fragment {
+    private static ArrayList<Leaver> leaverArrayList;
+    private static User user;
     private PhotoViewAttacher mAttacher;
-
     public MapDisplay() {
 
     }

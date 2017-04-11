@@ -1,5 +1,6 @@
 package com.example.user.nottspark.View.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,18 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.user.nottspark.Model.Leaver;
+import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.EditProfileActivity;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 import com.rey.material.widget.EditText;
+
+import java.util.ArrayList;
 
 import getresult.example.asus.nottspark.R;
 
 public class UserProfileFragment extends Fragment {
+    private static ArrayList<Leaver> leaverArrayList;
+    private static User user;
     private EditText profileName, profileEmail, profileContact, profileCarMake, profileCarModel, profileCarPlate;
     private TextView profileUserName;
     private Spinner vehicleSpinner;
@@ -24,6 +30,13 @@ public class UserProfileFragment extends Fragment {
 
     public UserProfileFragment() {
 
+    }
+
+    @Override
+    public void onAttach(Context ctx) {
+        super.onAttach(ctx);
+        leaverArrayList = getArguments().getParcelableArrayList("allleaverArrayList");
+        user = getArguments().getParcelable("currentSecUser");
     }
 
     @Override
@@ -42,12 +55,12 @@ public class UserProfileFragment extends Fragment {
         profileCarModel = (EditText) view.findViewById(R.id.profileCarModel);
         profileCarPlate = (EditText) view.findViewById(R.id.profileCarPlate);
 
-        profileName.setText(MainActivity.currentUser.getUserName());
-        profileEmail.setText(MainActivity.currentUser.getUserEmail());
-        profileContact.setText(MainActivity.currentUser.getUserContactNum());
-        profileCarMake.setText(MainActivity.currentUser.getCarMake());
-        profileCarModel.setText(MainActivity.currentUser.getCarModel());
-        profileCarPlate.setText(MainActivity.currentUser.getCarPlate());
+        profileName.setText(user.getUserName());
+        profileEmail.setText(user.getUserEmail());
+        profileContact.setText(user.getUserContactNum());
+        profileCarMake.setText(user.getCarMake());
+        profileCarModel.setText(user.getCarModel());
+        profileCarPlate.setText(user.getCarPlate());
 
         editProfile = (Button) view.findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {

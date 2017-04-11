@@ -1,5 +1,8 @@
 package com.example.user.nottspark.View.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,9 +16,8 @@ import android.widget.Toast;
 
 import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Model.Leaver;
+import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.ExpandableListAdapter;
-import com.example.user.nottspark.View.ListViewElementAdapter;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,13 +27,13 @@ import getresult.example.asus.nottspark.R;
 
 
 public class ParkerFragment extends Fragment {
-    private static ArrayList<Leaver> leaverList;
+    private static ArrayList<Leaver> leaverArrayList;
+    private static User user;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, ArrayList<Leaver>> listDataChild;
     private String TAG = "ParkerFragment";
-    private ListViewElementAdapter adapter;
     private ImageButton refresh;
     private String[] redZoneArray = new String[]{
             "ZONE B - Near Blue Building",
@@ -63,11 +65,8 @@ public class ParkerFragment extends Fragment {
             "ZONE N - Near Engineering Research Building",
             "ZONE F3 - Near F3 Building",
             "ZONE F4 - Near F4 Building"};
-    String[] yellowZoneNum = new String[yellowZoneArray.length];
     private int[] numOfRedLeaverZone = new int[redZoneArray.length];
-    private int[] numOfYellowLeaverZone = new int[redZoneArray.length];
-    private ArrayList<Leaver>[] redLeaverListByZone = new ArrayList[redZoneArray.length];
-
+    private ArrayList<Leaver>[] redleaverArrayListByZone = new ArrayList[redZoneArray.length];
 
     public ParkerFragment() {
     }
@@ -81,26 +80,14 @@ public class ParkerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_parker, container, false);
+        Intent bdlIntent = ((Activity) getContext()).getIntent();
+        Bundle extras = bdlIntent.getExtras();
+        leaverArrayList = extras.getParcelableArrayList("allLeaverList");
+        user = extras.getParcelable("currentSecUser");
 
-//        listView = (ListView) view.findViewById(R.id.parkingspacenum);
-//        refreshList();
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(getActivity(), LeaverListActivity.class);
-//                intent.putParcelableArrayListExtra("numOfRedLeaverZone", redLeaverListByZone[position]);
-//                String title = redZoneArray[position];
-//                intent.putExtra("TitleOfArray", title);
-//                getActivity().startActivity(intent);
-//            }
-//        });
-// get the listview
-        expListView = (ExpandableListView) view.findViewById(R.id.parkingspacenum);
-
-        // preparing list data
         prepareListData();
-
-        listAdapter = new ExpandableListAdapter(view.getContext(), listDataHeader, listDataChild);
+        expListView = (ExpandableListView) view.findViewById(R.id.parkingspacenum);
+        listAdapter = new ExpandableListAdapter(view.getContext(), listDataHeader, listDataChild, redZoneNum);
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
@@ -115,11 +102,11 @@ public class ParkerFragment extends Fragment {
                             @Override
                             public void run() {
                                 try {
-                                    leaverList = (ArrayList<Leaver>) (new LeaverController(getContext())).getAllLeaver();
+                                    leaverArrayList = (ArrayList<Leaver>) (new LeaverController(getContext())).getAllLeaver();
                                     synchronized (this) {
                                         wait(2000);
                                     }
-                                    if (leaverList.size() > 0)
+                                    if (leaverArrayList.size() > 0)
                                         Toast.makeText(getContext(), "Number of space is refreshed", Toast.LENGTH_SHORT).show();
 
                                 } catch (Exception ex) {
@@ -131,100 +118,102 @@ public class ParkerFragment extends Fragment {
                         refresh.setEnabled(true);
                     }
                 }, 5000);
-                refreshList();
             }
         });
 
         return view;
     }
 
-    /*
-     * Preparing the list data
-     */
+    @Override
+    public void onAttach(Context ctx) {
+        super.onAttach(ctx);
+
+    }
+
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, ArrayList<Leaver>>();
-        leaverList = MainActivity.allLeaverList;
-        if (leaverList.size() > 0) {
+
+        if (leaverArrayList.size() > 0) {
             for (int i = 0; i < numOfRedLeaverZone.length; i++) {
                 listDataHeader.add(redZoneArray[i]);
-                redLeaverListByZone[i] = new ArrayList<Leaver>();
+                redleaverArrayListByZone[i] = new ArrayList<Leaver>();
             }
 
-            for (int i = 0; i < leaverList.size(); i++) {
-                if (leaverList.get(i).getPairingStatus() == 0) {
-                    switch (leaverList.get(i).getLocation()) {
+            for (int i = 0; i < leaverArrayList.size(); i++) {
+                if (leaverArrayList.get(i).getPairingStatus() == 0) {
+                    switch (leaverArrayList.get(i).getLocation()) {
                         case "ZONE B - Near Blue Building":
                             numOfRedLeaverZone[0]++;
-                            redLeaverListByZone[0].add(leaverList.get(i));
+                            redleaverArrayListByZone[0].add(leaverArrayList.get(i));
                             break;
                         case "ZONE P - Near Civil Mixing Lab":
                             numOfRedLeaverZone[1]++;
-                            redLeaverListByZone[1].add(leaverList.get(i));
+                            redleaverArrayListByZone[1].add(leaverArrayList.get(i));
                             break;
                         case "ZONE N1 - Next to Engineering Research Building":
                             numOfRedLeaverZone[2]++;
-                            redLeaverListByZone[2].add(leaverList.get(i));
+                            redleaverArrayListByZone[2].add(leaverArrayList.get(i));
                             break;
                         case "ZONE N2 - Next to Engineering Research Building":
                             numOfRedLeaverZone[3]++;
-                            redLeaverListByZone[3].add(leaverList.get(i));
+                            redleaverArrayListByZone[3].add(leaverArrayList.get(i));
                             break;
                         case "ZONE J1 - Behind Purple Building":
                             numOfRedLeaverZone[4]++;
-                            redLeaverListByZone[4].add(leaverList.get(i));
+                            redleaverArrayListByZone[4].add(leaverArrayList.get(i));
                             break;
                         case "ZONE J2 - Around Nexus/Rawa area":
                             numOfRedLeaverZone[5]++;
-                            redLeaverListByZone[5].add(leaverList.get(i));
+                            redleaverArrayListByZone[5].add(leaverArrayList.get(i));
                             break;
                         case "ZONE C - Outside SA Circle":
                             numOfRedLeaverZone[6]++;
-                            redLeaverListByZone[6].add(leaverList.get(i));
+                            redleaverArrayListByZone[6].add(leaverArrayList.get(i));
                             break;
                         case "ZONE H - Near Yellow Building/SA Bus Stop":
                             numOfRedLeaverZone[7]++;
-                            redLeaverListByZone[7].add(leaverList.get(i));
+                            redleaverArrayListByZone[7].add(leaverArrayList.get(i));
                             break;
                         case "ZONE S - Near Sport Complex":
                             numOfRedLeaverZone[8]++;
-                            redLeaverListByZone[8].add(leaverList.get(i));
+                            redleaverArrayListByZone[8].add(leaverArrayList.get(i));
 
                             break;
                         case "ZONE T - Between Tioman and Langkawi Hall":
                             numOfRedLeaverZone[9]++;
-                            redLeaverListByZone[9].add(leaverList.get(i));
+                            redleaverArrayListByZone[9].add(leaverArrayList.get(i));
                             break;
                         case "ZONE L - Near Pangkor Hall":
                             numOfRedLeaverZone[10]++;
-                            redLeaverListByZone[10].add(leaverList.get(i));
+                            redleaverArrayListByZone[10].add(leaverArrayList.get(i));
                             break;
                         case "ZONE A - Between Pangkor and Kapas Hall":
                             numOfRedLeaverZone[11]++;
-                            redLeaverListByZone[11].add(leaverList.get(i));
+                            redleaverArrayListByZone[11].add(leaverArrayList.get(i));
                             break;
                         case "ZONE K - Behind Kapas Hall":
                             numOfRedLeaverZone[12]++;
-                            redLeaverListByZone[12].add(leaverList.get(i));
+                            redleaverArrayListByZone[12].add(leaverArrayList.get(i));
                             break;
                         case "ZONE R1 - Next to Redang Hall":
                             numOfRedLeaverZone[13]++;
-                            redLeaverListByZone[13].add(leaverList.get(i));
+                            redleaverArrayListByZone[13].add(leaverArrayList.get(i));
                             break;
                         case "ZONE R2 - Behind Redang Hall":
                             numOfRedLeaverZone[14]++;
-                            redLeaverListByZone[14].add(leaverList.get(i));
+                            redleaverArrayListByZone[14].add(leaverArrayList.get(i));
                             break;
                         case "ZONE M - Near Islamic Centre":
                             numOfRedLeaverZone[15]++;
-                            redLeaverListByZone[15].add(leaverList.get(i));
+                            redleaverArrayListByZone[15].add(leaverArrayList.get(i));
                             break;
                     }
                 }
             }
 
             for (int i = 0; i < redZoneArray.length; i++)
-                listDataChild.put(listDataHeader.get(i), redLeaverListByZone[i]); // Header, Child data
+                listDataChild.put(listDataHeader.get(i), redleaverArrayListByZone[i]); // Header, Child data
 
             for (int i = 0; i < redZoneNum.length; i++)
                 redZoneNum[i] = numOfRedLeaverZone[i] + "";
@@ -234,141 +223,6 @@ public class ParkerFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-    }
-
-    public void refreshList() {
-        leaverList = MainActivity.allLeaverList;
-        if (leaverList.size() > 0) {
-            for (int i = 0; i < numOfRedLeaverZone.length; i++) {
-                numOfRedLeaverZone[i] = 0;
-                redLeaverListByZone[i] = new ArrayList<Leaver>();
-            }
-            for (int i = 0; i < numOfYellowLeaverZone.length; i++) {
-                numOfYellowLeaverZone[i] = 0;
-            }
-
-            for (int i = 0; i < leaverList.size(); i++) {
-                if (leaverList.get(i).getPairingStatus() == 0) {
-                    switch (leaverList.get(i).getLocation()) {
-                        case "ZONE B - Near Blue Building":
-                            numOfRedLeaverZone[0]++;
-                            redLeaverListByZone[0].add(leaverList.get(i));
-                            break;
-                        case "ZONE P - Near Civil Mixing Lab":
-                            numOfRedLeaverZone[1]++;
-                            redLeaverListByZone[1].add(leaverList.get(i));
-                            break;
-                        case "ZONE N1 - Next to Engineering Research Building":
-                            numOfRedLeaverZone[2]++;
-                            redLeaverListByZone[2].add(leaverList.get(i));
-                            break;
-                        case "ZONE N2 - Next to Engineering Research Building":
-                            numOfRedLeaverZone[3]++;
-                            redLeaverListByZone[3].add(leaverList.get(i));
-                            break;
-                        case "ZONE J1 - Behind Purple Building":
-                            numOfRedLeaverZone[4]++;
-                            redLeaverListByZone[4].add(leaverList.get(i));
-                            break;
-                        case "ZONE J2 - Around Nexus/Rawa area":
-                            numOfRedLeaverZone[5]++;
-                            redLeaverListByZone[5].add(leaverList.get(i));
-                            break;
-                        case "ZONE C - Outside SA Circle":
-                            numOfRedLeaverZone[6]++;
-                            redLeaverListByZone[6].add(leaverList.get(i));
-                            break;
-                        case "ZONE H - Near Yellow Building/SA Bus Stop":
-                            numOfRedLeaverZone[7]++;
-                            redLeaverListByZone[7].add(leaverList.get(i));
-                            break;
-                        case "ZONE S - Near Sport Complex":
-                            numOfRedLeaverZone[8]++;
-                            redLeaverListByZone[8].add(leaverList.get(i));
-
-                            break;
-                        case "ZONE T - Between Tioman and Langkawi Hall":
-                            numOfRedLeaverZone[9]++;
-                            redLeaverListByZone[9].add(leaverList.get(i));
-                            break;
-                        case "ZONE L - Near Pangkor Hall":
-                            numOfRedLeaverZone[10]++;
-                            redLeaverListByZone[10].add(leaverList.get(i));
-                            break;
-                        case "ZONE A - Between Pangkor and Kapas Hall":
-                            numOfRedLeaverZone[11]++;
-                            redLeaverListByZone[11].add(leaverList.get(i));
-                            break;
-                        case "ZONE K - Behind Kapas Hall":
-                            numOfRedLeaverZone[12]++;
-                            redLeaverListByZone[12].add(leaverList.get(i));
-                            break;
-                        case "ZONE R1 - Next to Redang Hall":
-                            numOfRedLeaverZone[13]++;
-                            redLeaverListByZone[13].add(leaverList.get(i));
-                            break;
-                        case "ZONE R2 - Behind Redang Hall":
-                            numOfRedLeaverZone[14]++;
-                            redLeaverListByZone[14].add(leaverList.get(i));
-                            break;
-                        case "ZONE M - Near Islamic Centre":
-                            numOfRedLeaverZone[15]++;
-                            redLeaverListByZone[15].add(leaverList.get(i));
-                            break;
-                    }
-                }
-            }
-
-            for (int i = 0; i < redZoneNum.length; i++)
-                redZoneNum[i] = numOfRedLeaverZone[i] + "";
-
-            for (int i = 0; i < leaverList.size(); i++) {
-                if (leaverList.get(i).getPairingStatus() == 0) {
-
-                    switch (leaverList.get(i).getLocation()) {
-                        case "ZONE B1 - Between Trent and Blue Building":
-                            numOfYellowLeaverZone[0]++;
-                            break;
-                        case "ZONE B2 - Behind Blue Building":
-                            numOfYellowLeaverZone[1]++;
-                            break;
-                        case "ZONE B3 - Between Blue Building":
-                            numOfYellowLeaverZone[2]++;
-                            break;
-                        case "ZONE C - Near Red Building":
-                            numOfYellowLeaverZone[3]++;
-                            break;
-                        case "ZONE D - Near Purple Building":
-                            numOfYellowLeaverZone[4]++;
-                            break;
-                        case "ZONE D2- Between Purple Building and Civil Mixing Lab":
-                            numOfYellowLeaverZone[5]++;
-                            break;
-                        case "ZONE E1 - Between Purple and Orange Building":
-                            numOfYellowLeaverZone[6]++;
-                            break;
-                        case "ZONE E2 - Near Orange and Engineering Research Building":
-                            numOfYellowLeaverZone[7]++;
-                            break;
-                        case "ZONE N - Near Engineering Research Building":
-                            numOfYellowLeaverZone[8]++;
-                            break;
-                        case "ZONE F3 - Near F3 Building":
-                            numOfYellowLeaverZone[9]++;
-                            break;
-                        case "ZONE F4 - Near F4 Building":
-                            numOfYellowLeaverZone[10]++;
-                            break;
-                    }
-                }
-            }
-
-            for (int i = 0; i < yellowZoneNum.length; i++)
-                yellowZoneNum[i] = numOfYellowLeaverZone[i] + "";
-
-//            adapter = new ListViewElementAdapter(getActivity(), redZoneArray, redZoneNum);
-//            listView.setAdapter(adapter);
-        }
     }
 }
 

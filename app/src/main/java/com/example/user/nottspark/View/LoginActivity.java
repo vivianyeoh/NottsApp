@@ -4,36 +4,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.user.nottspark.Controller.UserController;
+import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.LoginDialog;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
+
+import java.util.ArrayList;
 
 import getresult.example.asus.nottspark.R;
 
 public class LoginActivity extends AppCompatActivity {
-    UserController lc;
+    final static LoginDialog alert = new LoginDialog();
+    private static int userId;
     EditText txtUsername, txtPassword;
-    LoginDialog alert = new LoginDialog();
     Button btnLogin;
     SessionManager session;
     private String TAG = "LoginActivity";
     private Boolean exit = false;
-    private Thread mdownloadId;
+    private ArrayList<User> allUserList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        lc = new UserController(getApplicationContext());
-
+        allUserList = getIntent().getParcelableArrayListExtra("allUserList");
         session = new SessionManager(getApplicationContext());
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
@@ -43,27 +42,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 btnLogin.setEnabled(false);
-
+                userLogin();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Thread mLoginBtn = new Thread() {
-                            @Override
-                            public void run() {
-                                userLogin();
-                                try {
-                                    synchronized (this) {
-                                        wait(2000);
-                                    }
-                                } catch (Exception ex) {
-                                    Log.wtf(TAG, "Error in Login Button: " + ex.getLocalizedMessage());
-                                }
-                            }
-                        };
-                        mLoginBtn.start();
                         btnLogin.setEnabled(true);
                     }
-                }, 5000);
+                }, 2000);
             }
         });
 
@@ -81,29 +66,18 @@ public class LoginActivity extends AppCompatActivity {
         final String username = txtUsername.getText().toString().trim();
         final String password = txtPassword.getText().toString().trim();
         if (username.length() > 0 && password.length() > 0) {
-            mdownloadId = new Thread() {
-                @Override
-                public void run() {
-                    int id = lc.checkPasswordUsername(username, password);
-                    Log.wtf(TAG, "id: " + id);
-                    try {
-                        synchronized (this) {
-                            wait(2000);
-                        }
-                    } catch (InterruptedException ex) {
-                    }
-                    if (id != 0 && id != -1) {
-                        session.createLoginSession(id + "");
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                }
-            };
-            mdownloadId.start();
 
+            userId = checkUserNamePassword(username, password);
+            if (userId != -1) {
+                session.createLoginSession(userId + "");
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            } else {
+                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
+            }
+        } else {
+            alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
         }
-        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
     }
 
     public void userRegistration() {
@@ -126,6 +100,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }, 3 * 1000);
         }
+    }
+
+    public int checkUserNamePassword(String username, String password) {
+        for (User l : allUserList)
+            if (l.getUserUsername().equals(username) && l.getUserPassword().equals(password))
+                return l.getUserID();
+        return -1;
     }
 }
 

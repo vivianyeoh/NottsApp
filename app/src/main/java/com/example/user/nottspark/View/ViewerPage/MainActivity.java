@@ -44,23 +44,24 @@ public class MainActivity extends AppCompatActivity {
         allUserList = i.getParcelableArrayListExtra("allUserList");
 
         session = new SessionManager(getApplicationContext());
-        session.checkLogin();
-
+        session.checkLogin(allUserList);
         HashMap<String, String> info = session.getUserDetails();
+
+        if (session.isLoggedIn() && info.get(SessionManager.KEY_USER_ID) != null) {
+            String stringUserId = info.get(SessionManager.KEY_USER_ID);
         int currentUserId = 0;
         boolean isInt = false;
+
         try {
-            currentUserId = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
-            isInt = true;
+            if (stringUserId != null) {
+                currentUserId = Integer.parseInt(stringUserId);
+                isInt = true;
+            }
         } catch (NumberFormatException ex) {
             Log.wtf(TAG, "info.get(SessionManager.KEY_USER_ID): " + info.get(SessionManager.KEY_USER_ID));
         }
         if (isInt)
-            if (currentUserId == -1) {
-
-            } else if (currentUserId == 0) {
-
-            } else if (currentUserId > 0) {
+            if (currentUserId > 0) {
                 final int KEY_USER_ID = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
                 mdownloadData = new Thread() {
                     @Override
@@ -85,11 +86,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Map"));
         tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
         tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
-        tabLayout.addTab(tabLayout.newTab().setText("History"));
         tabLayout.addTab(tabLayout.newTab().setText("Profile"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList);
+            final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, currentUser);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+        }
     }
 
     @Override

@@ -28,7 +28,7 @@ public class MaintainUserDBTable {
     private final Context context;
     private ArrayList<User> userList = new ArrayList();
     private User download1user;
-    private int id;
+
     public MaintainUserDBTable(Context context) {
         this.context = context;
     }
@@ -338,37 +338,6 @@ public class MaintainUserDBTable {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
         return totalUser[0];
-    }
-
-    public int checkPasswordUsername(final String username, final String password) {
-        String url = "http://nottspark.maytwelve.com/nottspark/check_username_pass.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    id = Integer.parseInt(response);
-                    Log.wtf(TAG, "checkPasswordUsername: " + id);
-                } catch (Exception e) {
-                    Log.wtf(TAG, "Error in checkPasswordUsername catch:" + e.getMessage());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.wtf(TAG, "Error in checkPasswordUsername:" + error.getMessage());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("KEY_USER_USERNAME", username);
-                params.put("KEY_USER_PASSWORD", password);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-        return id;
     }
 }
 

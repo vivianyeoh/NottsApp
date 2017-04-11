@@ -18,22 +18,22 @@ import getresult.example.asus.nottspark.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private Context _context;
-    private List<String> _listDataHeader; // header titles
+    private Context context;
+    private List<String> listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, ArrayList<Leaver>> _listDataChild;
+    private HashMap<String, ArrayList<Leaver>> listDataChild;
+    private String[] redZoneNum;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, ArrayList<Leaver>> listChildData) {
-        this._context = context;
-        this._listDataHeader = listDataHeader;
-        this._listDataChild = listChildData;
+    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, ArrayList<Leaver>> listChildData, String[] redZoneNum) {
+        this.context = context;
+        this.listDataHeader = listDataHeader;
+        this.listDataChild = listChildData;
+        this.redZoneNum = redZoneNum;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .get(childPosititon);
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).get(childPosititon);
     }
 
     @Override
@@ -42,38 +42,35 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         final Leaver childText = (Leaver) getChild(groupPosition, childPosition);
-
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.row_in_parker, null);
         }
-
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.tvDesc);
-
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.tvDesc);
         txtListChild.setText(childText.getLeavingTime());
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .size();
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return this._listDataHeader.get(groupPosition);
+        return this.listDataHeader.get(groupPosition);
+    }
+
+    public String getTtlSpace(int groupPosition) {
+        return this.redZoneNum[groupPosition];
     }
 
     @Override
     public int getGroupCount() {
-        return this._listDataHeader.size();
+        return this.listDataHeader.size();
     }
 
     @Override
@@ -85,16 +82,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String headerTitle = (String) getGroup(groupPosition);
+        String numOfParking = getTtlSpace(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setText(headerTitle);
+        TextView tvZoneString = (TextView) convertView.findViewById(R.id.zoneString);
+        tvZoneString.setTypeface(null, Typeface.BOLD);
+        tvZoneString.setText(headerTitle);
+        TextView tvNumOfParking = (TextView) convertView.findViewById(R.id.numOfParking);
+        tvNumOfParking.setTypeface(null, Typeface.BOLD);
+        tvNumOfParking.setText(numOfParking);
 
         return convertView;
     }
