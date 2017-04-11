@@ -1,6 +1,5 @@
 package com.example.user.nottspark.View.Fragments;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -37,7 +36,6 @@ public class LeaverFragment extends Fragment {
     private static Button timePickerButton;
     private static Button btnLeave;
     private static ArrayList<Leaver> leaverArrayList;
-    private static User user;
     private FragmentActivity myContext;
     private Spinner zone_spinner;
     private ImageView zone_image;
@@ -49,27 +47,17 @@ public class LeaverFragment extends Fragment {
 
 
     @Override
-    public void onAttach(Context ctx) {
-        super.onAttach(ctx);
-        leaverArrayList = getArguments().getParcelableArrayList("allleaverArrayList");
-        user = getArguments().getParcelable("currentSecUser");
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        myContext = (FragmentActivity) activity;
-        super.onAttach(activity);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        Intent bdlIntent = ((Activity) getContext()).getIntent();
+//        Bundle extras = bdlIntent.getExtras();
+        final User leaUser = getArguments().getParcelable("currentSecUser");
         View view = inflater.inflate(R.layout.fragment_leaver, container, false);
         String[] redZoneArray = new String[]{
                 "ZONE B - Near Blue Building",
@@ -162,7 +150,7 @@ public class LeaverFragment extends Fragment {
         btnLeave = (Button) view.findViewById(R.id.btnLeave);
         btnLeave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                uploadLeaverData();
+                uploadLeaverData(leaUser);
                 LeaverAdded dialogFragment = new LeaverAdded();
                 dialogFragment.show(getActivity().getFragmentManager(), "1 Leaver Added");
             }
@@ -171,7 +159,7 @@ public class LeaverFragment extends Fragment {
         return view;
     }
 
-    public void uploadLeaverData() {
+    public void uploadLeaverData(User user) {
         String location = zone_spinner.getSelectedItem().toString();
         String time = leaveTime.getText().toString();
         String leaveDesc = leaverDesc.getText().toString();
@@ -184,6 +172,11 @@ public class LeaverFragment extends Fragment {
     public void showTimePickerDialog() {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(myContext.getSupportFragmentManager(), "timePicker");
+    }
+
+    @Override
+    public void onAttach(Context ctx) {
+        super.onAttach(ctx);
     }
 
     public static class TimePickerFragment extends DialogFragment
@@ -214,7 +207,5 @@ public class LeaverFragment extends Fragment {
         }
 
     }
-
-
 }
 

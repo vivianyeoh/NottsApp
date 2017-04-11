@@ -6,12 +6,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.example.user.nottspark.Model.User;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SessionManager {
-    public static final String KEY_USER_ID = "Userid";
+    public static final String KEY_USER = "User";
     private static final String PREF_NAME = "NottsPark";
     private static final String IS_LOGIN = "IsLoggedIn";
     SharedPreferences pref;
@@ -25,9 +25,11 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void createLoginSession(String userid) {
+    public void createLoginSession(User user) {
+        Gson gson = new Gson();
+        String userJson = gson.toJson(user);
         editor.putBoolean(IS_LOGIN, true);
-        editor.putString(KEY_USER_ID, userid);
+        editor.putString(KEY_USER, userJson);
         editor.commit();
     }
 
@@ -41,10 +43,10 @@ public class SessionManager {
         }
     }
 
-    public HashMap<String, String> getUserDetails() {
-        HashMap<String, String> info = new HashMap<String, String>();
-        info.put(KEY_USER_ID, pref.getString(KEY_USER_ID, ""));
-        return info;
+    public User getUserDetails() {
+        Gson gson = new Gson();
+        String json = pref.getString(KEY_USER, "");
+        return gson.fromJson(json, User.class);
     }
 
     public void logoutUser() {

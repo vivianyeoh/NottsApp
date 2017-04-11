@@ -21,6 +21,7 @@ import getresult.example.asus.nottspark.R;
 public class LoginActivity extends AppCompatActivity {
     final static LoginDialog alert = new LoginDialog();
     private static int userId;
+    private static User user;
     EditText txtUsername, txtPassword;
     Button btnLogin;
     SessionManager session;
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
             userId = checkUserNamePassword(username, password);
             if (userId != -1) {
-                session.createLoginSession(userId + "");
+                session.createLoginSession(user);
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             } else {
@@ -104,8 +105,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public int checkUserNamePassword(String username, String password) {
         for (User l : allUserList)
-            if (l.getUserUsername().equals(username) && l.getUserPassword().equals(password))
+            if (l.getUserUsername().equals(username) && l.getUserPassword().equals(password)) {
+                user = l;
                 return l.getUserID();
+            }
         return -1;
     }
 }

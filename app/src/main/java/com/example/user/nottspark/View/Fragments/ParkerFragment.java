@@ -1,8 +1,6 @@
 package com.example.user.nottspark.View.Fragments;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -80,10 +78,10 @@ public class ParkerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_parker, container, false);
-        Intent bdlIntent = ((Activity) getContext()).getIntent();
-        Bundle extras = bdlIntent.getExtras();
-        leaverArrayList = extras.getParcelableArrayList("allLeaverList");
-        user = extras.getParcelable("currentSecUser");
+//        Intent bdlIntent = ((Activity) getContext()).getIntent();
+//        Bundle extras = bdlIntent.getExtras();
+        leaverArrayList = getArguments().getParcelableArrayList("allLeaverList");
+        user = getArguments().getParcelable("currentSecUser");
 
         prepareListData();
         expListView = (ExpandableListView) view.findViewById(R.id.parkingspacenum);

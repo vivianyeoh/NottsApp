@@ -8,7 +8,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.SessionManager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import getresult.example.asus.nottspark.R;
 
@@ -45,84 +43,55 @@ public class MainActivity extends AppCompatActivity {
 
         session = new SessionManager(getApplicationContext());
         session.checkLogin(allUserList);
-        HashMap<String, String> info = session.getUserDetails();
 
-        if (session.isLoggedIn() && info.get(SessionManager.KEY_USER_ID) != null) {
-            String stringUserId = info.get(SessionManager.KEY_USER_ID);
-        int currentUserId = 0;
-        boolean isInt = false;
+        if (session.isLoggedIn() && session.getUserDetails() != null && allLeaverList != null) {
+            currentUser = session.getUserDetails();
 
-        try {
-            if (stringUserId != null) {
-                currentUserId = Integer.parseInt(stringUserId);
-                isInt = true;
-            }
-        } catch (NumberFormatException ex) {
-            Log.wtf(TAG, "info.get(SessionManager.KEY_USER_ID): " + info.get(SessionManager.KEY_USER_ID));
-        }
-        if (isInt)
-            if (currentUserId > 0) {
-                final int KEY_USER_ID = Integer.parseInt(info.get(SessionManager.KEY_USER_ID));
-                mdownloadData = new Thread() {
-                    @Override
-                    public void run() {
-                        currentUser = lc.getUserByID(KEY_USER_ID);
-                        try {
-                            synchronized (this) {
-                                wait(2000);
-                            }
-                        } catch (InterruptedException ex) {
-                        }
-                    }
-                };
-                mdownloadData.start();
-            }
+            setContentView(R.layout.activity_main);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+            tabLayout.addTab(tabLayout.newTab().setText("Map"));
+            tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
+            tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
+            tabLayout.addTab(tabLayout.newTab().setText("Profile"));
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Map"));
-        tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
-        tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
-        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
-
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+            final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
             final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, currentUser);
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
+            viewPager.setAdapter(adapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
+                }
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-            }
-        });
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                }
+            });
+            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                adapter.getItem(position).onResume();
-            }
+                @Override
+                public void onPageSelected(int position) {
+                    adapter.getItem(position).onResume();
+                }
 
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
+                @Override
+                public void onPageScrolled(int arg0, float arg1, int arg2) {
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
+                @Override
+                public void onPageScrollStateChanged(int arg0) {
+                }
+            });
         }
     }
 

@@ -29,31 +29,26 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("currentSecUser", curUser);
+        bundle.putParcelableArrayList("allLeaverList", leaverArrayList);
         switch (position) {
             case 0:
                 MapDisplay mapDisplay = new MapDisplay();
                 return mapDisplay;
             case 1:
                 ParkerFragment parkerFragment = new ParkerFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("allLeaverList", leaverArrayList);
-                bundle.putParcelable("currentSecUser", curUser);
                 parkerFragment.setArguments(bundle);
                 return parkerFragment;
             case 2:
                 LeaverFragment leaverFragment = new LeaverFragment();
                 Bundle bundle2 = new Bundle();
-                bundle2.putParcelableArrayList("allLeaverList", leaverArrayList);
                 bundle2.putParcelable("currentSecUser", curUser);
-                leaverFragment.setArguments(bundle2);
+                leaverFragment.setArguments(bundle);
                 return leaverFragment;
             case 3:
                 UserProfileFragment userProfileFragment = new UserProfileFragment();
-                Bundle bundle3 = new Bundle();
-                bundle3.putParcelableArrayList("allLeaverList", leaverArrayList);
-                bundle3.putParcelable("currentSecUser", curUser);
-                userProfileFragment.setArguments(bundle3);
+                userProfileFragment.setArguments(bundle);
                 return userProfileFragment;
             default:
                 return null;

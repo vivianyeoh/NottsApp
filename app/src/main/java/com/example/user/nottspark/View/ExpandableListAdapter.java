@@ -49,8 +49,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.row_in_parker, null);
         }
-        TextView txtListChild = (TextView) convertView.findViewById(R.id.tvDesc);
-        txtListChild.setText(childText.getLeavingTime());
+        TextView tvDesc = (TextView) convertView.findViewById(R.id.tvDesc);
+        TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
+        TextView tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
+        tvDesc.setText(childText.getLeaverDesc());
+        tvTime.setText(childText.getLeavingTime());
+        tvStatus.setText(childText.getPairingStatus() + "");
         return convertView;
     }
 

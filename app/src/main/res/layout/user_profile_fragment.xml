@@ -11,31 +11,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0.20"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="141dp"
-                android:layout_height="match_parent"
-                android:src="@android:drawable/sym_def_app_icon"
-                app:civ_border_color="@android:color/transparent"
-                app:civ_border_width="2dp" />
-
-            <TextView
-                android:id="@+id/profileUserName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:textSize="30dp"
-                android:textStyle="normal|bold" />
-
-        </LinearLayout>
-
         <com.rey.material.widget.EditText
             android:id="@+id/profileName"
             android:layout_width="match_parent"
