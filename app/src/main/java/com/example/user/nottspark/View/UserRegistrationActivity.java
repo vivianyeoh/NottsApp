@@ -2,16 +2,14 @@ package com.example.user.nottspark.View;
 
 
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.user.nottspark.View.Dialogs.SuccessRegister;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
+import com.rey.material.widget.EditText;
 
 import getresult.example.asus.nottspark.R;
 
@@ -69,10 +67,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
         DialogFragment sr = new SuccessRegister();
         sr.show(getFragmentManager(), "Successful Register");
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
 

@@ -22,6 +22,16 @@
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
+            android:id="@+id/profileUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Username"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
             android:id="@+id/profileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +42,16 @@
             android:textSize="20dp"
             app:et_labelEnable="true" />
 
+        <com.rey.material.widget.EditText
+            android:id="@+id/profileAccType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Email"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/profileContact"
@@ -43,6 +63,7 @@
             android:inputType="text|number"
             android:textSize="20dp"
             app:et_labelEnable="true" />
+
 
         <TextView
             android:layout_width="match_parent"
@@ -92,7 +113,7 @@
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.Button
-            android:id="@+id/editProfile"
+            android:id="@+id/btnEditProfile"
             style="@style/Material.Drawable.Ripple.Touch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

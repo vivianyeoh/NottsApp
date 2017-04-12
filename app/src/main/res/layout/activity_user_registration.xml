@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.nottspark.View.UserRegistrationActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,24 +29,35 @@
             android:layout_marginTop="5dp"
             android:background="@color/purple500" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_username" />
+            android:hint="@string/prompt_username"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/passwordReconfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password_reconfirm" />
+            android:hint="@string/password_reconfirm"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
         <Spinner
             android:id="@+id/accTypeReg"
             style="@style/Material.Widget.Spinner"
@@ -63,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+
             android:text="Personal Info"
             android:textColor="@color/purple500"
             android:textStyle="normal|bold" />
@@ -74,23 +87,35 @@
             android:layout_marginTop="5dp"
             android:background="@color/purple500" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/accName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="Name"
+            android:maxLines="1"
+            android:textSize="20dp"
 
-        <EditText
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
             android:id="@+id/contactNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contact Number" />
+            android:hint="Contact Number"
 
-        <EditText
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
             android:id="@+id/regEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            android:maxLines="1"
+
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
 
 
         <TextView
@@ -121,28 +146,60 @@
             android:spinnerMode="dropdown"
             android:textSize="18sp" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/carModelReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Car Model, example: Saga, Camry" />
+            android:hint="Car Model, example: Saga, Camry"
 
-        <EditText
+            android:maxLines="1"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <com.rey.material.widget.EditText
             android:id="@+id/carPlateReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Car Plate" />
+            android:hint="Car Plate"
+            android:maxLines="1"
 
-        <com.rey.material.widget.Button
-            android:id="@+id/btnAddUser"
-            style="@style/Material.Drawable.Ripple.Touch"
-            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            app:et_labelEnable="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@color/deeporange"
-            android:elevation="2dp"
-            android:text="submit"
-            android:textColor="@android:color/white"
-            app:rd_enable="true" />
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <com.rey.material.widget.Button
+                android:id="@+id/btnAddUser"
+                style="@style/Material.Drawable.Ripple.Touch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/deeporange"
+                android:elevation="2dp"
+                android:text="submit"
+                android:textColor="@android:color/white"
+                app:rd_enable="true" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/btnCancel"
+                style="@style/Material.Drawable.Ripple.Touch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:background="@color/red"
+                android:elevation="2dp"
+                android:text="Cancel"
+                android:textColor="@android:color/white"
+                app:rd_enable="true" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -38,6 +38,7 @@ public class LeaverController {
     public void updateLeaverStatus(final int id) {
         npd.updateLeaverStatus(id);
     }
+
     public int getCount() {
         return npd.getCount();
     }

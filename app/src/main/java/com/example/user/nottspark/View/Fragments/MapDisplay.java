@@ -21,6 +21,7 @@ public class MapDisplay extends Fragment {
     private static ArrayList<Leaver> leaverArrayList;
     private static User user;
     private PhotoViewAttacher mAttacher;
+
     public MapDisplay() {
 
     }

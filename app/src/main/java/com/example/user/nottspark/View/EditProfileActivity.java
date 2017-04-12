@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.SuccessRegister;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
+import com.rey.material.widget.EditText;
 
 import getresult.example.asus.nottspark.R;
 
@@ -21,6 +21,13 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText mUsernameField, mPasswordField, mPasswordVerifyField, mName, mContact, mEmail, mCarModel, mCarPlate;
     private Spinner mAccType, mCarMake;
     private User user;
+
+
+    //
+    private EditText profileName, profileEmail, profileContact, profileCarMake, profileCarModel, profileCarPlate, profileAccType;
+    private Button btnEditProfile, btnEditPassword;//
+
+
 
     public static void selectSpinnerItemByValue(Spinner spnr, String value) {
         ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();

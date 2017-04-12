@@ -68,24 +68,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-//
-//    public void userLogin() {
-//
-//        final String username = txtUsername.getText().toString().trim();
-//        final String password = txtPassword.getText().toString().trim();
-//        if (username.length() > 0 && password.length() > 0) {
-//
-//            userId = checkUserNamePassword(username, password);
-//            if (userId != -1) {
-//                session.createLoginSession(user);
-//                returnMain();
-//            } else {
-//                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
-//            }
-//        } else {
-//            alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
-//        }
-//    }
 
     public void userRegistration() {
         Intent intent = new Intent(this, UserRegistrationActivity.class);
