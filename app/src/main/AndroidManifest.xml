@@ -17,9 +17,14 @@
         <activity
             android:name="com.example.user.nottspark.View.LoginActivity"
             android:label="NottsPark"
+            android:launchMode="singleTop"
+            android:noHistory="true"
             android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />>
         </activity>
-        <activity android:name="com.example.user.nottspark.View.ViewerPage.MainActivity" />
+        <activity android:name="com.example.user.nottspark.View.ViewerPage.MainActivity"></activity>
         <activity
             android:name="com.example.user.nottspark.View.UserRegistrationActivity"
             android:label="Registration"
@@ -32,7 +37,6 @@
         <activity
             android:name="com.example.user.nottspark.View.EditProfileActivity"
             android:label="Edit Profile"
-            android:parentActivityName="com.example.user.nottspark.View.ViewerPage.MainActivity"
             android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

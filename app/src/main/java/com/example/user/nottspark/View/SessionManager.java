@@ -1,5 +1,6 @@
 package com.example.user.nottspark.View;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,11 +38,12 @@ public class SessionManager {
         if (!this.isLoggedIn()) {
             Intent i = new Intent(context, LoginActivity.class);
             i.putParcelableArrayListExtra("allUserList", userList);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i);
+            i.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            i.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+            ((Activity) context).startActivityForResult(i, 2);
         }
     }
+
 
     public User getUserDetails() {
         Gson gson = new Gson();

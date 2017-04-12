@@ -52,9 +52,6 @@ public class SplashScreen extends Activity {
                 launchNextActivity.putParcelableArrayListExtra("allUserList", allUserList);
                 launchNextActivity.putExtras(b);
                 launchNextActivity.setClass(splashScreen, MainActivity.class);
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(launchNextActivity);
             }
         };

@@ -27,6 +27,14 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
         this.curUser = curUser;
     }
 
+    public void setLeaverArrayList(ArrayList<Leaver> leaverArrayList) {
+        this.leaverArrayList = leaverArrayList;
+    }
+
+    public void setCurUser(User curUser) {
+        this.curUser = curUser;
+    }
+
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();

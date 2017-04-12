@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
+import com.example.user.nottspark.View.LoginActivity;
 import com.example.user.nottspark.View.SessionManager;
 
 import java.util.ArrayList;
@@ -25,74 +26,86 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Leaver> allLeaverList;
     public static ArrayList<User> allUserList;
     public static User currentUser;
+    private static ViewerPageAdapter adapter;
     SessionManager session;
     UserController lc;
+    Bundle savedInstanceState;
     private Boolean exit = false;
     private String TAG = "MainActivity";
     private Thread mdownloadData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        savedInstanceState = this.savedInstanceState;
+        setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
         lc = new UserController(getApplicationContext());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        Intent i = getIntent();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Map"));
+        tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
+        tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
+        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
+
+        Intent i = getIntent();//get intent from splash activity
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
         allUserList = i.getParcelableArrayListExtra("allUserList");
 
         session = new SessionManager(getApplicationContext());
-        session.checkLogin(allUserList);
 
-        if (session.isLoggedIn() && session.getUserDetails() != null && allLeaverList != null) {
+        if (session.isLoggedIn()) {
             currentUser = session.getUserDetails();
-
-            setContentView(R.layout.activity_main);
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-            tabLayout.addTab(tabLayout.newTab().setText("Map"));
-            tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
-            tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
-            tabLayout.addTab(tabLayout.newTab().setText("Profile"));
-
-            final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-            final ViewerPageAdapter adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, currentUser);
-            viewPager.setAdapter(adapter);
-            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    viewPager.setCurrentItem(tab.getPosition());
-                }
-
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
-
-                }
-
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
-
-                }
-            });
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-                @Override
-                public void onPageSelected(int position) {
-                    adapter.getItem(position).onResume();
-                }
-
-                @Override
-                public void onPageScrolled(int arg0, float arg1, int arg2) {
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int arg0) {
-                }
-            });
+        } else {
+            Intent loginIntent = new Intent(getBaseContext(), LoginActivity.class);
+            loginIntent.putParcelableArrayListExtra("allUserList", allUserList);
+            loginIntent.putParcelableArrayListExtra("allLeaverList", allLeaverList);
+            this.startActivityForResult(loginIntent, 2);
         }
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, currentUser);
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                adapter.getItem(position).onResume();
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.setCurUser(currentUser);
+        adapter.setLeaverArrayList(allLeaverList);
     }
 
     @Override
@@ -125,5 +138,13 @@ public class MainActivity extends AppCompatActivity {
             session.logoutUser();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            currentUser = data.getParcelableExtra("user");
+            allLeaverList = data.getParcelableArrayListExtra("allLeaverList");
+        }
     }
 }

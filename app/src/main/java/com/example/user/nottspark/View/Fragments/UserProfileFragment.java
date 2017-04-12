@@ -68,6 +68,8 @@ public class UserProfileFragment extends Fragment {
 
     private void editProfile() {
         Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
         getActivity().startActivity(intent);
     }
 }

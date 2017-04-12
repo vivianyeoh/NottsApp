@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.LoginDialog;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -28,12 +28,14 @@ public class LoginActivity extends AppCompatActivity {
     private String TAG = "LoginActivity";
     private Boolean exit = false;
     private ArrayList<User> allUserList;
+    private ArrayList<Leaver> allLeaverList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         allUserList = getIntent().getParcelableArrayListExtra("allUserList");
+        allLeaverList = getIntent().getParcelableArrayListExtra("allLeaverList");
         session = new SessionManager(getApplicationContext());
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
@@ -41,7 +43,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                userLogin();
+                String username = txtUsername.getText().toString().trim();
+                String password = txtPassword.getText().toString().trim();
+                if (username.length() > 0 && password.length() > 0) {
+
+                    userId = checkUserNamePassword(username, password);
+                    if (userId != -1) {
+                        session.createLoginSession(user);
+                        returnMain();
+                    } else {
+                        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
+                    }
+                } else {
+                    alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+                }
             }
         });
 
@@ -53,25 +68,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void userLogin() {
-
-        final String username = txtUsername.getText().toString().trim();
-        final String password = txtPassword.getText().toString().trim();
-        if (username.length() > 0 && password.length() > 0) {
-
-            userId = checkUserNamePassword(username, password);
-            if (userId != -1) {
-                session.createLoginSession(user);
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            } else {
-                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
-            }
-        } else {
-            alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
-        }
-    }
+//
+//    public void userLogin() {
+//
+//        final String username = txtUsername.getText().toString().trim();
+//        final String password = txtPassword.getText().toString().trim();
+//        if (username.length() > 0 && password.length() > 0) {
+//
+//            userId = checkUserNamePassword(username, password);
+//            if (userId != -1) {
+//                session.createLoginSession(user);
+//                returnMain();
+//            } else {
+//                alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
+//            }
+//        } else {
+//            alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+//        }
+//    }
 
     public void userRegistration() {
         Intent intent = new Intent(this, UserRegistrationActivity.class);
@@ -102,6 +116,13 @@ public class LoginActivity extends AppCompatActivity {
                 return l.getUserID();
             }
         return -1;
+    }
+
+    public void returnMain() {
+        getIntent().putExtra("user", user);
+        getIntent().putExtra("allLeaverList", allLeaverList);
+        this.setResult(RESULT_OK, getIntent());
+        super.onBackPressed();
     }
 }
 

@@ -1,5 +1,7 @@
 package com.example.user.nottspark.View;
 
+import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -8,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.user.nottspark.Model.User;
+import com.example.user.nottspark.View.Dialogs.SuccessRegister;
 import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import getresult.example.asus.nottspark.R;
@@ -34,7 +37,7 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         user = MainActivity.currentUser;
         setContentView(R.layout.activity_user_registration);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
@@ -64,6 +67,16 @@ public class EditProfileActivity extends AppCompatActivity {
         if (PasswordValidation.ValidatePassword("ADD YOUR PASSWORD HERE")) {
             // WHAT TO DO AFTER PASSWORD IS VALIDATED?
         }
+    }
+
+    public void successfulUpdate() {
+        DialogFragment sr = new SuccessRegister();
+        sr.show(getFragmentManager(), "Successful Register");
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
 }
