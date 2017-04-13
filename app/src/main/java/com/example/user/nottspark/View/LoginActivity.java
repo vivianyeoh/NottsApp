@@ -12,23 +12,31 @@ import android.widget.Toast;
 
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.View.Dialogs.LoginDialog;
+import com.example.user.nottspark.View.Dialogs.CustDialog;
 
 import java.util.ArrayList;
 
 import getresult.example.asus.nottspark.R;
 
 public class LoginActivity extends AppCompatActivity {
-    final static LoginDialog alert = new LoginDialog();
     private static int userId;
     private static User user;
+    private static ArrayList<User> allUserList;
+    private static ArrayList<Leaver> allLeaverList;
     EditText txtUsername, txtPassword;
     Button btnLogin;
     SessionManager session;
     private String TAG = "LoginActivity";
     private Boolean exit = false;
-    private ArrayList<User> allUserList;
-    private ArrayList<Leaver> allLeaverList;
+    private CustDialog dialogFragment = new CustDialog();
+
+    public static ArrayList<User> getAllUserList() {
+        return allUserList;
+    }
+
+    public static void setAllUserList(ArrayList<User> allUserList2) {
+        allUserList = allUserList2;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +44,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         allUserList = getIntent().getParcelableArrayListExtra("allUserList");
         allLeaverList = getIntent().getParcelableArrayListExtra("allLeaverList");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         session = new SessionManager(getApplicationContext());
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -52,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
                         session.createLoginSession(user);
                         returnMain();
                     } else {
-                        alert.showAlertDialog(LoginActivity.this, "Login failed..", "Wrong username and password", false);
+                        displayMsg("Wrong username and password");
                     }
                 } else {
-                    alert.showAlertDialog(LoginActivity.this, "Login failed..", "Please enter username and password", false);
+                    displayMsg("Please enter username and password");
                 }
             }
         });
@@ -67,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
                 userRegistration();
             }
         });
+    }
+
+    public void displayMsg(String msg) {
+        CustDialog alert = new CustDialog();
+        alert.showAlertDialog(this, "Login Failed", msg);
     }
 
     public void userRegistration() {
@@ -103,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
     public void returnMain() {
         getIntent().putExtra("user", user);
         getIntent().putExtra("allLeaverList", allLeaverList);
+        getIntent().putExtra("allUserList", allUserList);
         this.setResult(RESULT_OK, getIntent());
         super.onBackPressed();
     }

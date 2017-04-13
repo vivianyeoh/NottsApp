@@ -2,8 +2,8 @@
     <string name="app_name">NottsPark</string>
 
     <string-array name="acc_type_array">
-        <item>Student</item>
-        <item>Staff</item>
+        <item>Red Parking Permit</item>
+        <item>Yellow Parking Permit</item>
     </string-array>
 
     <string-array name="red_zone_array">

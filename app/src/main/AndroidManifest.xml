@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -19,9 +20,10 @@
             android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />>
+                android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />
+            >
         </activity>
-        <activity android:name="com.example.user.nottspark.View.ViewerPage.MainActivity"></activity>
+        <activity android:name="com.example.user.nottspark.View.ViewerPage.MainActivity" />
         <activity
             android:name="com.example.user.nottspark.View.UserRegistrationActivity"
             android:label="Registration"
@@ -45,9 +47,11 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.user.nottspark.LoadData"></activity>
     </application>
 
 </manifest>

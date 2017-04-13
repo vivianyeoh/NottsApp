@@ -21,7 +21,7 @@ import android.widget.TimePicker;
 import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
-import com.example.user.nottspark.View.Dialogs.LeaverAdded;
+import com.example.user.nottspark.View.Dialogs.CustDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,48 +90,55 @@ public class LeaverFragment extends Fragment {
 
         zone_image = (ImageView) view.findViewById(R.id.zone_image);
         zone_spinner = (Spinner) view.findViewById(R.id.zone_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, redZoneArray);
-        zone_spinner.setAdapter(adapter);
-        zone_spinner.setPrompt("Parking Space Location");
-
-        zone_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                int position = zone_spinner.getSelectedItemPosition();
-                switch (position) {
-                    case 0:
-                        zone_image.setImageResource(R.drawable.red_area_2);
-                        break;
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                        zone_image.setImageResource(R.drawable.red_area_1);
-                        break;
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 13:
-                    case 14:
-                    case 15:
-                        zone_image.setImageResource(R.drawable.red_area_3);
-                        break;
-                    case 11:
-                    case 12:
-                        zone_image.setImageResource(R.drawable.red_area_4);
-                        break;
-                    default:
-                        zone_image.setImageResource(R.drawable.fullmap_redpermit);
+        ArrayAdapter<String> adapter = null;
+        if (leaUser.getUserAccountType().equals("Red Parking Permit")) {
+            adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, redZoneArray);
+            zone_spinner.setAdapter(adapter);
+            zone_spinner.setPrompt("Parking Space Location");
+            zone_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    int position = zone_spinner.getSelectedItemPosition();
+                    switch (position) {
+                        case 0:
+                            zone_image.setImageResource(R.drawable.red_area_2);
+                            break;
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                            zone_image.setImageResource(R.drawable.red_area_1);
+                            break;
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 13:
+                        case 14:
+                        case 15:
+                            zone_image.setImageResource(R.drawable.red_area_3);
+                            break;
+                        case 11:
+                        case 12:
+                            zone_image.setImageResource(R.drawable.red_area_4);
+                            break;
+                        default:
+                            zone_image.setImageResource(R.drawable.fullmap_redpermit);
+                    }
                 }
-            }
 
-            public void onNothingSelected(AdapterView<?> arg0) {
-                zone_image.setImageResource(R.drawable.red_area_1);
-            }
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    zone_image.setImageResource(R.drawable.red_area_1);
+                }
 
-        });
+            });
+        } else {
+            adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, yellowZoneArray);
+            zone_spinner.setAdapter(adapter);
+            zone_spinner.setPrompt("Parking Space Location");
+            zone_image.setImageResource(R.drawable.yellow_area);
+        }
 
         leaveTime = (EditText) view.findViewById(R.id.leaveTime);
         leaverDesc = (EditText) view.findViewById(R.id.leaverDesc);
@@ -149,8 +156,9 @@ public class LeaverFragment extends Fragment {
         btnLeave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 uploadLeaverData(leaUser);
-                LeaverAdded dialogFragment = new LeaverAdded();
-                dialogFragment.show(getActivity().getFragmentManager(), "1 Leaver Added");
+                CustDialog dialogFragment = new CustDialog();
+                dialogFragment.showAlertDialog(getContext(), "Leaver", "1 Leaver Added");
+
             }
         });
 

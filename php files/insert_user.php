@@ -7,7 +7,7 @@ include 'connection.php';
 $response = array();
 
 // check for required fields
-if ( isset($_POST['$KEY_USER_USERNAME']) && isset($_POST['$KEY_USER_NAME']) && isset($_POST['KEY_USER_CONTACTNUM']) && isset($_POST['KEY_USER_EMAIL'])&& isset($_POST['KEY_CAR_MAKE']) && isset($_POST['KEY_CAR_MODEL']) && isset($_POST['KEY_CAR_PLATE'])&& isset($_POST['KEY_REGISTERDATE']) && isset($_POST['KEY_USER_ACCOUNTTYPE']) && isset($_POST['KEY_USER_PASSWORD'])) {
+if (isset($_POST['KEY_USER_USERNAME']) && isset($_POST['KEY_USER_NAME']) && isset($_POST['KEY_USER_CONTACTNUM']) && isset($_POST['KEY_USER_EMAIL']) && isset($_POST['KEY_CAR_MAKE']) && isset($_POST['KEY_CAR_MODEL']) && isset($_POST['KEY_CAR_PLATE']) && isset($_POST['KEY_REGISTERDATE']) && isset($_POST['KEY_USER_ACCOUNTTYPE']) && isset($_POST['KEY_USER_PASSWORD'])) {
 
 	$KEY_USER_USERNAME= $_POST['KEY_USER_USERNAME'];
 	$KEY_USER_NAME= $_POST['KEY_USER_NAME'];
@@ -29,7 +29,7 @@ if ( isset($_POST['$KEY_USER_USERNAME']) && isset($_POST['$KEY_USER_NAME']) && i
 	}
 
 	// mysql inserting a new row
-	$sql ="INSERT INTO course(KEY_USER_USERNAME, KEY_USER_NAME, KEY_USER_CONTACTNUM, KEY_USER_EMAIL, KEY_CAR_MAKE, KEY_CAR_MODEL, KEY_CAR_PLATE, KEY_REGISTERDATE, KEY_USER_ACCOUNTTYPE, KEY_USER_PASSWORD) VALUES('$KEY_USER_USERNAME', '$KEY_USER_NAME', '$KEY_USER_CONTACTNUM', '$credit', '$KEY_USER_EMAIL', '$KEY_CAR_MAKE', '$KEY_CAR_MODEL', '$KEY_CAR_PLATE', '$KEY_REGISTERDATE', '$KEY_USER_ACCOUNTTYPE', 'KEY_USER_PASSWORD')";
+	$sql ="INSERT INTO TABLE_USER(KEY_USER_USERNAME, KEY_USER_NAME, KEY_USER_CONTACTNUM, KEY_USER_EMAIL, KEY_CAR_MAKE, KEY_CAR_MODEL, KEY_CAR_PLATE, KEY_REGISTERDATE, KEY_USER_ACCOUNTTYPE, KEY_USER_PASSWORD) VALUES('$KEY_USER_USERNAME', '$KEY_USER_NAME', '$KEY_USER_CONTACTNUM', '$KEY_USER_EMAIL', '$KEY_CAR_MAKE', '$KEY_CAR_MODEL', '$KEY_CAR_PLATE', '$KEY_REGISTERDATE', '$KEY_USER_ACCOUNTTYPE', '$KEY_USER_PASSWORD')";
 
 	if ($conn->query($sql) === TRUE) {
 		// successfully inserted into database
@@ -40,7 +40,7 @@ if ( isset($_POST['$KEY_USER_USERNAME']) && isset($_POST['$KEY_USER_NAME']) && i
 	} else {
 		// failed to insert row
 		$response["insertstatus"] = 0;
-		$response["message"] = "User Insert error in db";
+		$response["message"] = "User Insert error in db $sql";
 
 		// echoing JSON response
 		echo json_encode($response);

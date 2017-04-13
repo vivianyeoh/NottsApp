@@ -22,6 +22,7 @@ import getresult.example.asus.nottspark.R;
 
 
 public class ParkerFragment extends Fragment {
+    private static ArrayList<User> userArrayList;
     private static ArrayList<Leaver> leaverArrayList;
     private static User user;
     private static ExpandableListAdapter listAdapter;
@@ -43,9 +44,10 @@ public class ParkerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_parker, container, false);
         leaverArrayList = getArguments().getParcelableArrayList("allLeaverList");
+        userArrayList = getArguments().getParcelableArrayList("allUserList");
         user = getArguments().getParcelable("currentSecUser");
         expListView = (ExpandableListView) view.findViewById(R.id.parkingspacenum);
-        listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList);
+        listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
         expListView.setAdapter(listAdapter);
 
 
@@ -67,7 +69,7 @@ public class ParkerFragment extends Fragment {
                             } catch (InterruptedException ex) {
                             }
                             if (leaverArrayList.size() > 0) {
-                                listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList);
+                                listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
                                 expListView.setAdapter(listAdapter);
                                 Toast.makeText(getContext(), "Number of space is refreshed", Toast.LENGTH_SHORT).show();
                             }

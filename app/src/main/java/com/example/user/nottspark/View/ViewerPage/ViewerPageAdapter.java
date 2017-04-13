@@ -18,13 +18,19 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
 
     private int mNumOfTabs;
     private ArrayList<Leaver> leaverArrayList;
+    private ArrayList<User> userArrayList;
     private User curUser;
 
-    public ViewerPageAdapter(FragmentManager fm, int NumOfTabs, ArrayList<Leaver> leaverArrayList, User curUser) {
+    public ViewerPageAdapter(FragmentManager fm, int NumOfTabs, ArrayList<Leaver> leaverArrayList, ArrayList<User> userArrayList, User curUser) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         this.leaverArrayList = leaverArrayList;
+        this.userArrayList = userArrayList;
         this.curUser = curUser;
+    }
+
+    public void setUserArrayList(ArrayList<User> userArrayList) {
+        this.userArrayList = userArrayList;
     }
 
     public void setLeaverArrayList(ArrayList<Leaver> leaverArrayList) {
@@ -40,9 +46,11 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         bundle.putParcelable("currentSecUser", curUser);
         bundle.putParcelableArrayList("allLeaverList", leaverArrayList);
+        bundle.putParcelableArrayList("allUserList", userArrayList);
         switch (position) {
             case 0:
                 MapDisplay mapDisplay = new MapDisplay();
+                mapDisplay.setArguments(bundle);
                 return mapDisplay;
             case 1:
                 ParkerFragment parkerFragment = new ParkerFragment();

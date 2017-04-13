@@ -34,14 +34,21 @@ public class MapDisplay extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_map_display, container, false);
         ImageView mImageView = (ImageView) view.findViewById(R.id.imageView);
 
-        Drawable bitmap = ContextCompat.getDrawable(getActivity(), R.drawable.fullmap_redpermit);
+        user = getArguments().getParcelable("currentSecUser");
+        Drawable bitmap = null;
+        if (user.getUserAccountType().equals("Red Parking Permit")) {
+
+            bitmap = ContextCompat.getDrawable(getActivity(), R.drawable.fullmap_redpermit);
+
+        } else {
+            bitmap = ContextCompat.getDrawable(getActivity(), R.drawable.fullmap_yellowpermit);
+
+        }
         mImageView.setImageDrawable(bitmap);
         mAttacher = new PhotoViewAttacher(mImageView);
-
         return view;
     }
 

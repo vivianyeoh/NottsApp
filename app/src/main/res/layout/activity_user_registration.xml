@@ -25,7 +25,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="2dip"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple500" />
 
@@ -33,49 +33,42 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="@string/prompt_username"
             android:maxLines="1"
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:maxLines="1"
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/passwordReconfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="@string/password_reconfirm"
             android:inputType="textPassword"
             android:maxLines="1"
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
-        <Spinner
-            android:id="@+id/accTypeReg"
-            style="@style/Material.Widget.Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:dropDownWidth="match_parent"
-            android:entries="@array/acc_type_array"
-            android:fontFamily="sans-serif"
-            android:spinnerMode="dropdown"
-            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
             android:text="Personal Info"
             android:textColor="@color/purple500"
             android:textStyle="normal|bold" />
@@ -83,7 +76,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="2dip"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple500" />
 
@@ -91,32 +84,62 @@
             android:id="@+id/accName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="Name"
             android:maxLines="1"
             android:textSize="20dp"
-
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/contactNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="Contact Number"
-
+            android:inputType="number"
             android:maxLines="1"
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/regEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="Email"
             android:maxLines="1"
-
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-thin"
+            android:text="Parking Permit Type"
+            android:textColor="@color/silver70"
+            android:textStyle="normal|bold" />
+
+        <Spinner
+            android:id="@+id/accTypeReg"
+            style="@style/Material.Widget.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:dropDownWidth="match_parent"
+            android:entries="@array/acc_type_array"
+            android:fontFamily="sans-serif"
+            android:spinnerMode="dropdown"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="15dp"
+            android:background="@color/silver70" />
 
         <TextView
             android:layout_width="match_parent"
@@ -129,49 +152,64 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="2dip"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple500" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-thin"
+            android:text="Car Makes"
+            android:textColor="@color/silver70"
+            android:textStyle="normal|bold" />
 
         <Spinner
             android:id="@+id/carMakeReg"
             style="@style/Material.Widget.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:dropDownWidth="match_parent"
             android:entries="@array/vehicle_brand_array"
-            android:fontFamily="sans-serif"
+            android:fontFamily="Arial"
             android:spinnerMode="dropdown"
             android:textSize="18sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dip"
+            android:layout_marginBottom="15dp"
+            android:background="@color/silver70" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/carModelReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="Car Model, example: Saga, Camry"
-
             android:maxLines="1"
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <com.rey.material.widget.EditText
             android:id="@+id/carPlateReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:hint="Car Plate"
             android:maxLines="1"
-
             android:textSize="20dp"
+            app:et_dividerHeight="2dp"
             app:et_labelEnable="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
 
             <com.rey.material.widget.Button
                 android:id="@+id/btnAddUser"

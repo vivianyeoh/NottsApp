@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Model.Leaver;
+import com.example.user.nottspark.Model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,17 +53,50 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             "ZONE F3 - Near F3 Building",
             "ZONE F4 - Near F4 Building"};
     private int[] numOfRedLeaverZone;//ttl number of spaces per zone
-    private ArrayList<Leaver>[] redleaverArrayListByZone;//arraylist of leavers per zone
+    private ArrayList<Leaver>[] redleaverArrayListByZone;//arraylist of leavers per zone in red zone
+    private int[] numOfYellowLeaverZone;//ttl number of spaces per zone
+    private ArrayList<Leaver>[] yellowleaverArrayListByZone;//arraylist of leavers per zone in yellow
     private ArrayList<Leaver> leaverList;//from database
     private HashMap<String, ArrayList<Leaver>> listDataChild = new HashMap<String, ArrayList<Leaver>>();//hash map to put in listview
+    private String accType;
+    private ArrayList<User> userList;
 
-    public ExpandableListAdapter(Context context, ArrayList<Leaver> leaverList) {
+    public ExpandableListAdapter(Context context, ArrayList<Leaver> leaverList, String accType, ArrayList<User> userList) {
         ExpandableListAdapter.context = context;
-        prepareListData(leaverList);
-
+        this.accType = accType;
+        this.userList = userList;
+        if (accType.equals("Red Parking Permit"))
+            prepareRedZoneListData(leaverList);
+        else
+            prepareYellowZoneListData(leaverList);
     }
 
-    private void prepareListData(ArrayList<Leaver> leaverArrayList) {
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded,
+                             View convertView, ViewGroup parent) {
+        String headerTitle = (String) getGroup(groupPosition);
+        String numOfParking = getTtlSpace(groupPosition);
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_group, null);
+        }
+
+        TextView tvZoneString = (TextView) convertView.findViewById(R.id.zoneString);
+        tvZoneString.setTypeface(null, Typeface.BOLD);
+        tvZoneString.setText(headerTitle);
+        TextView tvNumOfParking = (TextView) convertView.findViewById(R.id.numOfParking);
+        tvNumOfParking.setTypeface(null, Typeface.BOLD);
+        tvNumOfParking.setText(numOfParking);
+
+        return convertView;
+    }
+
+    private void prepareRedZoneListData(ArrayList<Leaver> leaverArrayList) {
         numOfRedLeaverZone = new int[RED_ZONE_ARRAY.length];
         redleaverArrayListByZone = new ArrayList[RED_ZONE_ARRAY.length];
 
@@ -73,7 +107,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
             for (int i = 0; i < leaverArrayList.size(); i++) {
-                if (leaverArrayList.get(i).getPairingStatus() == 0) {
+                User userZone = null;
+                for (User user : userList)
+                    if (user.getUserID() == leaverArrayList.get(i).getUserID()) {
+                        userZone = user;
+                        break;
+                    }
+
+                if (leaverArrayList.get(i).getPairingStatus() == 0 && userZone.getUserAccountType().equals("Red Parking Permit")) {
                     switch (leaverArrayList.get(i).getLocation()) {
                         case "ZONE B - Near Blue Building":
                             numOfRedLeaverZone[0]++;
@@ -145,15 +186,149 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
             for (int i = 0; i < RED_ZONE_ARRAY.length; i++)
                 listDataChild.put(RED_ZONE_ARRAY[i], redleaverArrayListByZone[i]);
-
         }
+    }
+
+    private void prepareYellowZoneListData(ArrayList<Leaver> leaverArrayList) {
+        numOfYellowLeaverZone = new int[YELLOW_ZONE_ARRAY.length];
+        yellowleaverArrayListByZone = new ArrayList[YELLOW_ZONE_ARRAY.length];
+
+        if (leaverArrayList.size() > 0) {
+            for (int i = 0; i < numOfYellowLeaverZone.length; i++) {
+                yellowleaverArrayListByZone[i] = new ArrayList<Leaver>();
+            }
 
 
+            for (int i = 0; i < leaverArrayList.size(); i++) {
+                User userZone = null;
+                for (User user : userList)
+                    if (user.getUserID() == leaverArrayList.get(i).getUserID()) {
+                        userZone = user;
+                        break;
+                    }
+
+                if (leaverArrayList.get(i).getPairingStatus() == 0 && userZone.getUserAccountType().equals("Yellow Parking Permit")) {
+                    switch (leaverArrayList.get(i).getLocation()) {
+                        case "ZONE B - Near Blue Building":
+                            numOfYellowLeaverZone[0]++;
+                            yellowleaverArrayListByZone[0].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE P - Near Civil Mixing Lab":
+                            numOfYellowLeaverZone[1]++;
+                            yellowleaverArrayListByZone[1].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE N1 - Next to Engineering Research Building":
+                            numOfYellowLeaverZone[2]++;
+                            yellowleaverArrayListByZone[2].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE N2 - Next to Engineering Research Building":
+                            numOfYellowLeaverZone[3]++;
+                            yellowleaverArrayListByZone[3].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE J1 - Behind Purple Building":
+                            numOfYellowLeaverZone[4]++;
+                            yellowleaverArrayListByZone[4].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE J2 - Around Nexus/Rawa area":
+                            numOfYellowLeaverZone[5]++;
+                            yellowleaverArrayListByZone[5].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE C - Outside SA Circle":
+                            numOfYellowLeaverZone[6]++;
+                            yellowleaverArrayListByZone[6].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE H - Near Red Building/SA Bus Stop":
+                            numOfYellowLeaverZone[7]++;
+                            yellowleaverArrayListByZone[7].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE S - Near Sport Complex":
+                            numOfYellowLeaverZone[8]++;
+                            yellowleaverArrayListByZone[8].add(leaverArrayList.get(i));
+
+                            break;
+                        case "ZONE T - Between Tioman and Langkawi Hall":
+                            numOfYellowLeaverZone[9]++;
+                            yellowleaverArrayListByZone[9].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE L - Near Pangkor Hall":
+                            numOfYellowLeaverZone[10]++;
+                            yellowleaverArrayListByZone[10].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE A - Between Pangkor and Kapas Hall":
+                            numOfYellowLeaverZone[11]++;
+                            yellowleaverArrayListByZone[11].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE K - Behind Kapas Hall":
+                            numOfYellowLeaverZone[12]++;
+                            yellowleaverArrayListByZone[12].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE R1 - Next to Yellowang Hall":
+                            numOfYellowLeaverZone[13]++;
+                            yellowleaverArrayListByZone[13].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE R2 - Behind Yellowang Hall":
+                            numOfYellowLeaverZone[14]++;
+                            yellowleaverArrayListByZone[14].add(leaverArrayList.get(i));
+                            break;
+                        case "ZONE M - Near Islamic Centre":
+                            numOfYellowLeaverZone[15]++;
+                            yellowleaverArrayListByZone[15].add(leaverArrayList.get(i));
+                            break;
+                    }
+                }
+            }
+            for (int i = 0; i < YELLOW_ZONE_ARRAY.length; i++)
+                listDataChild.put(YELLOW_ZONE_ARRAY[i], yellowleaverArrayListByZone[i]);
+        }
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listDataChild.get(this.RED_ZONE_ARRAY[groupPosition]).get(childPosititon);
+        if (accType.equals("Red Parking Permit"))
+            return this.listDataChild.get(this.RED_ZONE_ARRAY[groupPosition]).get(childPosititon);
+        else
+            return this.listDataChild.get(this.YELLOW_ZONE_ARRAY[groupPosition]).get(childPosititon);
+    }
+
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        if (accType.equals("Red Parking Permit"))
+            return this.listDataChild.get(this.RED_ZONE_ARRAY[groupPosition]).size();
+        else
+            return this.listDataChild.get(this.YELLOW_ZONE_ARRAY[groupPosition]).size();
+    }
+
+    @Override
+    public Object getGroup(int groupPosition) {
+        if (accType.equals("Red Parking Permit"))
+            return this.RED_ZONE_ARRAY[groupPosition];
+        else
+            return this.YELLOW_ZONE_ARRAY[groupPosition];
+    }
+
+    public String getTtlSpace(int groupPosition) {
+        if (accType.equals("Red Parking Permit"))
+            return this.numOfRedLeaverZone[groupPosition] + "";
+        else
+            return this.numOfYellowLeaverZone[groupPosition] + "";
+    }
+
+    @Override
+    public int getGroupCount() {
+        if (accType.equals("Red Parking Permit"))
+            return this.RED_ZONE_ARRAY.length;
+        else
+            return this.YELLOW_ZONE_ARRAY.length;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
     }
 
     @Override
@@ -200,57 +375,4 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    @Override
-    public int getChildrenCount(int groupPosition) {
-        return this.listDataChild.get(this.RED_ZONE_ARRAY[groupPosition]).size();
-    }
-
-    @Override
-    public Object getGroup(int groupPosition) {
-        return this.RED_ZONE_ARRAY[groupPosition];
-    }
-
-    public String getTtlSpace(int groupPosition) {
-        return this.numOfRedLeaverZone[groupPosition] + "";
-    }
-
-    @Override
-    public int getGroupCount() {
-        return this.RED_ZONE_ARRAY.length;
-    }
-
-    @Override
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
-    }
-
-    @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition);
-        String numOfParking = getTtlSpace(groupPosition);
-        if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_group, null);
-        }
-
-        TextView tvZoneString = (TextView) convertView.findViewById(R.id.zoneString);
-        tvZoneString.setTypeface(null, Typeface.BOLD);
-        tvZoneString.setText(headerTitle);
-        TextView tvNumOfParking = (TextView) convertView.findViewById(R.id.numOfParking);
-        tvNumOfParking.setTypeface(null, Typeface.BOLD);
-        tvNumOfParking.setText(numOfParking);
-
-        return convertView;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return true;
-    }
 }

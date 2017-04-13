@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, currentUser);
+        adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, allUserList, currentUser);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         adapter.setCurUser(currentUser);
         adapter.setLeaverArrayList(allLeaverList);
+        adapter.setUserArrayList(allUserList);
     }
 
     @Override
@@ -145,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 2 && resultCode == RESULT_OK) {
             currentUser = data.getParcelableExtra("user");
             allLeaverList = data.getParcelableArrayListExtra("allLeaverList");
+            allUserList = data.getParcelableArrayListExtra("allUserList");
         }
     }
 }
