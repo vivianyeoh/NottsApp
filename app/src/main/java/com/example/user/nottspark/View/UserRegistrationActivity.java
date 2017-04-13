@@ -38,7 +38,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
