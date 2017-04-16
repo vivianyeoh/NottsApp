@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 import com.rey.material.widget.EditText;
 
 import getresult.example.asus.nottspark.R;
@@ -36,7 +35,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = MainActivity.currentUser;
+        user = getIntent().getParcelableExtra("currentSecUser");
         setContentView(R.layout.activity_user_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
@@ -178,7 +177,8 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void refreshActivities(User u) {
-
+//        MainActivity.setCurrentUser(u);
+//        getParent().onContentChanged();
     }
 
 }

@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (exit) {
-            finish(); // finish activity
+            finish();
         } else {
             Toast.makeText(this, "Press Back again to Exit.", Toast.LENGTH_SHORT).show();
             exit = true;
@@ -160,11 +160,5 @@ public class MainActivity extends AppCompatActivity {
             allLeaverList = data.getParcelableArrayListExtra("allLeaverList");
             allUserList = data.getParcelableArrayListExtra("allUserList");
         }
-    }
-
-    @Override
-    public void onContentChanged() {
-        super.onContentChanged();
-
     }
 }

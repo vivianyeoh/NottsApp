@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2017 at 07:13 AM
+-- Generation Time: Apr 16, 2017 at 10:54 AM
 -- Server version: 5.5.54-cll
 -- PHP Version: 5.5.30
 
@@ -48,7 +48,20 @@ INSERT INTO `TABLE_LEAVER` (`KEY_L_ID`, `KEY_L_USER_ID`, `KEY_L_LOCATION`, `KEY_
 (3, 3, 'ZONE S - Near Sport Complex', 'near tennis court', 0, '08/04/2017', '10:57 am'),
 (4, 1, 'ZONE K - Behind Kapas Hall', 'right behind', 1, '08/04/2017', '10:57 am'),
 (5, 2, 'ZONE R1 - Next to Redang Hall', 'in the middle', 0, '08/04/2017', '03:58 PM'),
-(6, 3, 'ZONE T - Between Tioman and Langkawi Hall', 'almost leaving', 0, '08/04/2017', '09:58 AM');
+(6, 3, 'ZONE T - Between Tioman and Langkawi Hall', 'almost leaving', 0, '08/04/2017', '09:58 AM'),
+(9, 2, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:30 pm'),
+(10, 2, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:32 pm'),
+(11, 2, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:47 pm'),
+(12, 2, 'ZONE B - Near Blue Building', 'ZONE B - Near Blue Building', 0, '16/04/2017', '06:49 pm'),
+(13, 2, 'ZONE B - Near Blue Building', 'ZONE B - Near Blue Building', 0, '16/04/2017', '06:49 pm'),
+(14, 1, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:50 PM'),
+(15, 1, 'ZONE B2 - Behind Blue Building', 'ZONE B2 - Behind Blue Building', 0, '16/04/2017', '06:50 pm'),
+(16, 1, 'ZONE B3 - Between Blue Building', 'ZONE B3 - Between Blue Building', 0, '16/04/2017', '06:50 pm'),
+(17, 1, 'ZONE B3 - Between Blue Building', 'ZONE B3 - Between Blue Building', 0, '16/04/2017', '06:50 pm'),
+(18, 1, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:52 pm'),
+(19, 1, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:53 pm'),
+(20, 1, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:53 pm'),
+(21, 1, 'ZONE B1 - Between Trent and Blue Building', 'ZONE B1 - Between Trent and Blue Building', 0, '16/04/2017', '06:54 pm');
 
 -- --------------------------------------------------------
 
@@ -75,9 +88,9 @@ CREATE TABLE `TABLE_USER` (
 --
 
 INSERT INTO `TABLE_USER` (`KEY_USER_ID`, `KEY_USER_USERNAME`, `KEY_USER_NAME`, `KEY_USER_CONTACTNUM`, `KEY_USER_EMAIL`, `KEY_CAR_MAKE`, `KEY_CAR_MODEL`, `KEY_CAR_PLATE`, `KEY_REGISTERDATE`, `KEY_USER_ACCOUNTTYPE`, `KEY_USER_PASSWORD`) VALUES
-(1, 'wong123', 'Wong Lim Wong', '0152368956', 'wong@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'STUDENT', 'wong123'),
-(2, 'vivian', 'Yeoh Hui Wen', '0196587498', 'vivian@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'STUDENT', 'wong123'),
-(3, 'xingtong', 'Loo Xingtong', '0138967458', 'loo@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'STUDENT', 'wong123');
+(1, 'wong123', 'Wong Lim Wong', '0152368956', 'wong@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'Yellow Parking Permit', 'wong123'),
+(2, 'vivian', 'Yeoh Hui Wen', '0196587498', 'vivian@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'Red Parking Permit', 'wong123'),
+(3, 'xingtong', 'Loo Xingtong', '0138967458', 'loo@gmail.com', 'Honda', 'Civic', 'AAA 1234', '11-02-2017', 'Red Parking Permit', 'wong123');
 
 --
 -- Indexes for dumped tables
@@ -103,7 +116,7 @@ ALTER TABLE `TABLE_USER`
 -- AUTO_INCREMENT for table `TABLE_LEAVER`
 --
 ALTER TABLE `TABLE_LEAVER`
-  MODIFY `KEY_L_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `KEY_L_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `TABLE_USER`
 --

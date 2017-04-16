@@ -369,4 +369,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         super.notifyDataSetChanged();
     }
 
+
+    public void onGroupExpanded() {
+        super.onGroupExpanded(0);
+    }
 }

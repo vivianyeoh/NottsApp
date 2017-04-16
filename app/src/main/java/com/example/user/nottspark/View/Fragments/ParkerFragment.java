@@ -77,7 +77,8 @@ public class ParkerFragment extends Fragment {
                                 listAdapter.setLeaverUserList(leaverArrayList, userArrayList);
                                 MainActivity.setAllLeaverList(leaverArrayList);
                                 MainActivity.setAllUserList(userArrayList);
-                                getActivity().onContentChanged();
+
+                                //Only the original thread that created a view hierarchy can touch its views.
                                 final Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -85,9 +86,8 @@ public class ParkerFragment extends Fragment {
                                         listAdapter.notifyDataSetChanged();
                                         expListView.setAdapter(listAdapter);
 
-
                                     }
-                                }, 1000);
+                                }, 500);
                             }
                         }
                     };
