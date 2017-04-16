@@ -4,7 +4,6 @@ package com.example.user.nottspark.View;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -24,21 +23,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private Spinner mAccType, mCarMake;
     private Button btnAddUser, btnCancel;
 
-    public static void selectSpinnerItemByValue(Spinner spnr, String value) {
-        ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();
-        for (int position = 0; position < adapter.getCount(); position++) {
-            if (adapter.getItem(position).equals(value)) {
-                spnr.setSelection(position);
-                return;
-            }
-        }
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);

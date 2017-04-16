@@ -65,6 +65,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         ExpandableListAdapter.context = context;
         this.accType = accType;
         this.userList = userList;
+        this.leaverList = leaverList;
         if (accType.equals("Red Parking Permit"))
             prepareRedZoneListData(leaverList);
         else
@@ -209,70 +210,49 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
                 if (leaverArrayList.get(i).getPairingStatus() == 0 && userZone.getUserAccountType().equals("Yellow Parking Permit")) {
                     switch (leaverArrayList.get(i).getLocation()) {
-                        case "ZONE B - Near Blue Building":
+                        case "ZONE B1 - Between Trent and Blue Building":
                             numOfYellowLeaverZone[0]++;
                             yellowleaverArrayListByZone[0].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE P - Near Civil Mixing Lab":
+                        case "ZONE B2 - Behind Blue Building":
                             numOfYellowLeaverZone[1]++;
                             yellowleaverArrayListByZone[1].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE N1 - Next to Engineering Research Building":
+                        case "ZONE B3 - Between Blue Building":
                             numOfYellowLeaverZone[2]++;
                             yellowleaverArrayListByZone[2].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE N2 - Next to Engineering Research Building":
+                        case "ZONE C - Near Red Building":
                             numOfYellowLeaverZone[3]++;
                             yellowleaverArrayListByZone[3].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE J1 - Behind Purple Building":
+                        case "ZONE D - Near Purple Building":
                             numOfYellowLeaverZone[4]++;
                             yellowleaverArrayListByZone[4].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE J2 - Around Nexus/Rawa area":
+                        case "ZONE D2- Between Purple Building and Civil Mixing Lab":
                             numOfYellowLeaverZone[5]++;
                             yellowleaverArrayListByZone[5].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE C - Outside SA Circle":
+                        case "ZONE E1 - Between Purple and Orange Building":
                             numOfYellowLeaverZone[6]++;
                             yellowleaverArrayListByZone[6].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE H - Near Red Building/SA Bus Stop":
+                        case "ZONE E2 - Near Orange and Engineering Research Building":
                             numOfYellowLeaverZone[7]++;
                             yellowleaverArrayListByZone[7].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE S - Near Sport Complex":
+                        case "ZONE N - Near Engineering Research Building":
                             numOfYellowLeaverZone[8]++;
                             yellowleaverArrayListByZone[8].add(leaverArrayList.get(i));
-
                             break;
-                        case "ZONE T - Between Tioman and Langkawi Hall":
+                        case "ZONE F3 - Near F3 Building":
                             numOfYellowLeaverZone[9]++;
                             yellowleaverArrayListByZone[9].add(leaverArrayList.get(i));
                             break;
-                        case "ZONE L - Near Pangkor Hall":
+                        case "ZONE F4 - Near F4 Building":
                             numOfYellowLeaverZone[10]++;
                             yellowleaverArrayListByZone[10].add(leaverArrayList.get(i));
-                            break;
-                        case "ZONE A - Between Pangkor and Kapas Hall":
-                            numOfYellowLeaverZone[11]++;
-                            yellowleaverArrayListByZone[11].add(leaverArrayList.get(i));
-                            break;
-                        case "ZONE K - Behind Kapas Hall":
-                            numOfYellowLeaverZone[12]++;
-                            yellowleaverArrayListByZone[12].add(leaverArrayList.get(i));
-                            break;
-                        case "ZONE R1 - Next to Yellowang Hall":
-                            numOfYellowLeaverZone[13]++;
-                            yellowleaverArrayListByZone[13].add(leaverArrayList.get(i));
-                            break;
-                        case "ZONE R2 - Behind Yellowang Hall":
-                            numOfYellowLeaverZone[14]++;
-                            yellowleaverArrayListByZone[14].add(leaverArrayList.get(i));
-                            break;
-                        case "ZONE M - Near Islamic Centre":
-                            numOfYellowLeaverZone[15]++;
-                            yellowleaverArrayListByZone[15].add(leaverArrayList.get(i));
                             break;
                     }
                 }
@@ -280,6 +260,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             for (int i = 0; i < YELLOW_ZONE_ARRAY.length; i++)
                 listDataChild.put(YELLOW_ZONE_ARRAY[i], yellowleaverArrayListByZone[i]);
         }
+    }
+
+    public void setLeaverUserList(ArrayList<Leaver> leaverList, ArrayList<User> userList) {
+        this.leaverList = leaverList;
+        this.userList = userList;
+        if (accType.equals("Red Parking Permit"))
+            prepareRedZoneListData(leaverList);
+        else
+            prepareYellowZoneListData(leaverList);
     }
 
     @Override
@@ -373,6 +362,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         });
 
         return convertView;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
 }

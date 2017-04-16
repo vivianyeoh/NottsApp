@@ -2,6 +2,7 @@ package com.example.user.nottspark.View.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +13,11 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.user.nottspark.Controller.LeaverController;
+import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.ExpandableListAdapter;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -61,6 +64,8 @@ public class ParkerFragment extends Fragment {
                         public void run() {
                             LeaverController ml = new LeaverController(getContext());
                             leaverArrayList = (ArrayList<Leaver>) ml.getAllLeaver();
+                            UserController ul = new UserController(getContext());
+                            userArrayList = (ArrayList<User>) ul.getAllUser();
 
                             try {
                                 synchronized (this) {
@@ -69,19 +74,31 @@ public class ParkerFragment extends Fragment {
                             } catch (InterruptedException ex) {
                             }
                             if (leaverArrayList.size() > 0) {
-                                listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
-                                expListView.setAdapter(listAdapter);
-                                Toast.makeText(getContext(), "Number of space is refreshed", Toast.LENGTH_SHORT).show();
+                                listAdapter.setLeaverUserList(leaverArrayList, userArrayList);
+                                MainActivity.setAllLeaverList(leaverArrayList);
+                                MainActivity.setAllUserList(userArrayList);
+                                getActivity().onContentChanged();
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        listAdapter.notifyDataSetChanged();
+                                        expListView.setAdapter(listAdapter);
+
+
+                                    }
+                                }, 1000);
                             }
                         }
                     };
                     mdownloadData.start();
-
+                    Toast.makeText(getContext(), "Number of space is refreshed", Toast.LENGTH_SHORT).show();
+                    refresh.setEnabled(true);
 
                 } catch (Exception ex) {
                     Log.wtf(TAG, "Error in ParkerFragment: " + ex.getLocalizedMessage());
                 }
-                refresh.setEnabled(true);
+
             }
         });
 

@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Thread mdownloadData;
 
+    public static void setAllLeaverList(ArrayList<Leaver> allLeaverList) {
+        MainActivity.allLeaverList = allLeaverList;
+    }
+
+    public static void setAllUserList(ArrayList<User> allUserList) {
+        MainActivity.allUserList = allUserList;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        MainActivity.currentUser = currentUser;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         savedInstanceState = this.savedInstanceState;
@@ -148,5 +160,11 @@ public class MainActivity extends AppCompatActivity {
             allLeaverList = data.getParcelableArrayListExtra("allLeaverList");
             allUserList = data.getParcelableArrayListExtra("allUserList");
         }
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+
     }
 }
