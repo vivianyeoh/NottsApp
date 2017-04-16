@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static void setAllUserList(ArrayList<User> allUserList2) {
         allUserList = allUserList2;
+        MainActivity.setAllUserList(allUserList);
     }
 
     @Override
@@ -85,8 +87,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void userRegistration() {
-        Intent intent = new Intent(this, UserRegistrationActivity.class);
-        startActivity(intent);
+        Intent registerIntent = new Intent(getBaseContext(), UserRegistrationActivity.class);
+        this.startActivityForResult(registerIntent, 4);
+
+//        Intent intent = new Intent(this, UserRegistrationActivity.class);
+//        startActivity(intent);
     }
 
     @Override
@@ -121,6 +126,16 @@ public class LoginActivity extends AppCompatActivity {
         getIntent().putExtra("allUserList", allUserList);
         this.setResult(RESULT_OK, getIntent());
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 4 && resultCode == RESULT_OK) {
+            user = data.getParcelableExtra("user");
+            allUserList.add(user);
+            txtUsername.setText(user.getUserUsername());
+            txtPassword.setText(user.getUserPassword());
+        }
     }
 }
 

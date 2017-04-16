@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
+import com.example.user.nottspark.View.ViewerPage.MainActivity;
 import com.rey.material.widget.EditText;
 
 import getresult.example.asus.nottspark.R;
@@ -177,8 +178,8 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void refreshActivities(User u) {
-//        MainActivity.setCurrentUser(u);
-//        getParent().onContentChanged();
+        MainActivity.setCurrentUser(u);
+        getParent().onContentChanged();
     }
 
 }

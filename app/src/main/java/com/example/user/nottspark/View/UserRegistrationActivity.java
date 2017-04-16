@@ -12,8 +12,6 @@ import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
 import com.rey.material.widget.EditText;
 
-import java.util.ArrayList;
-
 import getresult.example.asus.nottspark.R;
 
 
@@ -99,7 +97,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
                     updateInDatabase(userAdd);
                     refreshActivities(userAdd);
-                    successfulAdd();
+//                    successfulAdd();
 
                 }
             }
@@ -142,9 +140,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
         mdownloadData.start();
     }
 
-    public void refreshActivities(User u) {
-        ArrayList<User> ul = LoginActivity.getAllUserList();
-        ul.add(u);
-        LoginActivity.setAllUserList(ul);
+    public void refreshActivities(User user) {
+        getIntent().putExtra("user", user);
+        this.setResult(RESULT_OK, getIntent());
+        super.onBackPressed();
     }
 }
