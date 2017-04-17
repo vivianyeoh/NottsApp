@@ -39,6 +39,14 @@
             android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.user.nottspark.View.UserProfileActivity" />
+        </activity>
+        <activity
+            android:name="com.example.user.nottspark.View.UserProfileActivity"
+            android:label="User Profile"
+            android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.user.nottspark.View.ViewerPage.MainActivity" />
         </activity>
         <activity

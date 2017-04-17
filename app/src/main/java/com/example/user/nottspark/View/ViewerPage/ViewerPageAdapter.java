@@ -10,7 +10,7 @@ import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Fragments.LeaverFragment;
 import com.example.user.nottspark.View.Fragments.MapDisplay;
 import com.example.user.nottspark.View.Fragments.ParkerFragment;
-import com.example.user.nottspark.View.Fragments.UserProfileFragment;
+import com.example.user.nottspark.View.UserProfileActivity;
 
 import java.util.ArrayList;
 
@@ -20,13 +20,42 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
     private ArrayList<Leaver> leaverArrayList;
     private ArrayList<User> userArrayList;
     private User curUser;
+    private ParkerFragment parkerFragment;
+    private LeaverFragment leaverFragment;
+    private UserProfileActivity userProfileFragment;
 
     public ViewerPageAdapter(FragmentManager fm, int NumOfTabs, ArrayList<Leaver> leaverArrayList, ArrayList<User> userArrayList, User curUser) {
         super(fm);
+
         this.mNumOfTabs = NumOfTabs;
         this.leaverArrayList = leaverArrayList;
         this.userArrayList = userArrayList;
         this.curUser = curUser;
+
+
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        if (object instanceof ParkerFragment) {
+            ParkerFragment parkerFrag = (ParkerFragment) object;
+            if (parkerFrag != null) {
+                parkerFrag.update(curUser);
+            }
+        }
+        if (object instanceof LeaverFragment) {
+            LeaverFragment leaverFrag = (LeaverFragment) object;
+            if (leaverFrag != null) {
+                leaverFrag.update(curUser);
+            }
+        }
+        if (object instanceof UserProfileActivity) {
+            UserProfileActivity userProfileFrag = (UserProfileActivity) object;
+            if (userProfileFrag != null) {
+                userProfileFrag.update(curUser);
+            }
+        }
+        return super.getItemPosition(object);
     }
 
     public void setUserArrayList(ArrayList<User> userArrayList) {
@@ -43,6 +72,9 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        parkerFragment = new ParkerFragment();
+        leaverFragment = new LeaverFragment();
+        userProfileFragment = new UserProfileActivity();
         Bundle bundle = new Bundle();
         bundle.putParcelable("currentSecUser", curUser);
         bundle.putParcelableArrayList("allLeaverList", leaverArrayList);
@@ -53,22 +85,20 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
                 mapDisplay.setArguments(bundle);
                 return mapDisplay;
             case 1:
-                ParkerFragment parkerFragment = new ParkerFragment();
                 parkerFragment.setArguments(bundle);
                 return parkerFragment;
+
             case 2:
-                LeaverFragment leaverFragment = new LeaverFragment();
-                Bundle bundle2 = new Bundle();
-                bundle2.putParcelable("currentSecUser", curUser);
                 leaverFragment.setArguments(bundle);
                 return leaverFragment;
-            case 3:
-                UserProfileFragment userProfileFragment = new UserProfileFragment();
-                userProfileFragment.setArguments(bundle);
-                return userProfileFragment;
             default:
                 return null;
         }
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
     @Override

@@ -97,7 +97,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
                     updateInDatabase(userAdd);
                     refreshActivities(userAdd);
-//                    successfulAdd();
 
                 }
             }
@@ -110,11 +109,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void successfulAdd() {
-        CustDialog alert = new CustDialog();
-        alert.showAlertDialogOnClick(this, "User Registration", "User is added", this);
     }
 
     public void failedUpdate(String msg) {
@@ -131,7 +125,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 uc.addUser(u);
                 try {
                     synchronized (this) {
-                        wait(2000);
+                        wait(1000);
                     }
                 } catch (InterruptedException ex) {
                 }
@@ -140,9 +134,14 @@ public class UserRegistrationActivity extends AppCompatActivity {
         mdownloadData.start();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     public void refreshActivities(User user) {
         getIntent().putExtra("user", user);
         this.setResult(RESULT_OK, getIntent());
-        super.onBackPressed();
+        onBackPressed();
     }
 }

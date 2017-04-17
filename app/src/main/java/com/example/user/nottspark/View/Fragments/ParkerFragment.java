@@ -50,48 +50,14 @@ public class ParkerFragment extends Fragment {
         userArrayList = getArguments().getParcelableArrayList("allUserList");
         user = getArguments().getParcelable("currentSecUser");
         expListView = (ExpandableListView) view.findViewById(R.id.parkingspacenum);
-        listAdapter = new ExpandableListAdapter(view.getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
-        expListView.setAdapter(listAdapter);
 
-
+        update(user, userArrayList, leaverArrayList);
         refresh = (ImageButton) view.findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 refresh.setEnabled(false);
                 try {
-                    Thread mdownloadData = new Thread() {
-                        @Override
-                        public void run() {
-                            LeaverController ml = new LeaverController(getContext());
-                            leaverArrayList = (ArrayList<Leaver>) ml.getAllLeaver();
-                            UserController ul = new UserController(getContext());
-                            userArrayList = (ArrayList<User>) ul.getAllUser();
-
-                            try {
-                                synchronized (this) {
-                                    wait(2000);
-                                }
-                            } catch (InterruptedException ex) {
-                            }
-                            if (leaverArrayList.size() > 0) {
-                                listAdapter.setLeaverUserList(leaverArrayList, userArrayList);
-                                MainActivity.setAllLeaverList(leaverArrayList);
-                                MainActivity.setAllUserList(userArrayList);
-
-                                //Only the original thread that created a view hierarchy can touch its views.
-                                final Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        listAdapter.notifyDataSetChanged();
-                                        expListView.setAdapter(listAdapter);
-
-                                    }
-                                }, 500);
-                            }
-                        }
-                    };
-                    mdownloadData.start();
+                    update(user);
                     Toast.makeText(getContext(), "Number of space is refreshed", Toast.LENGTH_SHORT).show();
                     refresh.setEnabled(true);
 
@@ -114,6 +80,49 @@ public class ParkerFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void update(User user, final ArrayList<User> userArrayList, final ArrayList<Leaver> leaverArrayList) {
+        listAdapter = new ExpandableListAdapter(getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
+        expListView.setAdapter(listAdapter);
+    }
+
+    public void update(User user) {
+        listAdapter = new ExpandableListAdapter(getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
+        expListView.setAdapter(listAdapter);
+        Thread mdownloadData = new Thread() {
+            @Override
+            public void run() {
+                LeaverController ml = new LeaverController(getContext());
+                leaverArrayList = (ArrayList<Leaver>) ml.getAllLeaver();
+                UserController ul = new UserController(getContext());
+                userArrayList = (ArrayList<User>) ul.getAllUser();
+
+                try {
+                    synchronized (this) {
+                        wait(2000);
+                    }
+                } catch (InterruptedException ex) {
+                }
+                if (leaverArrayList.size() > 0) {
+                    listAdapter.setLeaverUserList(leaverArrayList, userArrayList);
+                    MainActivity.setAllLeaverList(leaverArrayList);
+                    MainActivity.setAllUserList(userArrayList);
+
+                    //Only the original thread that created a view hierarchy can touch its views.
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            listAdapter.notifyDataSetChanged();
+                            expListView.setAdapter(listAdapter);
+
+                        }
+                    }, 500);
+                }
+            }
+        };
+        mdownloadData.start();
     }
 }
 

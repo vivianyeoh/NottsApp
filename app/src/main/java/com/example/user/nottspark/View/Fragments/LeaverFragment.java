@@ -39,6 +39,36 @@ public class LeaverFragment extends Fragment {
     private FragmentActivity myContext;
     private Spinner zone_spinner;
     private ImageView zone_image;
+    private String[] redZoneArray = new String[]{
+            "ZONE B - Near Blue Building",
+            "ZONE P - Near Civil Mixing Lab",
+            "ZONE N1 - Next to Engineering Research Building",
+            "ZONE N2 - Next to Engineering Research Building",
+            "ZONE J1 - Behind Purple Building",
+            "ZONE J2 - Around Nexus/Rawa area",
+            "ZONE C - Outside SA Circle",
+            "ZONE H - Near Yellow Building/SA Bus Stop",
+            "ZONE S - Near Sport Complex",
+            "ZONE T - Between Tioman and Langkawi Hall",
+            "ZONE L - Near Pangkor Hall",
+            "ZONE A - Between Pangkor and Kapas Hall",
+            "ZONE K - Behind Kapas Hall",
+            "ZONE R1 - Next to Redang Hall",
+            "ZONE R2 - Behind Redang Hall",
+            "ZONE M - Near Islamic Centre"};
+
+    private String[] yellowZoneArray = new String[]{
+            "ZONE B1 - Between Trent and Blue Building",
+            "ZONE B2 - Behind Blue Building",
+            "ZONE B3 - Between Blue Building",
+            "ZONE C - Near Red Building",
+            "ZONE D - Near Purple Building",
+            "ZONE D2- Between Purple Building and Civil Mixing Lab",
+            "ZONE E1 - Between Purple and Orange Building",
+            "ZONE E2 - Near Orange and Engineering Research Building",
+            "ZONE N - Near Engineering Research Building",
+            "ZONE F3 - Near F3 Building",
+            "ZONE F4 - Near F4 Building"};
 
 
     public LeaverFragment() {
@@ -57,40 +87,58 @@ public class LeaverFragment extends Fragment {
                              Bundle savedInstanceState) {
         final User leaUser = getArguments().getParcelable("currentSecUser");
         View view = inflater.inflate(R.layout.fragment_leaver, container, false);
-        String[] redZoneArray = new String[]{
-                "ZONE B - Near Blue Building",
-                "ZONE P - Near Civil Mixing Lab",
-                "ZONE N1 - Next to Engineering Research Building",
-                "ZONE N2 - Next to Engineering Research Building",
-                "ZONE J1 - Behind Purple Building",
-                "ZONE J2 - Around Nexus/Rawa area",
-                "ZONE C - Outside SA Circle",
-                "ZONE H - Near Yellow Building/SA Bus Stop",
-                "ZONE S - Near Sport Complex",
-                "ZONE T - Between Tioman and Langkawi Hall",
-                "ZONE L - Near Pangkor Hall",
-                "ZONE A - Between Pangkor and Kapas Hall",
-                "ZONE K - Behind Kapas Hall",
-                "ZONE R1 - Next to Redang Hall",
-                "ZONE R2 - Behind Redang Hall",
-                "ZONE M - Near Islamic Centre"};
-
-        String[] yellowZoneArray = new String[]{
-                "ZONE B1 - Between Trent and Blue Building",
-                "ZONE B2 - Behind Blue Building",
-                "ZONE B3 - Between Blue Building",
-                "ZONE C - Near Red Building",
-                "ZONE D - Near Purple Building",
-                "ZONE D2- Between Purple Building and Civil Mixing Lab",
-                "ZONE E1 - Between Purple and Orange Building",
-                "ZONE E2 - Near Orange and Engineering Research Building",
-                "ZONE N - Near Engineering Research Building",
-                "ZONE F3 - Near F3 Building",
-                "ZONE F4 - Near F4 Building"};
-
         zone_image = (ImageView) view.findViewById(R.id.zone_image);
         zone_spinner = (Spinner) view.findViewById(R.id.zone_spinner);
+
+        leaveTime = (EditText) view.findViewById(R.id.leaveTime);
+        leaverDesc = (EditText) view.findViewById(R.id.leaverDesc);
+        leaveTime.setText(new SimpleDateFormat("hh:mm aa").format(new Date()));
+        leaveTime.setKeyListener(null);
+
+        timePickerButton = (Button) view.findViewById(R.id.btnTimepicker);
+        timePickerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showTimePickerDialog();
+            }
+        });
+
+        btnLeave = (Button) view.findViewById(R.id.btnLeave);
+        btnLeave.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                uploadLeaverData(leaUser);
+                CustDialog dialogFragment = new CustDialog();
+                dialogFragment.showAlertDialog(getContext(), "Leaver", "1 Leaver Added");
+
+            }
+        });
+        update(leaUser);
+        return view;
+    }
+
+    public void uploadLeaverData(User user) {
+        String location = zone_spinner.getSelectedItem().toString();
+        String time = leaveTime.getText().toString();
+        String leaveDesc = leaverDesc.getText().toString();
+        LeaverController lc = new LeaverController(getContext());
+        Leaver l = new Leaver(user.getUserID(), location, leaveDesc, time);
+        lc.addLeaver(l);
+    }
+
+
+    public void showTimePickerDialog() {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(myContext.getSupportFragmentManager(), "timePicker");
+    }
+
+    @Override
+    public void onAttach(Activity ctx) {
+        myContext = (FragmentActivity) ctx;
+        super.onAttach(ctx);
+    }
+
+    public void update(User leaUser) {
         ArrayAdapter<String> adapter = null;
+
         if (leaUser.getUserAccountType().equals("Red Parking Permit")) {
             adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_row, redZoneArray);
             zone_spinner.setAdapter(adapter);
@@ -139,51 +187,6 @@ public class LeaverFragment extends Fragment {
             zone_spinner.setPrompt("Parking Space Location");
             zone_image.setImageResource(R.drawable.yellow_area);
         }
-
-        leaveTime = (EditText) view.findViewById(R.id.leaveTime);
-        leaverDesc = (EditText) view.findViewById(R.id.leaverDesc);
-        leaveTime.setText(new SimpleDateFormat("hh:mm aa").format(new Date()));
-        leaveTime.setKeyListener(null);
-
-        timePickerButton = (Button) view.findViewById(R.id.btnTimepicker);
-        timePickerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showTimePickerDialog();
-            }
-        });
-
-        btnLeave = (Button) view.findViewById(R.id.btnLeave);
-        btnLeave.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                uploadLeaverData(leaUser);
-                CustDialog dialogFragment = new CustDialog();
-                dialogFragment.showAlertDialog(getContext(), "Leaver", "1 Leaver Added");
-
-            }
-        });
-
-        return view;
-    }
-
-    public void uploadLeaverData(User user) {
-        String location = zone_spinner.getSelectedItem().toString();
-        String time = leaveTime.getText().toString();
-        String leaveDesc = leaverDesc.getText().toString();
-        LeaverController lc = new LeaverController(getContext());
-        Leaver l = new Leaver(user.getUserID(), location, leaveDesc, time);
-        lc.addLeaver(l);
-    }
-
-
-    public void showTimePickerDialog() {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(myContext.getSupportFragmentManager(), "timePicker");
-    }
-
-    @Override
-    public void onAttach(Activity ctx) {
-        myContext = (FragmentActivity) ctx;
-        super.onAttach(ctx);
     }
 
     public static class TimePickerFragment extends DialogFragment

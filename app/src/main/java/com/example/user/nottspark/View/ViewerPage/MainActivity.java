@@ -17,6 +17,7 @@ import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.LoginActivity;
 import com.example.user.nottspark.View.SessionManager;
+import com.example.user.nottspark.View.UserProfileActivity;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     Bundle savedInstanceState;
     private Boolean exit = false;
     private String TAG = "MainActivity";
-    private Thread mdownloadData;
 
     public static void setAllLeaverList(ArrayList<Leaver> allLeaverList) {
         MainActivity.allLeaverList = allLeaverList;
@@ -55,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayUseLogoEnabled(false);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Map"));
-        tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
-        tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
-        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
+
 
         Intent i = getIntent();//get intent from splash activity
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
@@ -75,8 +71,26 @@ public class MainActivity extends AppCompatActivity {
             loginIntent.putParcelableArrayListExtra("allLeaverList", allLeaverList);
             this.startActivityForResult(loginIntent, 2);
         }
+        setTabViewerPage();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.setCurUser(currentUser);
+        adapter.setLeaverArrayList(allLeaverList);
+        adapter.setUserArrayList(allUserList);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void setTabViewerPage() {
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("Map"));
+        tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
+        tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+
         adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, allUserList, currentUser);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -114,14 +128,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        adapter.setCurUser(currentUser);
-        adapter.setLeaverArrayList(allLeaverList);
-        adapter.setUserArrayList(allUserList);
-    }
-
-    @Override
     public void onBackPressed() {
         if (exit) {
             finish();
@@ -150,12 +156,17 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.menu_log_out) {
             session.logoutUser();
         }
+        if (id == R.id.menu_profile) {
+            Intent i = new Intent(this, UserProfileActivity.class);
+            i.putExtra("currentSecUser", currentUser);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 2 && resultCode == RESULT_OK) {
+        if (requestCode == 2) {
             currentUser = data.getParcelableExtra("user");
             allLeaverList = data.getParcelableArrayListExtra("allLeaverList");
             allUserList = data.getParcelableArrayListExtra("allUserList");

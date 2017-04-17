@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
-import com.example.user.nottspark.View.ViewerPage.MainActivity;
 import com.rey.material.widget.EditText;
 
 import getresult.example.asus.nottspark.R;
@@ -143,6 +142,7 @@ public class EditProfileActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                cancelActivities();
                 onBackPressed();
             }
         });
@@ -160,26 +160,28 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void updateInDatabase(final User u) {
-        Thread mdownloadData = new Thread() {
-            @Override
-            public void run() {
-                UserController uc = new UserController(getApplicationContext());
-                uc.updateUser(u);
-                try {
-                    synchronized (this) {
-                        wait(2000);
-                    }
-                } catch (InterruptedException ex) {
-                }
+        UserController uc = new UserController(getApplicationContext());
+        uc.updateUser(u);
+        try {
+            synchronized (this) {
+                wait(1000);
             }
-        };
-        mdownloadData.start();
-
+        } catch (InterruptedException ex) {
+        }
     }
 
-    public void refreshActivities(User u) {
-        MainActivity.setCurrentUser(u);
-        getParent().onContentChanged();
+    public void refreshActivities(User user) {
+        this.user = user;
+        SessionManager session = new SessionManager(getBaseContext());
+        session.setUserDetails(user);
+        getIntent().putExtra("user", user);
+        this.setResult(RESULT_OK, getIntent());
+    }
+
+    public void cancelActivities() {
+        getIntent().putExtra("user", user);
+        this.setResult(RESULT_CANCELED, getIntent());
+        onBackPressed();
     }
 
 }
