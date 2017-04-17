@@ -2,6 +2,7 @@ package com.example.user.nottspark.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,9 @@ public class UserProfileActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         user = getIntent().getParcelableExtra("currentSecUser");
 
         if (user != null) {
@@ -62,6 +65,15 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         user = data.getParcelableExtra("user");
         update(user);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SessionManager session = new SessionManager(getBaseContext());
+        User sessUser = session.getUserDetails();
+        user = sessUser;
+        update(sessUser);
     }
 
     public void update(User user) {

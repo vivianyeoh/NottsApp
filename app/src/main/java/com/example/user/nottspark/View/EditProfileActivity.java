@@ -1,6 +1,7 @@
 package com.example.user.nottspark.View;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,7 +38,8 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("currentSecUser");
         setContentView(R.layout.activity_user_registration);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
@@ -179,9 +181,13 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void cancelActivities() {
-        getIntent().putExtra("user", user);
-        this.setResult(RESULT_CANCELED, getIntent());
         onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        getIntent().putExtra("user", user);
+        this.setResult(RESULT_CANCELED, getIntent());
+        super.onBackPressed();
+    }
 }

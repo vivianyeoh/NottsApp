@@ -12,6 +12,7 @@
         android:allowBackup="false"
         android:icon="@mipmap/nottslogo"
         android:label="@string/app_name"
+        android:persistent="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -36,6 +37,7 @@
         <activity
             android:name="com.example.user.nottspark.View.EditProfileActivity"
             android:label="Edit Profile"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -44,6 +46,7 @@
         <activity
             android:name="com.example.user.nottspark.View.UserProfileActivity"
             android:label="User Profile"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.ActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
