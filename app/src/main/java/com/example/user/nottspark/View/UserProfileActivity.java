@@ -2,8 +2,10 @@ package com.example.user.nottspark.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,7 +29,6 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         user = getIntent().getParcelableExtra("currentSecUser");
 
         if (user != null) {
@@ -63,8 +64,10 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        user = data.getParcelableExtra("user");
-        update(user);
+        if (resultCode == RESULT_OK) {
+            user = data.getParcelableExtra("user");
+            update(user);
+        }
     }
 
     @Override
@@ -76,6 +79,16 @@ public class UserProfileActivity extends AppCompatActivity {
         update(sessUser);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void update(User user) {
         profileName.setText(user.getUserName());
         profileUserName.setText(user.getUserUsername());

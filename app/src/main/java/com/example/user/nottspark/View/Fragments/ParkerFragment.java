@@ -87,9 +87,7 @@ public class ParkerFragment extends Fragment {
         expListView.setAdapter(listAdapter);
     }
 
-    public void update(User user) {
-        listAdapter = new ExpandableListAdapter(getContext(), leaverArrayList, user.getUserAccountType(), userArrayList);
-        expListView.setAdapter(listAdapter);
+    public void update(final User user1) {
         Thread mdownloadData = new Thread() {
             @Override
             public void run() {
@@ -106,6 +104,7 @@ public class ParkerFragment extends Fragment {
                 }
                 if (leaverArrayList.size() > 0) {
                     listAdapter.setLeaverUserList(leaverArrayList, userArrayList);
+
                     MainActivity.setAllLeaverList(leaverArrayList);
                     MainActivity.setAllUserList(userArrayList);
 
@@ -116,7 +115,6 @@ public class ParkerFragment extends Fragment {
                         public void run() {
                             listAdapter.notifyDataSetChanged();
                             expListView.setAdapter(listAdapter);
-
                         }
                     }, 500);
                 }

@@ -68,6 +68,9 @@ public class EditProfileActivity extends AppCompatActivity {
         mCarModel.setText(user.getCarModel());
         mCarPlate.setText(user.getCarPlate());
 
+        mUsernameField.setKeyListener(null);
+        mUsernameField.setTextColor(R.color.bluegrey50);
+
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -134,7 +137,6 @@ public class EditProfileActivity extends AppCompatActivity {
                                 mCarModel.getText().toString().trim(), mCarPlate.getText().toString().trim(), user.getRegisterDate(),
                                 (mAccType.getSelectedItem()).toString().trim(), user.getUserPassword());
                     }
-                    successfulUpdate();
                     updateInDatabase(userUpdate);
                     refreshActivities(userUpdate);
                 }
@@ -151,10 +153,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-    public void successfulUpdate() {
-        CustDialog alert = new CustDialog();
-        alert.showAlertDialog(this, "Edit Profile", "Data is updated");
-    }
 
     public void failedUpdate(String msg) {
         CustDialog alert = new CustDialog();
@@ -178,16 +176,11 @@ public class EditProfileActivity extends AppCompatActivity {
         session.setUserDetails(user);
         getIntent().putExtra("user", user);
         this.setResult(RESULT_OK, getIntent());
+        onBackPressed();
     }
 
     public void cancelActivities() {
         onBackPressed();
     }
 
-    @Override
-    public void onBackPressed() {
-        getIntent().putExtra("user", user);
-        this.setResult(RESULT_CANCELED, getIntent());
-        super.onBackPressed();
-    }
 }

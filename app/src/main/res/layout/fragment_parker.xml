@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Current Parking Space"
+            android:text="Current Parking Space (Press the button to refresh)"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ImageButton

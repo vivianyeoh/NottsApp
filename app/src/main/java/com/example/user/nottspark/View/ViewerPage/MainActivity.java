@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Controller.UserController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayUseLogoEnabled(false);
 
-
         Intent i = getIntent();//get intent from splash activity
         allLeaverList = i.getParcelableArrayListExtra("allLeaverList");
         allUserList = i.getParcelableArrayListExtra("allUserList");
@@ -78,21 +76,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LeaverController ml = new LeaverController(getApplicationContext());
-        allLeaverList = (ArrayList<Leaver>) ml.getAllLeaver();
-        UserController ul = new UserController(getApplicationContext());
-        allUserList = (ArrayList<User>) ul.getAllUser();
+        SessionManager session = new SessionManager(getBaseContext());
+        currentUser = session.getUserDetails();
+
         adapter.setCurUser(currentUser);
         adapter.setLeaverArrayList(allLeaverList);
         adapter.setUserArrayList(allUserList);
         adapter.notifyDataSetChanged();
+
     }
 
     public void setTabViewerPage() {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Map"));
-        tabLayout.addTab(tabLayout.newTab().setText("Parking Space"));
-        tabLayout.addTab(tabLayout.newTab().setText("Leaving"));
+        tabLayout.addTab(tabLayout.newTab().setText("Campus Map"));
+        tabLayout.addTab(tabLayout.newTab().setText("Parking Space in Each Zone"));
+        tabLayout.addTab(tabLayout.newTab().setText("Leaving Form"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
@@ -164,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.menu_profile) {
             Intent i = new Intent(this, UserProfileActivity.class);
             i.putExtra("currentSecUser", currentUser);
-            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);
