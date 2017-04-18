@@ -347,13 +347,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         final TextView tvTime = (TextView) convertView.findViewById(R.id.tvTime);
         final TextView tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
         Button btnEditStatus = (Button) convertView.findViewById(R.id.btnEditStatus);
-        tvDesc.setText(childText.getLeaverDesc());
-        tvTime.setText(childText.getDate());
-        tvStatus.setText(childText.getPairingStatus() + "");
+        tvDesc.setText("Description: " + childText.getLeaverDesc());
+        tvTime.setText("Time: " + childText.getDate());
+        tvStatus.setText("Status of the spot: " + (childText.getPairingStatus() == 1 ? "Taken" : "Available"));
         btnEditStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                tvStatus.setText("1");
+                tvStatus.setText("Status of the spot: Taken");
                 childText.setPairingStatus(1);
                 Thread mdownloadData = new Thread() {
                     @Override
