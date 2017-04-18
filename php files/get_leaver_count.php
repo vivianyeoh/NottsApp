@@ -9,7 +9,8 @@ if ($conn->connect_errno) {
 	exit();
 }
 
-$sql="SELECT * FROM TABLE_LEAVER";
+$sql="SELECT * FROM TABLE_LEAVER
+WHERE str_to_date(KEY_L_DATETIME, '%d/%m/%Y %h:%i %p')>=(DATE_SUB(NOW(), INTERVAL 10 MINUTE)) AND KEY_L_PARINGSTATUS=0";
 
 if ($result=mysqli_query($conn,$sql))
 {

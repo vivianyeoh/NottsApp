@@ -22,9 +22,9 @@ import com.example.user.nottspark.Controller.LeaverController;
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
+import com.example.user.nottspark.View.SessionManager;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -35,7 +35,6 @@ public class LeaverFragment extends Fragment {
     private static EditText leaverDesc;
     private static Button timePickerButton;
     private static Button btnLeave;
-    private static ArrayList<Leaver> leaverArrayList;
     private FragmentActivity myContext;
     private Spinner zone_spinner;
     private ImageView zone_image;
@@ -85,7 +84,8 @@ public class LeaverFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final User leaUser = getArguments().getParcelable("currentSecUser");
+        SessionManager session = new SessionManager(getContext());
+        final User currentUser = session.getUserDetails();
         View view = inflater.inflate(R.layout.fragment_leaver, container, false);
         zone_image = (ImageView) view.findViewById(R.id.zone_image);
         zone_spinner = (Spinner) view.findViewById(R.id.zone_spinner);
@@ -105,13 +105,13 @@ public class LeaverFragment extends Fragment {
         btnLeave = (Button) view.findViewById(R.id.btnLeave);
         btnLeave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                uploadLeaverData(leaUser);
+                uploadLeaverData(currentUser);
                 CustDialog dialogFragment = new CustDialog();
                 dialogFragment.showAlertDialog(getContext(), "Leaver", "1 Leaver Added");
 
             }
         });
-        update(leaUser);
+        update(currentUser);
         return view;
     }
 

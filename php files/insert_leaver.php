@@ -7,15 +7,14 @@ include 'connection.php';
 $response = array();
 
 // check for required fields
-if (isset($_POST['KEY_L_USER_ID']) && isset($_POST['KEY_L_LOCATION']) && isset($_POST['KEY_L_DESC']) && isset($_POST['KEY_L_PARINGSTATUS'])  && isset($_POST['KEY_L_DATE'])&& isset($_POST['KEY_L_TIME'])) {
+if (isset($_POST['KEY_L_USER_ID']) && isset($_POST['KEY_L_LOCATION']) && isset($_POST['KEY_L_DESC']) && isset($_POST['KEY_L_PARINGSTATUS'])  && isset($_POST['KEY_L_DATETIME'])) {
 
 
 	$KEY_L_USER_ID= $_POST['KEY_L_USER_ID'];
 	$KEY_L_LOCATION= $_POST['KEY_L_LOCATION'];
 	$KEY_L_DESC= $_POST['KEY_L_DESC'];
 	$KEY_L_PARINGSTATUS= $_POST['KEY_L_PARINGSTATUS'];
-	$KEY_L_DATE= $_POST['KEY_L_DATE'];
-	$KEY_L_TIME= $_POST['KEY_L_TIME'];
+	$KEY_L_DATETIME= $_POST['KEY_L_DATETIME'];
 
 
 	// connecting to db
@@ -26,7 +25,7 @@ if (isset($_POST['KEY_L_USER_ID']) && isset($_POST['KEY_L_LOCATION']) && isset($
 	}
 
 	// mysql inserting a new row
-	$sql ="INSERT INTO TABLE_LEAVER(KEY_L_USER_ID, KEY_L_LOCATION, KEY_L_DESC, KEY_L_PARINGSTATUS, KEY_L_DATE,KEY_L_TIME) VALUES('$KEY_L_USER_ID', '$KEY_L_LOCATION', '$KEY_L_DESC', '$KEY_L_PARINGSTATUS', '$KEY_L_DATE','$KEY_L_TIME')";
+	$sql ="INSERT INTO TABLE_LEAVER(KEY_L_USER_ID, KEY_L_LOCATION, KEY_L_DESC, KEY_L_PARINGSTATUS, KEY_L_DATETIME) VALUES('$KEY_L_USER_ID', '$KEY_L_LOCATION', '$KEY_L_DESC', '$KEY_L_PARINGSTATUS', '$KEY_L_DATETIME')";
 
 	if ($conn->query($sql) === TRUE) {
 		// successfully inserted into database

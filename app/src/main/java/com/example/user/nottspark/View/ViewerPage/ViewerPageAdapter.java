@@ -31,8 +31,6 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
         this.leaverArrayList = leaverArrayList;
         this.userArrayList = userArrayList;
         this.curUser = curUser;
-
-
     }
 
     @Override
@@ -40,7 +38,7 @@ public class ViewerPageAdapter extends FragmentStatePagerAdapter {
         if (object instanceof ParkerFragment) {
             ParkerFragment parkerFrag = (ParkerFragment) object;
             if (parkerFrag != null) {
-                parkerFrag.update(curUser);
+                parkerFrag.update();
             }
         }
         if (object instanceof LeaverFragment) {

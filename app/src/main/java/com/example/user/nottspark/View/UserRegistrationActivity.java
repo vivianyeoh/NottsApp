@@ -12,11 +12,14 @@ import com.example.user.nottspark.Model.User;
 import com.example.user.nottspark.View.Dialogs.CustDialog;
 import com.rey.material.widget.EditText;
 
+import java.util.ArrayList;
+
 import getresult.example.asus.nottspark.R;
 
 
 public class UserRegistrationActivity extends AppCompatActivity {
 
+    private static ArrayList<User> userArrayList;
     private EditText mUsernameField, mPasswordField, mPasswordVerifyField, mName, mContact, mEmail, mCarModel, mCarPlate;
     private Spinner mAccType, mCarMake;
     private Button btnAddUser, btnCancel;
@@ -26,7 +29,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        userArrayList = new ArrayList<>();
         mUsernameField = (EditText) findViewById(R.id.username);
         mPasswordField = (EditText) findViewById(R.id.password);
         mPasswordVerifyField = (EditText) findViewById(R.id.passwordReconfirm);
@@ -74,16 +77,45 @@ public class UserRegistrationActivity extends AppCompatActivity {
                     hasEntered = true;
 
                 if (hasEntered) {
-                    if (mPasswordField.getText().toString().equals(mPasswordVerifyField.getText().toString())) {
-                        String check = PasswordValidation.ValidatePassword(mPasswordField.getText().toString());
-                        if (check.equals("")) {
-                            allowAdd = true;
-                            allowPasswordAdd = true;
-                        } else {
-                            failedUpdate(check);
+                    Thread mdownloadData = new Thread() {
+                        @Override
+                        public void run() {
+                            UserController ul = new UserController(getApplicationContext());
+                            userArrayList = (ArrayList<User>) ul.getAllUser();
+
+                            try {
+                                synchronized (this) {
+                                    wait(2000);
+                                }
+                            } catch (InterruptedException ex) {
+                            }
+
                         }
-                    } else {
-                        failedUpdate("1st password and 2nd password are not matched!");
+                    };
+                    mdownloadData.start();
+                    boolean hasSameUsername = false;
+                    if (userArrayList.size() > 0) {
+                        for (User u : userArrayList)
+                            if (u.getUserUsername().equals(mUsernameField.getText().toString().trim())) {
+                                hasSameUsername = true;
+                                break;
+                            }
+
+                        if (!hasSameUsername) {
+                            if (mPasswordField.getText().toString().equals(mPasswordVerifyField.getText().toString())) {
+                                String check = PasswordValidation.ValidatePassword(mPasswordField.getText().toString());
+                                if (check.equals("")) {
+                                    allowAdd = true;
+                                    allowPasswordAdd = true;
+                                } else {
+                                    failedUpdate(check);
+                                }
+                            } else {
+                                failedUpdate("1st password and 2nd password are not matched!");
+                            }
+                        } else {
+                            failedUpdate("Username already exist!");
+                        }
                     }
                 } else {
                     failedUpdate("Please fill in all the columns!");

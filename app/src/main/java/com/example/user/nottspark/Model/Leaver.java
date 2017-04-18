@@ -27,8 +27,7 @@ public class Leaver implements Parcelable {
     private String location;
     private String leaverDesc;
     private int pairingStatus;//1 for yes
-    private String leavingTime;
-    private String date;
+    private String leavingDateTime;
 
     public Leaver() {
     }
@@ -38,18 +37,17 @@ public class Leaver implements Parcelable {
         this.location = location;
         this.leaverDesc = leaverDesc.equals("") ? location : leaverDesc;
         pairingStatus = 0;
-        this.leavingTime = leavingTime;
-        this.date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        this.leavingDateTime = new SimpleDateFormat("dd/MM/yyyy ").format(new Date()) + leavingTime.toUpperCase();
+
     }
 
-    public Leaver(int leaverID, int userID, String location, String leaverDesc, int pairingStatus, String leavingTime, String date) {
+    public Leaver(int leaverID, int userID, String location, String leaverDesc, int pairingStatus, String leavingDateTime) {
         this.leaverID = leaverID;
         this.userID = userID;
         this.location = location;
         this.leaverDesc = leaverDesc;
         this.pairingStatus = pairingStatus;
-        this.leavingTime = leavingTime;
-        this.date = date;
+        this.leavingDateTime = leavingDateTime;
     }
 
     protected Leaver(Parcel in) {
@@ -58,8 +56,7 @@ public class Leaver implements Parcelable {
         location = in.readString();
         leaverDesc = in.readString();
         pairingStatus = in.readInt();
-        leavingTime = in.readString();
-        date = in.readString();
+        leavingDateTime = in.readString();
     }
 
     public int getLeaverID() {
@@ -98,14 +95,6 @@ public class Leaver implements Parcelable {
         return pairingStatus;
     }
 
-    public String getLeavingTime() {
-        return leavingTime;
-    }
-
-    public void setLeavingTime(String leavingTime) {
-        this.leavingTime = leavingTime;
-    }
-
     public int getPairingStatus() {
         return pairingStatus;
     }
@@ -115,11 +104,11 @@ public class Leaver implements Parcelable {
     }
 
     public String getDate() {
-        return date;
+        return leavingDateTime;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String leavingDateTime) {
+        this.leavingDateTime = leavingDateTime;
     }
 
     @Override
@@ -130,8 +119,7 @@ public class Leaver implements Parcelable {
                 ", location='" + location + '\'' +
                 ", leaverDesc='" + leaverDesc + '\'' +
                 ", pairingStatus=" + pairingStatus +
-                ", leavingTime='" + leavingTime + '\'' +
-                ", date='" + date + '\'' +
+                ", leavingDateTime='" + leavingDateTime + '\'' +
                 '}';
     }
 
@@ -148,7 +136,6 @@ public class Leaver implements Parcelable {
         dest.writeString(location);
         dest.writeString(leaverDesc);
         dest.writeInt(pairingStatus);
-        dest.writeString(leavingTime);
-        dest.writeString(date);
+        dest.writeString(leavingDateTime);
     }
 }

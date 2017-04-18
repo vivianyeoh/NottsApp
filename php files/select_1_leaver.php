@@ -25,8 +25,7 @@ array_push($result,array(
 "KEY_L_LOCATION"=>$res['KEY_L_LOCATION'],
 "KEY_L_DESC"=>$res['KEY_L_DESC'],
 "KEY_L_PARINGSTATUS"=>$res['KEY_L_PARINGSTATUS'],
-"KEY_L_DATE"=>$res['KEY_L_DATE']
-"KEY_L_TIME"=>$res['KEY_L_TIME']
+"KEY_L_DATETIME"=>$res['KEY_L_DATETIME']
 )
 );
 

@@ -59,8 +59,7 @@ public class MaintainLeaverDBTable {
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
-                    params.put("KEY_L_TIME", leaver.getLeavingTime());
-                    params.put("KEY_L_DATE", leaver.getDate());
+                    params.put("KEY_L_DATETIME", leaver.getDate());
                     return params;
                 }
 
@@ -141,8 +140,7 @@ public class MaintainLeaverDBTable {
                                         courseResponse.getString("KEY_L_LOCATION"),
                                         courseResponse.getString("KEY_L_DESC"),
                                         Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS")),
-                                        courseResponse.getString("KEY_L_TIME"),
-                                        courseResponse.getString("KEY_L_DATE")
+                                        courseResponse.getString("KEY_L_DATETIME")
                                 );
                                 Log.wtf(TAG, "download1Leaver completed: " + download1leaver.toString());
                             } else
@@ -197,8 +195,7 @@ public class MaintainLeaverDBTable {
                                             courseResponse.getString("KEY_L_LOCATION"),
                                             courseResponse.getString("KEY_L_DESC"),
                                             Integer.parseInt(courseResponse.getString("KEY_L_PARINGSTATUS")),
-                                            courseResponse.getString("KEY_L_TIME"),
-                                            courseResponse.getString("KEY_L_DATE")
+                                            courseResponse.getString("KEY_L_DATETIME")
                                     );
                                     leaverList.add(leaver);
                                     Log.wtf(TAG, "Leaver Data :" + leaver.toString());
@@ -247,8 +244,7 @@ public class MaintainLeaverDBTable {
                     params.put("KEY_L_LOCATION", leaver.getLocation());
                     params.put("KEY_L_DESC", leaver.getLeaverDesc());
                     params.put("KEY_L_PARINGSTATUS", leaver.isPairingStatus() + "");
-                    params.put("KEY_L_TIME", leaver.getLeavingTime());
-                    params.put("KEY_L_DATE", leaver.getDate());
+                    params.put("KEY_L_DATETIME", leaver.getDate());
                     return params;
                 }
 

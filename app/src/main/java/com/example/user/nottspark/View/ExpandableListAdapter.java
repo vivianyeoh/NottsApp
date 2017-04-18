@@ -70,6 +70,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             prepareRedZoneListData(leaverList);
         else
             prepareYellowZoneListData(leaverList);
+
+
     }
 
     @Override
@@ -100,12 +102,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private void prepareRedZoneListData(ArrayList<Leaver> leaverArrayList) {
         numOfRedLeaverZone = new int[RED_ZONE_ARRAY.length];
         redleaverArrayListByZone = new ArrayList[RED_ZONE_ARRAY.length];
-
+        for (int i = 0; i < numOfRedLeaverZone.length; i++) {
+            redleaverArrayListByZone[i] = new ArrayList<Leaver>();
+        }
         if (leaverArrayList.size() > 0) {
-            for (int i = 0; i < numOfRedLeaverZone.length; i++) {
-                redleaverArrayListByZone[i] = new ArrayList<Leaver>();
-            }
-
 
             for (int i = 0; i < leaverArrayList.size(); i++) {
                 User userZone = null;
@@ -115,7 +115,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                         break;
                     }
                 if (userZone != null) {
-                    if (leaverArrayList.get(i).getPairingStatus() == 0 && userZone.getUserAccountType().equals("Red Parking Permit")) {
+                    if (userZone.getUserAccountType().equals("Red Parking Permit")) {
                         switch (leaverArrayList.get(i).getLocation()) {
                             case "ZONE B - Near Blue Building":
                                 numOfRedLeaverZone[0]++;
@@ -189,17 +189,21 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
             for (int i = 0; i < RED_ZONE_ARRAY.length; i++)
                 listDataChild.put(RED_ZONE_ARRAY[i], redleaverArrayListByZone[i]);
+        } else {
+            for (int i = 0; i < RED_ZONE_ARRAY.length; i++)
+                listDataChild.put(RED_ZONE_ARRAY[i], redleaverArrayListByZone[i]);
+
         }
     }
 
     private void prepareYellowZoneListData(ArrayList<Leaver> leaverArrayList) {
         numOfYellowLeaverZone = new int[YELLOW_ZONE_ARRAY.length];
         yellowleaverArrayListByZone = new ArrayList[YELLOW_ZONE_ARRAY.length];
+        for (int i = 0; i < numOfYellowLeaverZone.length; i++) {
+            yellowleaverArrayListByZone[i] = new ArrayList<Leaver>();
+        }
 
         if (leaverArrayList.size() > 0) {
-            for (int i = 0; i < numOfYellowLeaverZone.length; i++) {
-                yellowleaverArrayListByZone[i] = new ArrayList<Leaver>();
-            }
 
 
             for (int i = 0; i < leaverArrayList.size(); i++) {
@@ -210,7 +214,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                         break;
                     }
                 if (userZone != null) {
-                    if (leaverArrayList.get(i).getPairingStatus() == 0 && userZone.getUserAccountType().equals("Yellow Parking Permit")) {
+                    if (userZone.getUserAccountType().equals("Yellow Parking Permit")) {
                         switch (leaverArrayList.get(i).getLocation()) {
                             case "ZONE B1 - Between Trent and Blue Building":
                                 numOfYellowLeaverZone[0]++;
@@ -262,13 +266,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
             for (int i = 0; i < YELLOW_ZONE_ARRAY.length; i++)
                 listDataChild.put(YELLOW_ZONE_ARRAY[i], yellowleaverArrayListByZone[i]);
+        } else {
+            for (int i = 0; i < YELLOW_ZONE_ARRAY.length; i++)
+                listDataChild.put(YELLOW_ZONE_ARRAY[i], yellowleaverArrayListByZone[i]);
+
         }
     }
 
-    public void setLeaverUserList(ArrayList<Leaver> leaverList, ArrayList<User> userList) {
+    public void setLeaverUserList(User user1, ArrayList<Leaver> leaverList, ArrayList<User> userList) {
         this.leaverList = leaverList;
         this.userList = userList;
-        if (accType.equals("Red Parking Permit"))
+        if (user1.getUserAccountType().equals("Red Parking Permit"))
             prepareRedZoneListData(leaverList);
         else
             prepareYellowZoneListData(leaverList);
@@ -340,7 +348,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         final TextView tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
         Button btnEditStatus = (Button) convertView.findViewById(R.id.btnEditStatus);
         tvDesc.setText(childText.getLeaverDesc());
-        tvTime.setText(childText.getLeavingTime());
+        tvTime.setText(childText.getDate());
         tvStatus.setText(childText.getPairingStatus() + "");
         btnEditStatus.setOnClickListener(new View.OnClickListener() {
             @Override

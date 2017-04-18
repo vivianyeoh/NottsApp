@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ViewerPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), allLeaverList, allUserList, currentUser);
         viewPager.setAdapter(adapter);
+
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
