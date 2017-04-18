@@ -1,8 +1,6 @@
 package com.example.user.nottspark.View;
 
 
-import android.text.TextUtils;
-
 /**
  * Created by aiman on 21/03/2017.
  */
@@ -15,7 +13,7 @@ public class PasswordValidation {
 
     public static String ValidatePassword(String password) {
         String check = "";
-        if (TextUtils.isEmpty(password)) {
+        if (password.equals("")) {
             return "empty string";
         }
         password = password.trim();
