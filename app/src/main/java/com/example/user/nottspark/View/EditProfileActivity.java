@@ -70,6 +70,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         mUsernameField.setKeyListener(null);
         mUsernameField.setTextColor(R.color.bluegrey50);
+        mAccType.setEnabled(false);
+        mAccType.setClickable(false);
 
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -137,7 +137,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                onBackPressed();
+                cancelRegister();
             }
         });
 
@@ -169,6 +169,12 @@ public class UserRegistrationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+    }
+
+    public void cancelRegister() {
+        this.setResult(RESULT_CANCELED, getIntent());
+        onBackPressed();
     }
 
     public void refreshActivities(User user) {

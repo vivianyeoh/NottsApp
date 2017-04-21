@@ -85,10 +85,10 @@ public class UserProfileActivity extends AppCompatActivity {
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void update(User user) {
         profileName.setText(user.getUserName());
         profileUserName.setText(user.getUserUsername());
