@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:hint="Email"
+            android:hint="Account Type"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="20dp"

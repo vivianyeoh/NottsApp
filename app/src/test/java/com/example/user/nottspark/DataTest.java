@@ -1,12 +1,9 @@
 package com.example.user.nottspark;
 
-import android.content.Context;
-
 import com.example.user.nottspark.Model.Leaver;
 import com.example.user.nottspark.Model.User;
 
 import org.junit.Test;
-import org.mockito.Mock;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -14,11 +11,8 @@ import static junit.framework.Assert.assertNotSame;
 
 public class DataTest {
 
-    @Mock
-    Context mContext;
-
     @Test
-    public void addition_isCorrect() throws Exception {
+    public void classes_data_isCorrect() throws Exception {
         User user = new User("mockuser96", "mockname", "0125885745", "mock@email.cd", "mockBrand", "mockmodel", "mockCarPlate", "Yellow Parking Permit", "12345678");
         User user2 = new User("mockuser96", "mockname", "0125885745", "mock@email.cd", "mockBrand", "mockmodel", "mockCarPlate", "Red Parking Permit", "12345678");
 

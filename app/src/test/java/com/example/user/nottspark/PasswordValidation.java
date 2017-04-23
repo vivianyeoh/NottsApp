@@ -8,7 +8,7 @@ import static junit.framework.Assert.assertEquals;
 public class PasswordValidation {
 
     @Test
-    public void addition_isCorrect() throws Exception {
+    public void password_validation_isEqual() throws Exception {
 
         assertEquals(ValidatePassword(""), "empty string");
         assertEquals(ValidatePassword("bcdk"), "wrong size, it must have at least 8 characters and less than 20.");
